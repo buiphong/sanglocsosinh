@@ -1,0 +1,73 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý Portlet</h1>
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="more-login.html">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-basic.html">Quản lý Portlet</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-dynamic.html">{portlet}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+<div class="box box-color box-bordered dataTables_wrapper">
+	<div class="box-title">
+		<h3>Portlet</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmportlet" class="form-horizontal form-bordered">
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Tên tham số</label>
+				<div class="controls">
+					<input class="field" type="text" name="name" id="name" size=40 value="{model.name}">
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Tiêu đề</label>
+				<div class="controls">
+					<input class="field" type="text" name="title" id="title" size=40 value="{model.title}">	
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Kiểu giá trị</label>
+				<div class="controls">
+					{paramType}
+				</div>
+			</div>
+		  	<div class="control-group">		  
+				<label for="textfield" class="control-label">Giá trị mặc định</label>
+				<div class="controls">
+					<input class="field" type="text" name="options" id="options" size=40 value="{model.options}">
+					<i>Kiểu mảng sẽ lưu dưới dạng: 'key1:value1,key2:value2...'</i>
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Mô tả</label>
+				<div class="controls">
+					<textarea class="field" name="desc" id="desc" rows=5 cols=40>{model.desc}</textarea>
+				</div>
+			</div> 
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Ghi lại</button>
+				<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+			</div>
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<input name="portlet_id" type="hidden" id="portlet_id" value="{portlet_id}">
+		</form>
+	</div>
+</div>
+<!-- END: main -->

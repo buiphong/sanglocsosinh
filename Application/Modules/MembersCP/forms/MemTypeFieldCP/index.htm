@@ -1,0 +1,152 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý nhóm thành viên</h1>
+	</div>
+	<div class="pull-right">
+		{rightHeader}
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="#">Quản lý nhóm thành viên</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>Thông tin profile nhóm thành viên</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span3">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>Nhóm thành viên</h3>
+			</div>
+			<div class="box-content">
+				{sidebarType}
+			</div>
+		</div>
+	</div>
+	
+	<div class="span9">
+		<div class="box box-color box-bordered">
+		<div class="box-title">
+			<h3>Thông tin profile {catName}</h3>
+			<div class="actions">
+				<a href='{createLink}' class="btn icon-plus btn-info" title="Thêm trường">&nbsp;</a>
+			</div>
+		</div>
+		<div class="box-content nopadding dataTables_wrapper">
+			<form method="post" action="{frmSearchAction}" id="frmSearchListNews" name="frmSearchListNews" style="padding: 0px; margin: 0px;">
+				<div class="dataTables_length" id="DataTables_Table_0_filter">					
+					<input type="text" name="search-text" placeholder="Tìm kiếm" class="field" value="{textSearch}"/>					
+					<button type="submit" class="btn btn-primary">Tìm kiếm</button>	
+				</div>
+				<div class="status-bar fl">
+				<!-- BEGIN: status -->
+					<label class="radio inline-block"><input type="radio" {status.checked} name="status" class="{status.class}" value="{status.key}"/> {status.title}</label>
+				<!-- END: status -->
+				</div>
+				<input type="hidden" name="catid" value="{catid}"/>
+				<input type="hidden" name="page" id="page"/>
+				<div class="cb"></div>
+			</form>
+			<table class="table" style="width: 100%;">
+				<thead>
+					<tr>
+						<th width="5%">::</th>
+						<th width="15%">Mã trường</th>
+						<th width="25%">Tên trường</th>
+						<th width="25%">Kiểu dữ liệu</th>
+						<th width="25%">Kiểu nhập dữ liệu</th>
+						<th width="5%"></th>
+					</tr>
+				</thead>
+				<tbody id="table-list-news">
+					<!-- BEGIN: field -->
+					<tr>
+						<td><input data-status="{field.status}" type="checkbox" name="key[]" value="{field.id}"/></td>
+						<td>{field.field_code}</td>
+						<td>{field.field_name}</td>
+						<td>{field.field_type}</td>
+						<td>{field.input_type}</td>
+						<td>
+							<a href="{editLink}">Sửa</a>
+						</td>
+					</tr>
+					<!-- END: field -->
+				</tbody>
+			</table>
+			<div class="pagging" id="pagging-task">
+				{PAGE}
+			</div>
+			<div style="clear: both;"></div>
+			<div class="dataTables_info">
+			<!-- BEGIN: button -->
+				<a class='btn btn-primary' onClick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</a>
+			<!-- END: button -->
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmSearchListNews.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if ($(this).attr("data-status") == 1) {
+			$(this).parent().parent().addClass("error");
+		}
+		else
+		{
+			if(listId == "")
+				listId = $(this).val();
+			else
+				listId += "," + $(this).val();
+		}
+	});
+	if (listId != '')
+	{
+		deleteNews(listId);
+	}
+	else
+		alert('Chưa có mục nào được chọn');
+}
+
+function deleteNews(listId)
+{
+	$.ajax({
+		url: "{deleteLink}",
+		type: "POST",
+		dataType: "json",
+		data: {listid: listId},
+		success: function(res){
+			if(res.success)
+			{
+				window.location.reload();
+			}
+			else
+				alert(res.msg);
+		}
+	});
+}
+</script>
+<!-- END: main -->

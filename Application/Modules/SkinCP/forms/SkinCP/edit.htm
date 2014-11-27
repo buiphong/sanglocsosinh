@@ -1,0 +1,70 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{appPath}/packages/editor/codemirror-3.15/lib/codemirror.css">
+<link rel="stylesheet" href="{appPath}/packages/editor/codemirror-3.15/addon/hint/show-hint.css">
+
+<script src="{appPath}/packages/editor/codemirror-3.15/lib/codemirror.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/addon/hint/show-hint.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/addon/hint/xml-hint.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/addon/hint/html-hint.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/mode/xml/xml.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/mode/javascript/javascript.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/mode/css/css.js"></script>
+<script src="{appPath}/packages/editor/codemirror-3.15/mode/htmlmixed/htmlmixed.js"></script>
+
+<h3>Quản lý Skin</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="more-login.html">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-basic.html">Quản lý Skin</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-dynamic.html">{portlet}</a>
+    </li>
+</ul>
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption">Skin</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmportlet" class="form-horizontal form-bordered frmValidate">
+			<div class="control-group">		  
+				<label for="name" class="control-label">Tên skin</label>
+				<div class="controls">
+					<input class="field required" type="text" name="name" id="name" size=40 value="{name}">
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="skin-content" class="control-label">Nội dung</label>
+				<div class="controls">
+                    <div class="codemirror-box" id="content-skin-code"></div>
+					<textarea style="display:none;" class="field" name="content" id="skin-content" rows=5 cols=40>{content}</textarea>
+				</div>
+			</div> 
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Ghi lại</button>
+				<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+CodeMirror.commands.autocomplete = function(cm) {
+	CodeMirror.showHint(cm, CodeMirror.hint.html);
+}
+$(document).ready(function(){
+    cmEditor = CodeMirror(document.getElementById("content-skin-code"), {
+        mode: "text/html",
+        extraKeys: {"Ctrl-Space": "autocomplete"},
+        value: $("#skin-content").val(),
+        onchange: function(cm){
+            $("#skin-content").val(cm.getValue())
+        }
+	});
+});
+</script>
+<!-- END: main -->

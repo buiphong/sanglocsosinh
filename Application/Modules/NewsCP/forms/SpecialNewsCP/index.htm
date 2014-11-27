@@ -1,0 +1,74 @@
+<!-- BEGIN: main -->
+<h3>Quản lý tin bài</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listNewsLink}">Tin tức</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Tin sắp xếp</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+	<div class="span3">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">Danh mục</div>
+			</div>
+			<div class="portlet-body">
+				{sidebarCategory}
+			</div>
+		</div>
+	</div>
+	
+	<div class="span9">
+        <div class="portlet box green">
+            <div class="portlet-title">
+				<div class="caption">Tin sắp xếp {catName} </div>
+				<div class="tools">
+					<!-- BEGIN: seletedButton -->
+						<a class="" href="javascript:getSelectedNews('{catid}', '{typeid}');" title="Lấy tin đã chọn"><i class="icon-download-alt"></i></a>
+					<!-- END: seletedButton -->
+						<a class="icon-magic" href="{listNewsLink}" title="Chọn tin tức"></a>
+				</div>
+			</div>
+            <div class="portlet-body">
+				<table class="table table-nomargin" id="tableSpecialNews">
+                    <thead>
+                        <tr>
+                            <th width="5%">::</th>
+                            <th width="50%">Tiêu đề</th>
+                            <th width="20%">Thể loại</th>
+                            <th width="10%">Thứ tự</th>
+                            <th width="15%"></th>
+				        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+				</table>
+				<div class="cb"></div>
+				<div class="dataTables_info">
+				<!-- BEGIN: button -->
+					<a class='btn btn-primary' onClick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</a>
+				<!-- END: button -->
+			</div>
+			</div>
+		</div>
+	</div>
+    <input type="hidden" id="specialType" value="{type}"/>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/NewsCP/js/special_news.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

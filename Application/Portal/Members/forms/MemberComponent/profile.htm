@@ -1,0 +1,91 @@
+<!-- BEGIN: main -->
+<div class="wp204 fl">
+    <a class="btn_blue_big tac clfff fs14 fwb wp204 mb10 tab-title" href="javascript:" accesskey="form_update_profile">Thông tin cá nhân</a>
+    <a class="btn_blue_big tac clfff fs14 fwb wp204 mb10 tab-title" href="javascript:" accesskey="form_change">Thay đổi mật khẩu</a>
+</div>
+<div id="detail-content" class="fl wp510 ml20 bshdb p10">
+    <div id="form_update_profile" class="profile_content tab-content">
+        <form id="frmProfile" action="/Members/MemberComponent/updateProfile" class="frmCm ajax-form" method="POST">
+            <div class="controls-group">
+                <label>Họ và tên</label>
+                <div class="fl"><input type="text" name="fullname" value="{member.fullname}"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Ngày sinh</label>
+                <div class="fl"><input type="text" name="birth_date" value="{member.birth_date}" class="datepicker date-picker"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Tỉnh thành</label>
+                <div class="fl">
+                    <select name="province_id">
+                        <option>----------</option>
+                        <!-- BEGIN: province -->
+                        <option value="{province.id}" {province.selected}>{province.title}</option>
+                        <!-- END: province -->
+                    </select>
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Điện thoại</label>
+                <div class="fl"><input type="text" name="phone" value="{member.phone}" /></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label class="fl"></label>
+                <div class="ft_notify fl">
+
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="ct-button tac ml10">
+                <input type="submit" value="Cập nhật" class="clwhite btn blue bg_gradient p5x0 wp75" id="bt_updateProfile"/>
+                <img class="loading dpn" src="/Templates/SLSS/img/input-spinner.gif" />
+                <input type="reset" value="Làm lại" class="clwhite ml5 btn blue bg_gradient p5x0 wp75" />
+            </div>
+        </form>
+    </div>
+    <div id="form_change" class="profile_content dpn tab-content">
+        <form id="frmChangePass" action="/Members/MemberComponent/changePass" class="frmCm ajax-form" method="POST">
+            <div class="controls-group">
+                <label>Mật khẩu cũ <span class="clred">*</span></label>
+                <div class="fl"><input type="password" name="old_password" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Mật khẩu mới<span class="clred">*</span></label>
+                <div class="fl"><input type="password" name="password" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Xác nhận mật khẩu mới <span class="clred">*</span></label>
+                <div class="fl"><input type="password" name="re-password" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label class="fl"></label>
+                <div class="ft_notify fl">
+
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="ct-button tac ml10">
+                <input type="submit" value="Thay đổi" class="clwhite btn blue bg_gradient p5x0 wp75" id="bt_changePass"/>
+                <img class="loading dpn" src="/Templates/SLSS/img/input-spinner.gif" />
+                <input type="reset" value="Nhập lại" class="clwhite ml5 btn blue bg_gradient p5x0 wp75"/>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END: main -->

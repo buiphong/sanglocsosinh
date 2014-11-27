@@ -1,0 +1,55 @@
+<!-- BEGIN: main -->
+	
+	<link rel="stylesheet" href="{appPath}/templates/vietanh/css/galleria.classic.css" type="text/css">
+	<link rel="stylesheet" href="{appPath}/templates/vietanh/css/style_gallery.css" type="text/css">
+	<script src="{appPath}/templates/vietanh/js/main.js" type="text/javascript"></script>
+	
+	<div id="videoSlider"><div id="videos"></div></div>	
+		
+	<div id="listVideoAlbum"></div>
+<script type="text/javascript" src="{appPath}/packages/jwplayer/jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="vmAEdu5OJSCiJfE3aWibJZ6338lN/A7tybduu0fdEfxYgi7AkWpjckRUFeI="</script>
+<script type="text/javascript">
+    jwplayer("videos").setup({
+        playlist: [
+         {
+            image: "{video_start.img_path}",
+            file: "{video_start.video_path}",
+            title: "{videos.name}"           
+         }
+         <!-- BEGIN: videos -->
+         ,{
+            image: "{videos.img_path}",
+            file: "{videos.video_path}",
+            title: "{videos.name}"
+         }
+         <!-- END: videos -->
+        ],
+        width: 740,
+        height:450,
+        listbar: {
+            position: 'right',
+            size: 230
+        }
+    });
+    
+loadListGalleryAlbum(1);
+function loadListGalleryAlbum(page){
+	$.ajax({
+		url: "{listVideoAlbum}",
+		type: "POST",
+		dataType: "json",
+		data: {page: page},
+		success: function(res){
+			if(res.success)
+			{
+				$('#listVideoAlbum').html(res.html);
+			}
+			else
+				alert(res.msg);
+		}
+	});
+	return false;
+}
+</script>
+<!-- END: main -->

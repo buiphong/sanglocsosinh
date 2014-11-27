@@ -1,0 +1,47 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" enctype="multipart/form-data" action="{frmAction}" name="frmactions" class="form-horizontal form-bordered frmValidate ajax-form">
+        <div class="control-group">
+            <label for="textfield" class="control-label">Tên chức năng</label>
+            <div class="controls">
+                <input class="field required" type="text" name="name" id="name" size=40 value="{model.name}">
+                <span style="color:red; margin-left: 10px;">(*)</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Module</label>
+            <div class="controls "><input class="field required" type="text" name="module" id="module" size=40 value="{model.module}"><span style="color:red; margin-left: 10px;">(*)</span></div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Controller</label>
+            <div class="controls"><input class="field required" type="text" name="controller" id="controller" size=40 value="{model.controller}"><span style="color:red; margin-left: 10px;">(*)</span></div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Action</label>
+            <div class="controls"><input class="field required" type="text" name="action" id="action" size=40 value="{model.action}"><span style="color:red; margin-left: 10px;">(*)</span></div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Mô tả</label>
+            <div class="controls"><textarea class="field" name="description" id="description" rows=5 cols=40>{model.description}</textarea></div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Nhóm chức năng</label>
+            <div class="controls">
+                <div class="input-xlarge">
+                    {groupid}
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Trạng thái</label>
+            <div class="controls">{status}</div>
+        </div>
+        <input name="id" type="hidden" id="key" value="{model.id}">
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Ghi lại</button>
+            <button type="button" class="btn close-modal">Bỏ qua</button>
+        </div>
+    </form>
+</div>
+<!-- END: main -->

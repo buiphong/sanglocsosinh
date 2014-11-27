@@ -1,0 +1,107 @@
+<!-- BEGIN: main -->
+<h3>Quản lý quảng cáo</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{advLink}">Quảng cáo</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Quản lý Zone</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh sách zone</div>
+		<div class="tools">
+            <a href="{createLink}" class="icon-plus btn-info" title="Thêm Zone">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		{mastertable}
+		<form method="post" action="{listLink}" name="frmList" id="frmList">
+		<table class="table table-nomargin">
+		  <tr>
+			<th width="2%">::</th>
+			<th width="5%">Id</th>
+			<th width="15%">Tên</th>
+			<th width="20%">Loại</th> 
+			<th width="15%">Kích thước</th>
+			<th width="15%">&nbsp;</th>
+		  </tr>
+		<!-- BEGIN: zone -->
+		  <tr>
+			<td align="center" valign="top">
+			  <input type='checkbox' name='key[]' value='{zone.id}'>{disabled}</td>
+			<td>{zone.id}</td>
+		    <td valign="top">{zone.name}&nbsp;</td>
+		    <td valign="top">{zone.zone_type}&nbsp;</td> 
+		  	<td valign="top">{zone.size}&nbsp;</td>
+			<td valign="top">
+				<a href='{editLink}'> Sửa</a>
+				<a href='{bannerLink}'> Banner</a>
+			</td>
+		  </tr>
+		<!-- END: zone -->
+		</table>
+		<input type="hidden" name="page" id="page"/>
+		</form>
+        {PAGE}
+        <div style="clear: both"></div>
+        <div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="deleteAction();" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>
+		<!-- END: button -->
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmList.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+        VccConfirm('Bạn có chắc chắn muốn xoá không ?',doDelete, listId);
+	}
+}
+
+function doDelete(listId)
+{
+    $.ajax({
+        url: "{deleteLink}",
+        type: "POST",
+        dataType: "json",
+        data: {listid: listId},
+        success: function(res){
+            if(res.success)
+            {
+                $('input[name="key[]"]:checked').each(function(){
+                    $(this).parent().parent().remove();
+                });
+            }
+            else
+                alert(res.msg);
+        }
+    });
+}
+</script>
+<!-- END: main -->

@@ -1,0 +1,164 @@
+<!-- BEGIN: main -->
+<h3>Quản lý liên hệ</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listJobLink}">Liên hệ</a>
+    </li>
+</ul>
+<div class="alert alert-info">
+    <button class="close" data-dismiss="alert"></button>
+    Click vào Tiêu đề liên hệ để xem chi tiết toàn bộ nội dung liên hệ. Click vào trạng thái để thay đổi trạng thái liên hệ sang đã đọc hoặc chưa đọc.
+</div>
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh sách liên hệ</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmList" id="frmList">
+		<table class="table table-nomargin">
+		  <tr>
+			<th width="2%">::</th>
+			<th width="13%">Họ tên</th>
+			<th width="14%">Email</th> 
+			<th width="13%">Điện thoại</th>
+			<th width="20%">Tiêu đề</th>
+			<th width="15%">Thời gian</th>
+			<th width="15%">Trạng thái</th>  
+			<th width="5%">&nbsp;</th>
+		  </tr>
+		<!-- BEGIN: contact -->
+		  <tr>
+			<td align="center" valign="top">
+			<input type='checkbox' name='key[]' value='{contact.id}'>{disabled}</td>
+		    <td valign="top">{contact.fullname}</td>
+		    <td valign="top">{contact.email}</td> 
+		  	<td valign="top">{contact.phone}</td>
+		  	<td valign="top"><a href="javascript:showDetail({contact.id})">{contact.title}</a></td>
+		  	<td valign="top">{contact.create_date}</td>
+		  	<td valign="top"><a data-id="{contact.id}" title="Click để thay đổi trạng thái" onclick="changeStatus(this)" accesskey="{contact.status}">{contact.statusName}</a></td>
+			<td valign="top">
+				<a href='{editLink}'> Sửa</a>
+			</td>
+		  </tr>
+		<!-- END: contact -->
+		</table>
+		<div class="pagging" id="pagging-task">
+			{PAGE}
+			<input type="hidden" name="page" id="page"/>
+		</div>
+		</form>
+		{AFTER_FORM}
+		<!-- BEGIN: button -->
+			<button class="btn btn-info" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>
+		<!-- END: button -->		
+	</div>
+</div>
+<div id="light" class="white_content ml152 hide">
+    <div id="boxInfo">
+        <div class="login_title">
+            <span class="title"></span>
+            <a id="close">Đóng</a>
+        </div>
+        <div id="infoContent">
+        </div>
+    </div>
+</div>
+<div id="fade" class="black_overlay"></div>
+<script type="text/javascript">
+
+function showDetail(id)
+{
+    if(id != '')
+    {
+        $.ajax({
+            url: baseUrl + "/ContactsCP/ContactCP/showDetail",
+            dataType: "json",
+            data: {id: id},
+            type: "POST",
+            success: function(res)
+            {
+                if(res.success)
+                {
+                    showModal(res.data.title, res.data.content);
+                    /*if(res.changeStatus == 1)
+                        $("#"+res.dataTable).dataTable()._fnAjaxUpdate();*/
+                }
+                else
+                    alert(res.msg);
+            }
+        });
+    }
+}
+$("input[name='status']").change(function(){
+	document.frmEdit.submit();
+});
+
+function changeStatus(obj)
+{
+	if(confirm("Bạn muốn thay đổi trạng thái của thông tin liên hệ này?"))
+	{
+        showLoadingPage();
+		$.ajax({
+			url: baseUrl + "/ContactsCP/ContactCP/changeStatus",
+			dataType: "json",
+			data: {id: $(obj).attr('data-id'), oldStatus: $(obj).attr("accessKey")},
+			type: "POST",
+			success: function(res)
+			{
+                hideLoadingPage();
+				if(res.success)
+				{
+					//Change value, text object.
+					$(obj).attr('accessKey', res.status);
+					$(obj).html(res.statusName);
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmEdit.submit();
+}
+
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

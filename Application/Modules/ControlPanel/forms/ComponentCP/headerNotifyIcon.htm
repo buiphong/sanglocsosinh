@@ -1,0 +1,55 @@
+<!-- BEGIN: main -->
+<!--- <ul class="minitiles">
+	<li class="teal">
+		<a href="#"><i class="icon-inbox"></i></a>
+	</li>
+	<li class="red">
+		<a href="#"><i class="icon-cogs"></i></a>
+	</li>
+	<li class="lime">
+		<a href="#"><i class="icon-globe"></i></a>
+	</li>
+</ul> -->
+<ul class="stats">
+    <!-- BEGIN: noticeOrder -->
+    <li class="red" style="width: 130px;">
+        <a href="{noticeOrderLink}">
+            <i class="icon-shopping-cart" style="margin-right: 10px;"></i>
+            <div class="details">
+                <span class="big">{numberOrder}</span>
+                <span>Đơn hàng mới</span>
+            </div>
+        </a>
+    </li>
+    <!-- END: noticeOrder -->
+    <!-- BEGIN: newContact -->
+    <li class="green">
+        <a href="{contactLink}">
+        <i class="icon-envelope"></i>
+        <div class="details">
+            <span class="big">{contact}</span>
+            <span>New Contact</span>
+        </div>
+        </a>
+    </li>
+    <!-- END: newContact -->
+	<!-- BEGIN: newsComment -->
+	<li class="blue">
+		<a href="{commentLink}">
+		<i class="icon-comment"></i>
+		<div class="details">
+			<span class="big">{comment}</span>
+			<span>New Comment</span>
+		</div>
+		</a>
+	</li>
+	<!-- END: newsComment -->
+	<li class='orange'>
+		<i class="icon-calendar"></i>
+		<div class="details">
+			<span class="big">{date}</span>
+			<span>{time}</span>
+		</div>
+	</li>
+</ul>
+<!-- END: main -->

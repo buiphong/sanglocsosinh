@@ -1,0 +1,56 @@
+<!-- BEGIN:main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">{boxTitle}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <!-- BEGIN: faq -->
+        <div class="ml10 mb10 pr10">
+            <div><a href="{faq.href}" data-hit="{faq.dataHit}" class="tdn fs12 fwb cl000 faq_question" accesskey="{faq.id}" title="{faq.question}">{faq.num}. {faq.question}</a></div>
+            <div class="dpn fs12 cl000 faq_answer_{faq.id} pb5 bdbd mt10">
+                {faq.answer}
+            </div>
+        </div>
+        <!-- END: faq -->
+        <div class="mt10">{pagging}</div>
+        <div class="bdbd mt10"></div>
+        <div class="p10">
+            <p class="p0 m0 fwb fs14"><a href="javascript:showFaqForm()" title="Gửi câu hỏi">Gửi câu hỏi</a> cho chúng tôi nếu bạn không tìm thấy câu hỏi và câu trả lời mong muốn! Chúng tôi sẽ giải đáp giúp bạn!</p>
+            <div class="mt10">
+                <form id="frmSendFaq" method="post" action="/Faq/FaqComponent/sendQuestion" class="dpn ajax-form">
+                    <div>
+                        <label class="wp101 fl fwb mt5">Họ tên:</label><input type="text" name="fullname" size="30">
+                        <div class="cl"></div>
+                    </div>
+                    <div>
+                        <label class="wp101 fl fwb mt5">Địa chỉ email:</label><input type="text" name="email" class="required email" size="30">
+                        <div class="cl"></div>
+                    </div>
+                    <div>
+                        <label class="wp101 fl fwb">Câu hỏi:</label><textarea cols="60" rows="10" class="fl" name="question"></textarea>
+                        <div class="cl"></div>
+                    </div>
+                    <div class="mt10">
+                        <label class="wp101 fl fwb">Mã xác nhận:</label>
+                        <div class="fl wp251">
+                            <img id="captcha_img" src="{captcha}" alt="CAPTCHA Image" />
+                            <input type="text" name="captcha_code" size="10" maxlength="6" class="required"/>
+                            <a href="#" onclick="reloadCaptcha('captcha_img'); return false">Mã khác</a>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    <div class="tac">
+                        <input type="submit" class="btn blue bg_gradient br5 wp101 p5x0 tac" value="Gửi câu hỏi"/>
+                        <img class="loading dpn" src="/Templates/SLSS/img/input-spinner.gif" />
+                        <button type="reset" class="btn blue bg_gradient br5 wp101 p5x0 tac">Xóa</button>
+                        <div class="cl"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: main -->

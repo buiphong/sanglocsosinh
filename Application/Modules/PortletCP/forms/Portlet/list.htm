@@ -1,0 +1,108 @@
+<!-- BEGIN: main -->
+<h3>Danh sách Portlet</h3>
+<ul class="breadcrumb">
+    <li>
+        <a>Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Giao diện</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Portlet</a>
+    </li>
+</ul>
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh sách portlet</div>
+		<div class="tools">
+			<a href='{createLink}' class="icon-plus btn-info" title="Thêm portlet"></a>
+			<a href="{groupLink}" class="icon-undo btn-info" title="Quay lại">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body fuelux">
+		<form method="post" action="{listLink}" name="frmList" id="frmList" style="padding: 0px; margin: 0px;">
+			<div class="dataTables_length" id="DataTables_Table_0_filter">					
+				<input type="text" name="txt_search" placeholder="Tìm kiếm" class="field" value="{textSearch}"/>					
+				<button type="submit" class="btn btn-primary">Tìm kiếm</button>	
+			</div>	
+			<input type="hidden" name="page" id="page"/>
+			<input type="hidden" name="groupid" value="{groupid}"/>
+			<div class="cb"></div>	
+		</form>
+			<table class="table table-nomargin">
+			  <tr>
+				<th width="2%">::</th>
+				<th width="20%">Tên portlet</th> 
+				<th width="10%">Module</th>
+				<th width="10%">Controller</th>
+				<th width="10%">Action</th>
+				<th width="10%">Đường dẫn</th>
+				<th width="20%">Mô tả</th>
+				<th width="10%">&nbsp;</th>
+			  </tr>
+			<!-- BEGIN: portlet -->
+			  <tr>
+				<td align="center" valign="top">
+				  <input type='checkbox' name='key[]' value='{portlet.id}'>{disabled}</td>
+			    <td valign="top">{portlet.title}&nbsp;</td>
+			  	<td valign="top">{portlet.module}&nbsp;</td>
+			  	<td valign="top">{portlet.controller}&nbsp;</td>
+			  	<td valign="top">{portlet.action}&nbsp;</td>
+			  	<td valign="top">{portlet.url}&nbsp;</td> 
+			  	<td valign="top">{portlet.desc}&nbsp;</td> 
+				<td valign="top">
+					<a href='{editLink}'>{common.edit} Sửa</a>
+					<a href='{paramLink}'>Tham số</a>
+				</td>
+			  </tr>
+			<!-- END: portlet -->
+			</table>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmList.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

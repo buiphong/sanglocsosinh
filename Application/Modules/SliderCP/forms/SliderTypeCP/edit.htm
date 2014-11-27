@@ -1,0 +1,44 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+	<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên slider type</label>
+			<div class="controls">
+				<input class="field required" type="text" name="name" id="name" size="40" value="{model.name}" />
+			</div>
+		</div>
+		<div class="control-group">		  
+			<label for="order_no" class="control-label">Thứ tự sắp xếp</label>
+			<div class="controls">
+				<input class="field" type="text" name="order_no" id="order_no" size="40" value="{model.order_no}" />
+			</div>
+		</div>	
+
+		<div class="control-group">		  
+			<label for="description" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field jhtmlarea" name="description" id="description" rows="5" cols="60">{model.description}</textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="is_default" class="control-label">Hiển thị mặc định</label>
+			<div class="controls">
+				<input type="hidden" name="is_default" value="0">
+				<input class="field" type="checkbox" name="is_default" id="is_default" value="1" {default_checked}/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="status" class="control-label">Trạng thái</label>
+			<div class="controls">
+				<input type="hidden" name="status" value="0">
+				<input class="field" type="checkbox" name="status" id="status" value="1" {checked}/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="javascript:" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<!-- END: main -->

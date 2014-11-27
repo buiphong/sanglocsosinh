@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteRule ^Public/ - [L]
+RewriteCond Public/$0 -F
+RewriteRule .* Public/$0 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule !\.(js|ico|txt|gif|jpg|png|css|JPG|woff|doc|pdf|PDF|docx|rar)$ Public/index.php
+<IfModule mod_headers.c>
+<FilesMatch "\\.(ico|jpe?g|png|gif|swf|JPG|woff)$">
+Header set Cache-Control "max-age=2692000, public"
+</FilesMatch>
+<FilesMatch "\\.(css)$">
+Header set Cache-Control "max-age=2692000, public"
+</FilesMatch>
+<FilesMatch "\\.(js)$">
+Header set Cache-Control "max-age=2692000, private"
+</FilesMatch>
+</IfModule>
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>

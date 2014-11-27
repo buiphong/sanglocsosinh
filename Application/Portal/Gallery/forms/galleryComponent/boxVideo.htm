@@ -1,0 +1,30 @@
+<!-- BEGIN: main -->
+<div class="box-blue small">
+    <div class="box-title">
+        <div class="caption">Video</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <div class="pl5">
+            <div id="videos"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/Packages/jwplayer/jwplayer.js"></script>
+    <script type="text/javascript">jwplayer.key="vmAEdu5OJSCiJfE3aWibJZ6338lN/A7tybduu0fdEfxYgi7AkWpjckRUFeI="</script>
+    <script type="text/javascript">
+        jwplayer("videos").setup({
+            playlist: [
+                {
+                    image: "{video.img_path}",
+                    file: "{video.video_path}",
+                    title: "{video.name}"
+                }
+            ],
+            width: 216,
+            height:186
+        });
+    </script>
+</div>
+<!-- END: main -->

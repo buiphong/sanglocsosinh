@@ -1,0 +1,119 @@
+<!-- BEGIN: main -->
+<h3>Danh sách Portlet</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{portletCPLink}">Quản lý portlet</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{portletGroupLink}">{PortletGroup}</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Portlet</div>
+	</div>
+	<div class="portlet-body">
+		{BEFORE_FORM}
+		<form method="post" enctype="multipart/form-data" action="{frm_action}" name="frmedit" class="form-horizontal form-bordered">
+		<div class="control-group">		  
+			<label for="title" class="control-label">Tên portlet</label>
+			<div class="controls">
+				<input class="field" type="text" name="title" id="title" size=40 value="{model.title}" />
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="type" class="control-label">Loại portlet</label>
+			<div class="controls">
+				{type}	
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="module" class="control-label">Module</label>
+			<div class="controls">
+				<input class="field" type="text" name="module" id="module" size=40 value="{model.module}" />
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="controller" class="control-label">Controller</label>
+			<div class="controls">
+				<input class="field" type="text" name="controller" id="controller" size=40 value="{model.controller}" />
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="action" class="control-label">Action</label>
+			<div class="controls">
+				<input class="field" type="text" name="action" id="action" size=40 value="{model.action}" />
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="url" class="control-label">Đường dẫn</label>
+			<div class="controls">
+				<input class="field" type="text" name="url" id="url" size=40 value="{model.url}" />
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="args" class="control-label">Tham số</label>
+			<div class="controls">
+				<input class="field" type="text" name="args" id="args" size=40 value="{model.args}" />
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="template" class="control-label">Template</label>
+			<div class="controls">
+				{template}
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="layout" class="control-label">Layout</label>
+			<div class="controls">
+				{layout}
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="edit_view" class="control-label">Cho phép thay đổi file view</label>
+			<div class="controls">
+				<input type="checkbox" name="edit_view" {checked} value="1"/>
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="desc" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field" name="desc" id="desc" rows=5 cols=50>{model.desc}</textarea>
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="values" class="control-label">Dữ liệu xml/script</label>
+			<div class="controls">
+				<textarea class="field" name="values" id="values" rows=5 cols=60>{model.values}</textarea>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>
+		</form>
+		{AFTER_FORM}
+	</div>
+</div>
+<script type="text/javascript" src="{appPath}/Application/Modules/PortletCP/js/portlet_cp.js"></script>
+<!-- END: main -->

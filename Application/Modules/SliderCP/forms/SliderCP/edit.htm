@@ -1,0 +1,72 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+	<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+		<div class="control-group">		  
+			<label for="title" class="control-label">Tiêu đề</label>
+			<div class="controls">
+				<input class="field required" type="text" name="title" id="title" size="40" value="{model.title}" />
+			</div>
+		</div>
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên silder</label>
+			<div class="controls">
+				<input class="field required" type="text" name="name" id="name" size="40" value="{model.name}" />
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="orderno" class="control-label">Thứ tự sắp xếp</label>
+			<div class="controls">
+				<input class="field" type="text" name="orderno" id="orderno" size="40" value="{model.orderno}" />
+			</div>
+		</div>	
+
+		<div class="control-group">		  
+			<label for="desc" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field jhtmlarea" name="desc" id="desc" rows="5" cols="60">{model.desc}</textarea>
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="image" class="control-label">Đường dẫn ảnh</label>
+			<div class="controls">
+				<input class="field" type="text" name="image" id="image" size="40" value="{model.image}">
+				<input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('image');" value="Quản lý file"/>
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="link" class="control-label">Liên kết</label>
+			<div class="controls">
+				<input class="field" type="text" name="link" id="link" size="40" value="{model.link}">
+			</div>
+		</div>	
+		<div class="control-group">		  
+			<label for="link" class="control-label">Nhóm Slider</label>
+			<div class="controls">
+				{sliderType}
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="status" class="control-label">Trạng thái</label>
+			<div class="controls">
+				<input type="hidden" name="status" value="0">
+				<input class="field" type="checkbox" name="status" id="status" value="1" {checked}/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="javascript:" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+function openFileBrowser(id)
+{
+	fileBrowserlink = baseUrl + "/Packages/pdw_file_browser/index.php?editor=standalone&returnID=" + id;
+	window.open(fileBrowserlink,'pdwfilebrowser', 'width=900,height=650,scrollbars=no,toolbar=no,location=no');
+}
+</script>
+<!-- END: main -->

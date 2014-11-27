@@ -1,0 +1,31 @@
+<!-- BEGIN: main -->
+<div id="content">
+      <div id="login">
+        
+        <div id="logo"><span></span></div>
+        <form action="{frmAction}" method="post" name="frmLogin" id="frmLogin" class="formBox">       
+          <fieldset>
+          <p align="center" style="color:white">
+            {msg}
+          </p>
+            <div class="form-col">
+                <label for="username" class="lab">Tên đăng nhập<span class="warning"></span></label>
+                <input type="text" class="input" name="user" id="user" />
+            </div>
+            <div class="form-col form-col-right">
+                <label for="password" class="lab">Mật khẩu <span class="warning"></span></label>
+                <input name="password" type="password" id="password" class="input" />
+            </div>
+            <div class="form-col">
+              <label class="lab">Mã an toàn<span class="warning"></span></label> 
+              {captcha}
+            </div>
+            <div class="form-col form-col-right"> 
+              <input type="submit" name="Submit" value="Login" class="submit" />
+            </div>                 
+          </fieldset>
+        </form>
+        
+      </div>
+</div><!-- /content -->    
+<!-- END: main -->

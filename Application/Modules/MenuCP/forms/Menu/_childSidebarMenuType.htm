@@ -1,0 +1,17 @@
+<!-- BEGIN: main -->
+<ul id="list-news-cat">
+    <!-- BEGIN: type -->
+    <li>
+        <div class="dd-border border-hidden-btn">
+            <a data-id="{type.id}" href="?type={type.id}" class="{type.class} fl">{type.type_name}</a>
+            <div class="pull-right">
+                <a class="mini purple hidden-btn frm-edit-btn-ajax" data-editUrl="/MenuCP/MenuType/edit?id={type.id}" title="Sửa"><i class="icon-edit"></i></a>
+                <a href="javascript:" class="mini black hidden-btn frm-delete-btn" data-id="{type.id}" data-delUrl="/MenuCP/MenuType/delete" title="Xóa"><i class="icon-trash"></i></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        {child}
+    </li>
+    <!-- END: type -->
+</ul>
+<!-- END: main -->

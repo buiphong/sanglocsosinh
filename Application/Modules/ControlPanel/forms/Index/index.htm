@@ -1,0 +1,88 @@
+<!-- BEGIN: main -->
+<h3>CMS - Admin</h3>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN: news -->
+        <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="icon-comments"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {totalNews}
+                    </div>
+                    <div class="desc">
+                        Tin bài
+                    </div>
+                </div>
+                <a class="more" href="/NewsCP/NewsCP/create">
+                    Viết bài <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <!-- END: news -->
+        <!-- BEGIN: contact -->
+        <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+            <div class="dashboard-stat green">
+                <div class="visual">
+                    <i class="icon-envelope-alt"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {totalContact}
+                    </div>
+                    <div class="desc">
+                        Liên hệ mới
+                    </div>
+                </div>
+                <a class="more" href="/ContactsCP/ContactCP/index">
+                    Danh sách <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <!-- END: contact -->
+        <!-- BEGIN: member -->
+        <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+            <div class="dashboard-stat purple">
+                <div class="visual">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {totalMember}
+                    </div>
+                    <div class="desc">
+                        Thành viên
+                    </div>
+                </div>
+                <a class="more" href="/MembersCP/MemberCP/index">
+                    Danh sách <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <!-- END: member -->
+        <!-- BEGIN: faq -->
+        <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+            <div class="dashboard-stat purple">
+                <div class="visual">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {totalFaq}
+                    </div>
+                    <div class="desc">
+                        Câu hỏi đáp chưa được trả lời
+                    </div>
+                </div>
+                <a class="more" href="/FaqCP/FaqCP/index">
+                    Danh sách <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <!-- END: faq -->
+    </div>
+</div>
+<script type="text/javascript" src="{appPath}/Application/Modules/ControlPanel/js/cp.js"></script>
+<!-- END: main -->

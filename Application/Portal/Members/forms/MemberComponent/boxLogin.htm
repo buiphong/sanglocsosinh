@@ -1,0 +1,46 @@
+<!-- BEGIN: main -->
+<div class="pr" id="box_member_header">
+    <!-- BEGIN: boxLogout -->
+    <div class="h30 bdbd000 pt20 mb20">
+        <a href="{urlProfile}" class="cl000 tdn"><i>Xin chào</i> <b>{fullname}</b></a> |
+        <a href="{linkLogout}" class="cl000 tdn">Logout</a>
+    </div>
+    <!-- END: boxLogout -->
+
+    <!-- BEGIN: boxLogin -->
+    <div class="h30 bdbd000 pt20 mb20">
+        <a href="{registerAction}" class="btn blue bg_gradient br5 fl wp101 p5x0 tac" title="Đăng ký">Đăng ký</a>
+        <a href="javascript:openBoxLogin('login')" id="btn-login" class="btn blue bg_gradient br5 fr mr10 wp101 p5x0 tac" title="Đăng nhập">Đăng nhập</a>
+        <div class="cl"></div>
+    </div>
+    <div id="login" class="pa zi999 dpn">
+        <div class="d_close tar">
+            <a href="javascript:" onclick="openBoxLogin('login')" class="tdn"><img src="/Templates/SLSS/img/icons-close.png"></a>
+        </div>
+        <form id="frmLogin" action="/Members/MemberComponent/login" method="POST" novalidate="novalidate">
+            <div class="control-group">
+                <div class="d_label"><label>Tên đăng nhập</label><span class="clred">*</span></div>
+                <div class="d_input">
+                    <input type="text" name="username" id="username" class="required" value="">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="d_label"><label>Mật khẩu</label><span class="clred">*</span></div>
+                <div class="d_input">
+                    <input type="password" name="password" value="" class="required">
+                </div>
+            </div>
+            <div class="control-group">
+                <input type="hidden" name="remember" value="0">
+                <input type="checkbox" name="remember" value="1">
+                Nhớ mật khẩu
+            </div>
+            <div class="control-group tac">
+                <input type="submit" value="Đăng nhập" class="clwhite">
+            </div>
+        </form>
+    </div>
+    <!-- END: boxLogin -->
+</div>
+<!-- END: main -->

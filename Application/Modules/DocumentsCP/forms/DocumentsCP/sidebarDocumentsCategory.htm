@@ -1,0 +1,19 @@
+<!-- BEGIN: main -->
+<ul id="category-treeview" class="treeview">
+	<li><a href="{listLink}">Toàn bộ</a>
+		<ul>
+		<!-- BEGIN: cat -->
+		<li><a href="{cat.link}" class="{cat.class}">{cat.title}</a>
+			<!-- BEGIN: child -->
+				<ul>
+				<!-- BEGIN: sub -->
+					<li><a class="{sub.class}" href="{sub.link}">{sub.title}</a></li>
+				<!-- END: sub -->
+				</ul>
+			<!-- END: child -->
+		</li>
+		<!-- END: cat -->
+		</ul>
+	</li>
+</ul>
+<!-- END: main -->

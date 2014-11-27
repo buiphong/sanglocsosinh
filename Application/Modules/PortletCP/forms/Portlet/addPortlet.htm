@@ -1,0 +1,32 @@
+<!-- BEGIN: main -->
+<link href="{appPath}/Packages/jquery/css/jquery.treeview.css" rel="stylesheet" type="text/css">
+<div id="dialog-addPortlet" class="modal-portletCP">
+	<div id="dialog-RowItem">
+		<div class="list-portlet-dialog">
+			<ul class="treeview">
+				<li><a accesskey="all" onclick="loadListPortlet(this)">Toàn bộ</a>
+					<ul>
+						<!-- BEGIN: group -->
+						<li><a accesskey="{group.id}" onclick="loadListPortlet(this)">{group.name}</a></li>
+						<!-- END: group -->
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="portlet-list-dialog">
+			<!-- BEGIN: portlet -->
+				<a data-group="{portlet.group_id}" class="portlet-item" onclick="addPortletPost(this, '{region}', '{itemid}', '{type}')" data-router-id="{routerid}" data-id="{portlet.id}" data-name="{portlet.title}" data-module="{portlet.module}" data-controller="{portlet.controller}" data-action="{portlet.action}">{portlet.title}</a>
+			<!-- END: portlet -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	//$("#dialog-addPortlet .treeview").treeview();
+	if(currPortletGroup)
+	{
+		loadListPortlet(currPortletGroup);
+	}
+})
+</script>
+<!-- END: main -->

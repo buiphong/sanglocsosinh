@@ -1,0 +1,56 @@
+<!-- BEGIN: main -->
+<h3>Quản lý FAQ</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a>Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>FAQ</a>
+    </li>
+</ul>
+
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered">
+	<div class="portlet box grey">
+		<div class="portlet-title">
+			<div class="caption">Cập nhật nhóm câu hỏi FAQ</div>
+		</div>
+		<div class="portlet-body">
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Tên danh mục</label>
+				<div class="controls">
+                    <input class="field" type="text" name="name" id="name" size=35 value="{model.name}">
+                </div>
+			</div>
+			<div class="control-group">
+				<label for="textfield" class="control-label">Thứ tự</label>
+				<div class="controls">
+					<input class="field" type="text" name="orderno" id="orderno" size=35 value="{model.orderno}">				
+				</div>
+			</div>
+		</div>
+	</div>		
+	<div class="form-actions">
+		<input name="id" type="hidden" id="key" value="{model.id}">
+		<button type="submit" class="btn btn-primary">Ghi lại</button>
+		<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+	</div>	
+</form>
+{AFTER_FORM}
+<script type="text/javascript" src="{appPath}/modules/faq/js/faqs.js"></script>
+<!-- END: main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

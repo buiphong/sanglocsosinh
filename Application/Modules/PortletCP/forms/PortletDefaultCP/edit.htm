@@ -1,0 +1,93 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý Portlet</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{menuLink}">Quản lý portlet</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="#">Portlet mặc định</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Portlet mặc định</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" id="frmPortletDefault" class="form-horizontal form-bordered">
+        <div class="control-group">
+            <label for="textfield" class="control-label">Portlet</label>
+            <div class="controls">
+                {portlet_id}
+            </div>
+        </div>
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Template</label>
+			<div class="controls">
+				{template}
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Layout</label>
+			<div class="controls">
+				{layout}
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Region</label>
+			<div class="controls">
+				{region}
+			</div>
+		</div>
+		
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Thứ tự sắp xếp</label>
+			<div class="controls">
+				<input class="field" type="text" name="orderno" id="orderno" size=40 value="{model.orderno}" />	
+			</div>
+		</div>	
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Tham số</label>
+			<div class="controls">
+				<input class="field" type="text" name="params" id="params" size=40 value="{model.params}" />	
+			</div>
+		</div>
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Giá trị</label>
+			<div class="controls">
+				<input class="field" type="text" name="values" id="values" size=40 value="{model.values}" />	
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<input name="id" type="hidden" id="id" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>
+		
+		</form>
+		{AFTER_FORM}
+	</div>
+</div>
+
+<script type="text/javascript" src="{appPath}/Application/Modules/portlet/js/portlet_default.js"></script>
+<!-- END: main -->

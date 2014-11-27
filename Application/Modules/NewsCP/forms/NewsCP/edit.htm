@@ -1,0 +1,128 @@
+<!-- BEGIN: main -->
+<h3>Quản lý tin tức</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Quản lý tin tức</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Cập nhật tin tức</a>
+    </li>
+</ul>
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="horizontal-form frmValidate">
+<div class="row-fluid">
+	<div class="span12">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">Tin bài</div>
+            </div>
+            <div class="portlet-body nopadding">
+                <div class="row-fluid">
+                    <div class="span8">
+                        <div class="control-group">
+                            <label for="title" class="control-label">Tiêu đề</label>
+                            <div class="controls">
+                                <input onkeyup="updateSeoUrl('#title', '#url_title')" class="m-wrap span12 required" type="text" name="title" id="title" size=40 value="{model.title}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="url_title" class="control-label">Đường dẫn tiêu đề</label>
+                            <div class="controls">
+                                <input onfocus="updateSeoUrl('#title', '#url_title')" class="field m-wrap span12" type="text" name="url_title" id="url_title" size=40 value="{model.url_title}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="news-brief" class="control-label">Mô tả</label>
+                            <div class="controls">
+                                <textarea class="field jhtmlarea required" name="brief" id="news-brief" rows="4" cols="87">{model.brief}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="news_content" class="control-label">Nội dung</label>
+                            <div class="controls">
+                                <textarea class="field required" name="content" id="news_content" rows="4" cols="87">{model.content}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="control-group">
+                            <label for="textfield" class="control-label">Danh mục tin</label>
+                            <div class="controls">
+                                {categoryId}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="textfield" class="control-label">Danh mục khác</label>
+                            <div class="controls">
+                                {other_category}
+                            </div>
+                        </div>
+                        <!-- BEGIN: isNewsTopic -->
+                        <div class="control-group">
+                            <label for="textfield" class="control-label">Chủ đề</label>
+                            <div class="controls">
+                                <select multiple id="NewsTopic" class="chosen chosen-select" name="news_topic[]">
+                                    <!-- BEGIN: newsTopic -->
+                                    <option value="{newsTopic.id}" {newsTopic.selected}>{newsTopic.name}</option>
+                                    <!-- END: newsTopic -->
+                                </select>
+                            </div>
+                        </div>
+                        <!-- END: isNewsTopic -->
+                        <div class="control-group">
+                            <label for="image_path" class="control-label">Đường dẫn ảnh</label>
+                            <div class="controls">
+                                <input class="field" type="text" name="image_path" id="image_path" size=30 value="{model.image_path}">
+                                <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('image_path')" value="Quản lý file"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="video_path" class="control-label">Đường dẫn video</label>
+                            <div class="controls">
+                                <input type="text" class="field" name="video_path" id="video_path" value="{model.video_path}"/>
+                                <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('video_path')" value="Quản lý file"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="keywords" class="control-label">Meta Description</label>
+                            <div class="controls">
+                                <textarea class="m-wrap span12" name="meta_description" id="meta_description" rows=3 cols=60>{model.meta_description}</textarea>
+                                <span class="help-block">Mô tả bài viết qua thẻ meta, độ dài tối đa: 160 ký tự</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="keywords" class="control-label">Meta Keywords</label>
+                            <div class="controls">
+                                <textarea class="m-wrap span12" name="keywords" id="keywords" rows=3 cols=60>{model.keywords}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="published_date" class="control-label">Thời gian xuất bản</label>
+                            <div class="controls">
+                                <input type="text" class="form_datetime" name="published_date" id="published_date" value="{model.published_date}"/> (yyyy-mm-dd H:i:s)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Ghi lại</button>
+                            <a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<link rel="stylesheet" type="text/css" href="/Templates/Metronic/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+<script type="text/javascript" src="/Templates/Metronic/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/Templates/Metronic/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="{appPath}/Packages/editor/tinymce/tinymce.min.js"></script>
+<script src="{appPath}/Packages/editor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{appPath}/Application/Modules/NewsCP/js/news_cp.js"></script>
+<!-- END: main -->

@@ -1,0 +1,105 @@
+<!-- BEGIN: main -->
+<h3>Quản lý hệ thống</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listRole}">Quyền hạn</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Danh sách quyền</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Quản lý quyền</div>
+		<div class="tools">
+            <a href='{createLink}' class="icon-plus btn-info" title="Thêm quyền">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmList" id="frmList">
+		<table class="table table-nomargin">
+		  <tr>
+			<th width="2%">::</th>
+			<th width="40%">Tên quyền</th>
+			<th width="40%">Mô tả</th> 
+			<th width="35%">&nbsp;</th>
+		  </tr>
+		<!-- BEGIN: role -->
+		  <tr>
+			<td align="center" valign="top">
+			  <input type='checkbox' name='key[]' value='{role.id}'>{disabled}</td>
+		    <td valign="top">{role.name}&nbsp;</td>
+		    <td valign="top">{role.description}&nbsp;</td>
+			<td valign="top">
+				<a href='{editLink}'> Sửa</a>
+			</td>
+		  </tr>
+		<!-- END: role -->
+		</table>
+		<input type="hidden" name="page" id="page"/>
+		</form>
+        {PAGE}
+        <div class="cb"></div>
+        <div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="deleteAction();" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>
+		<!-- END: button -->
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmList.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+        CPConfirm('Bạn có chắc chắn muốn xoá không ?',doDelete, listId);
+	}
+}
+function doDelete(listId)
+{
+    $.ajax({
+        url: "{deleteLink}",
+        type: "POST",
+        dataType: "json",
+        data: {listid: listId},
+        success: function(res){
+            if(res.success)
+            {
+                $('input[name="key[]"]:checked').each(function(){
+                    $(this).parent().parent().remove();
+                });
+            }
+            else
+                alert(res.msg);
+        }
+    });
+}
+</script>
+<!-- END: main -->
+
+
+
+
+

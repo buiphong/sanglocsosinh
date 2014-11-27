@@ -1,0 +1,22 @@
+<!-- BEGIN: main -->
+<div id="language">
+    <!-- BEGIN: language -->
+    <a class="languageChange {language.lang_code}" accesskey="{language.lang_code}" title="{language.name}">&nbsp;</a>
+    <!-- END: language -->
+</div>
+<script type="text/javascript">
+$(".languageChange").click(function(){
+	$.ajax({
+		url: '{changeLangUrl}',
+		dataType: "json",
+		type: "POST",
+		data: {langCode: $(this).attr("accessKey")},
+		success: function(res)
+		{
+            if(res.success)
+       			location.href=res.url;
+		}
+	});
+});
+</script>
+<!-- END: main -->

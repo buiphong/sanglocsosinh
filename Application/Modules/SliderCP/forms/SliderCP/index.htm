@@ -1,0 +1,64 @@
+<!-- BEGIN: main -->
+<h3 class="page-title">
+    Quản lý Slider
+</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listTypeLink}">Danh sách nhóm Slider</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{indexLink}">Danh sách Slider</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="javascript:">{nameCurrent}</a>
+    </li>
+</ul>
+<div class="row-fluid">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">Danh sách Slider</div>
+            <div class="actions">
+                <a href="javascript:" class="icon-plus btn-info" title="Thêm mới" id="add-category-btn">&nbsp;</a>
+            </div>
+        </div>
+        <div class="portlet-body fuelux">
+            <form method="post" action="{indexLink}" name="frmList"  id='frmList'>
+                <input type="hidden" name="page" id="page"/>
+                <input type="hidden" name="type_id" id="type_id" value="{type_id}"/>
+                <table class="table table-striped table-bordered table-hover dataTable" id="tableSlider" aria-describedby="sample_3_info">
+                    <thead>
+                    <tr role="row">
+                        <th style="width: 8px;">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Hình ảnh</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Tên tiêu đề</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Link liên kết</th>
+                        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Cập nhật</th>
+                        <th class="hidden-480" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Lựa chọn</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </form>
+            <div class="cl"></div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/SliderCP/js/slider.cp.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

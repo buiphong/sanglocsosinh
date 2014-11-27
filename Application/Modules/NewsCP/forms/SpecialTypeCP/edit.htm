@@ -1,0 +1,23 @@
+<!-- BEGIN: main -->
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate ajax-form">
+    <div class="control-group">
+        <label for="textfield" class="control-label">Mã loại</label>
+        <div class="controls">
+            <input class="field required" type="text" name="code" id="code" size=40 value="{model.code}" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="textfield" class="control-label">Tiêu đề</label>
+        <div class="controls">
+            <input class="field required" type="text" name="title" id="title" size=40 value="{model.title}" />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <input type="hidden" name="id" id="id" value="{model.id}"/>
+        <button type="submit" class="btn btn-primary">Ghi lại</button>
+        <a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>
+    </div>
+</form>
+<!-- END: main -->

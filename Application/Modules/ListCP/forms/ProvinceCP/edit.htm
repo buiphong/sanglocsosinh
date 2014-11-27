@@ -1,0 +1,26 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+
+        <div class="control-group">
+            <label class="control-label">Tên tỉnh thành</label>
+            <div class="controls">
+                <input class="field required" type="text" name="name" id="name" size="63" value="{model.name}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Thứ tự</label>
+            <div class="controls">
+                <input type="text" name="order_no" id="order_no" value="{model.order_no}" size="30" />
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <input name="id" type="hidden" id="key" value="{model.id}">
+            <button type="submit" class="btn btn-primary">Ghi lại</button>
+            <a href="javascript:;" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+        </div>
+    </form>
+</div>
+<!-- END: main -->

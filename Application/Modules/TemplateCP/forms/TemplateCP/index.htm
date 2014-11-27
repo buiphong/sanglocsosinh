@@ -1,0 +1,98 @@
+<!-- BEGIN: main -->
+<h3>Quản lý Template</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Quản lý Template</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>{parentName}</a>
+    </li>
+</ul>
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption">Quản lý Template</div>
+		<div class="tools">
+			<a href='{createLink}' class="btn icon-plus btn-info" title="Thêm">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmList" id="frmList">
+		<table class="table table-nomargin">
+		  <tr>
+			<th width="2%">::</th>
+			<th width="40%">Tên</th>
+			<th width="30%">Tiêu đề</th>
+			<th width="10%">Người tạo</th>
+			<th width="15%">&nbsp;</th>
+		  </tr>
+		<!-- BEGIN: template -->
+		  <tr>
+			<td align="center" valign="top">
+			  <input type='checkbox' name='key[]' value='{template.id}'>{disabled}</td>
+		    <td valign="top">{template.name}&nbsp;</td>
+		    <td valign="top">{template.title}&nbsp;</td>
+		  	<td valign="top">{template.createdby}&nbsp;</td>
+			<td valign="top">
+				<a href='{editLink}'>Sửa</a>
+                <a href='{defaultPortletLink}'>Portlet mặc định</a>
+			</td>
+		  </tr>
+		<!-- END: template -->
+		</table>
+		<input type="hidden" name="page" id="page"/>
+		</form>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>				
+		<!-- END: button -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmportlet.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

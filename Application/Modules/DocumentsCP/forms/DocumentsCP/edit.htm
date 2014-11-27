@@ -1,0 +1,71 @@
+<!-- BEGIN: main -->
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate ajax-form">
+    <div class="portlet-body">
+        <div class="control-group">
+            <label for="textfield" class="control-label">Danh mục thư viện, tài liệu</label>
+            <div class="controls">
+                {category}
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="title" class="control-label">Tiêu đề</label>
+            <div class="controls">
+                <input onkeypress="updateSeoUrl('#title', '#url_title')" class="span6 m-wrap required" type="text" name="title" id="title" value="{model.title}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="description" class="control-label">Mô tả</label>
+            <div class="controls">
+                <textarea class="span6 m-wrap" name="description" id="description" rows="4">{model.description}</textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="content" class="control-label">Nội dung</label>
+            <div class="controls">
+                <textarea class="field" name="content" id="documents_content" rows="4" cols="87">{model.content}</textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="publish_date" class="control-label">Thời gian</label>
+            <div class="controls">
+                <input type="text" class="field" name="publish_date" id="publish_date" value="{model.publish_date}"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Ảnh đại diện</label>
+            <div class="controls">
+                <input type="text" class="field" name="image" id="avatar" value="{model.image}"/>
+                <input class="button" type="button" id="imagePath" name="imagePath" onclick="openFileBrowser('avatar')" value="Quản lý file"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="file_url" class="control-label">Đường dẫn file</label>
+            <div class="controls">
+                <input type="text" class="field" name="file_url" id="file_url" value="{model.file_url}"/>
+                <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('file_url')" value="Quản lý file"/>
+            </div>
+        </div>
+        <!-- BEGIN: member -->
+        <div class="control-group">
+            <label for="file_url" class="control-label">Dành cho thành viên</label>
+            <div class="controls">
+                <input type="checkbox" class="field" name="member" id="member" value="1" {checked}/>
+            </div>
+        </div>
+        <!-- END: member -->
+    </div>
+    <div class="form-actions">
+        <input type="hidden" name="id" value="{model.id}"/>
+        <button type="submit" class="btn btn-primary">Ghi lại</button>
+        <a href="javascript:"><button type="button" class="btn">Bỏ qua</button></a>
+    </div>
+</form>
+<script type="text/javascript">
+    CKEDITOR.replace('documents_content', {
+        toolbar: 'Basic',
+        filebrowserBrowseUrl: baseUrl + '/Packages/pdw_file_browser/index.php?editor=ckeditor',
+        width: 718,
+        height: 300
+    });
+</script>
+<!-- END: main -->

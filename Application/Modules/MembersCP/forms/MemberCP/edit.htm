@@ -1,0 +1,163 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+        <!--<div class="control-group">
+            <label for="fullname" class="control-label">Loại thành viên</label>
+            <div class="controls">
+                {slMemberType}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="fullname" class="control-label">Mã thành viên</label>
+            <div class="controls">
+                <input class="field required" type="text" name="member_code" id="member_code" size=40 value="{model.member_code}" />
+            </div>
+        </div>-->
+
+		<div class="control-group">
+			<label for="fullname" class="control-label">Họ tên</label>
+			<div class="controls">
+				<input class="field" type="text" name="fullname" id="fullname" size=40 value="{model.fullname}" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="username" class="control-label">Tài khoản</label>
+			<div class="controls">
+				<input class="field required" type="text" name="username" id="username" size=40 value="{model.username}" />
+				<p id="check_user_name" class="error" style="color: #b94a48;">Tên sử dụng này đã được sử dụng</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="new_password" class="control-label">Mật khẩu</label>
+			<div class="controls">
+				<input class="field" type="password" name="new_password" id="new_password" size=40 />
+				<input type="hidden" name="password" value="{model.password}"/>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="email" class="control-label">Email</label>
+			<div class="controls">
+				<input class="field email required" type="text" name="email" id="email" size=40 value="{model.email}" />
+				<p id="check_email" class="error" style="color: #b94a48;">Email này đã được sử dụng</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="rdGender" class="control-label">Giới tính</label>
+			<div class="controls">
+				{rdGender}
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="birth_date" class="control-label">Ngày sinh</label>
+			<div class="controls">
+				<input class="field  format_date" type="text" name="birth_date" id="birth_date" size=40 value="{model.birth_date}" />
+			</div>
+		</div>
+
+        <div class="control-group">
+            <label for="status" class="control-label">Trạng thái</label>
+            <div class="controls">
+                <input type="hidden" name="status" value="0">
+                <input class="field" type="checkbox" name="status" id="status" value="1" {status_checked}/>
+            </div>
+        </div>
+
+		<!--<div class="control-group">
+			<label for="rdVip" class="control-label">Public thông tin</label>
+			<div class="controls">
+				{rdPublic}
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="rdVip" class="control-label">Tài khoản VIP</label>
+			<div class="controls">
+				{ckVip}
+			</div>
+		</div>-->
+
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="javascript:;" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<!-- BEGIN: edit -->
+<div class="tab-pane" id="tab-profile">
+	<form method="post" enctype="multipart/form-data" action="{form_action_profile}" name="frmProfile" class="form-horizontal form-bordered frmValidate">
+		<!-- BEGIN: profile -->
+		<div class="control-group">
+			<label class="control-label">{profile.field_name}</label>
+			<div class="controls">
+				{profile.input}
+			</div>
+		</div>
+		<!-- END: profile -->
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<!-- END: edit -->
+<script type="text/javascript">
+	$("#check_user_name").hide();
+	$("#check_email").hide();
+	$("#username").keypress(function(event) {
+		$("#check_user_name").hide();
+	});
+	$("#username").focus(function(){
+		$("#check_user_name").hide();
+	});
+	$("#email").keypress(function(event) {
+		$("#check_email").hide();
+	});
+	$("#email").focus(function(){
+		$("#check_email").hide();
+	});
+	$(".ajax-form.form-horizontal.form-bordered.frmValidate").submit(function(){
+		var t = false;
+		if($("#username").val() != ""){
+			$.ajax({
+				url: "/MembersCP/MemberCP/checkUserName?us=" + $("#username").val() + "&id=" + $("#key").val(),
+				type: "GET",
+				async: false,
+				success: function(res){
+					if(res == "false"){
+						t = true;
+						$("#check_user_name").show();
+					}
+					else
+						$("#check_user_name").hide();
+				}
+			});
+		}
+		if($("#email").val() != ""){
+			$.ajax({
+				url: "/MembersCP/MemberCP/checkEmail?email=" + $("#email").val() + "&id=" + $("#key").val(),
+				type: "GET",
+				async: false,
+				success: function(res){
+					if(res == "false"){
+						t = true;
+						$("#check_email").show();
+					}
+					else
+						$("#check_email").hide();
+				}
+			});
+		}
+		if(t)
+			return false;
+	});
+	/*if($(".format_date").length > 0)
+	    $(".format_date").mask("99-99-9999");*/
+</script>
+<!-- END: main -->

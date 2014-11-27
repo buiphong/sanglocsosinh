@@ -1,0 +1,53 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">{boxTitle}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <div class="dptbl">
+            <div class="dptblr">
+                <!-- BEGIN: top -->
+                <div class="dptblc wp430 bdrd pr10 pl5 valg_t">
+                    <div class="mb10"><a class="fs15 fwb cl0072BB tdn ttfu" href="{item.href}" title="{item.title}">{item.title}</a></div>
+                    <div class="image_border wp253 h166 mr10 mb10 fl">
+                        <div class="img_news_border_5">
+                            <a href="{item.href}" title="{item.title}"><img src="{item.image_path#thumb:243,156}" alt="{item.title}" class="img_shadow img_243_156"/></a>
+                        </div>
+                    </div>
+                    <div class="fs12 lh18">{item.brief}</div>
+                    <div class="cl"></div>
+                </div>
+                <!-- END: top -->
+                <div class="dptblc wp283 pl10 valg_t">
+                    <!-- BEGIN: news-->
+                    <div class="bdbd pb10 mb10 {news.boxClass} special_home">
+                        <div class="image_border wp96 h66 fl mr10">
+                            <a href="{news.href}" title="{news.title}">
+                                <img src="{news.image_path#thumb:96,66}" alt="{news.title}" class="img_shadow img_96_66"/>
+                            </a>
+                        </div>
+                        <div class="fl wp175">
+                            <div class="mb5"><a class="fs10 fwb cl000 tdn" href="{news.href}" title="{news.title}">{news.title}</a></div>
+                            <div class="fs10 mb5">{news.brief#CutString:100}</div>
+                            <div class="">
+                                <div class="fl cl0072BB fs8 fsi">{news.date}</div>
+                                <div class="fr"><a href="{news.href}" title="{news.title}" class="tdn cl0072BB fs8 fsi">Xem tiếp >></a></div>
+                                <div class="cl"></div>
+                            </div>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    <!-- END: news-->
+                </div>
+            </div>
+        </div>
+        <div class="h27 bg_i_line mt5">
+            <a href="javascript:" class="fr fsi fwb fs11 cl0072BB mt5 mr10 tdn">Xem thêm >></a>
+            <div class="cl"></div>
+        </div>
+    </div>
+</div>
+<!-- END: main -->

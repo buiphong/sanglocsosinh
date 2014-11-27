@@ -1,0 +1,87 @@
+<!-- BEGIN: main -->
+<h3>Quản lý menu hệ thống</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="more-login.html">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-basic.html">Menu hệ thống</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-dynamic.html">{type}</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+	<div class="span12">
+		<div class="portlet box grey">
+			<div class="portlet-title">
+				<div class="caption">{type}</div>
+			</div>
+			<div class="portlet-body">
+				<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmsystemmenu" class="form-horizontal form-bordered frmValidate">
+					<div class="control-group">
+						<label for="title" class="control-label">Tên menu</label>
+						<div class="controls">
+							<input class="field required" type="text" name="title" id="title" size=40 value="{model.title}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="actions" class="control-label">Chức năng</label>
+						<div class="controls">
+							<div class="input-xlarge">
+							{actionid}
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="externallink" class="control-label">Đường dẫn</label>
+						<div class="controls">
+							<input class="field" type="text" name="externallink" id="externallink" size=40 value="{model.externallink}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Thứ tự sắp xếp</label>
+						<div class="controls">
+							<input class="field" type="text" name="orderno" id="orderno" size=40 value="{model.orderno}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Kích hoạt</label>
+						<div class="controls">
+							{status}
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<button type="button" onclick="document.frmsystemmenu.submit()" class="btn btn-primary">Ghi lại</button>
+						<button type="button" class="btn" onclick="location.href='{listLink}'">Bỏ qua</button>
+					</div>
+					<input type="hidden" name="id" id="__pkey" value="{model.id}">
+					<input type="hidden" name="type_id" id="typeId" value="{typeid}">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+// - make primary key readonly on edit
+pkeyname = document.getElementById("__pkey").value;
+pkeyobj = document.getElementById(pkeyname);
+if (pkeyobj){
+	if (document.getElementById("key").value!="") pkeyobj.readOnly = true;
+}
+// - set focus
+objArr = document.getElementsByTagName("input");
+if (objArr) {
+	firstObj = objArr[0];
+	if (!firstObj.readOnly) {
+		firstObj.focus();
+	} 
+}
+</script>
+<!-- END: main -->

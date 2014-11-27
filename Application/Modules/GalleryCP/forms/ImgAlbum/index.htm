@@ -1,0 +1,131 @@
+<!-- BEGIN: main -->
+<h3>Quản lý thư viện ảnh</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{indexLink}">Album ảnh</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="javascript:">Thư viện ảnh</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+	<div class="span12">
+		<div class="portlet box gray">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-picture"></i>
+					Thư viện ảnh
+				</div>
+			</div>
+            <div class="portlet-body fuelux">
+                <div class="highlight-toolbar">
+					<div class="pull-left">
+						<div class="btn-toolbar">
+							<form name="filterForm" method="get" action="{formAction}">
+								<div class="btn-group">
+									{cmbAlbum}
+								</div>
+								<div class="btn-group">
+									{cmbSort}
+								</div>
+								<div class="btn-group">
+									<button type="submit" class="btn" title="Apply filter" style="margin-top: -10px;"><i class="icon-ok"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="pull-right">
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<a data-toggle="modal" id="uploadImgBtn" href="#formUploadImage" class="btn btn-danger" rel="tooltip" title="Upload new images"><i class="icon-cloud-upload"></i> Upload images</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="gallery">
+					<!-- BEGIN: image -->
+					<li>
+						<a href="javascript:">
+							<img src="{image.file_path_thumb}" alt="{image.name}" onerror="this.src='/Templates/flatadmin/images/no-image.jpg';">
+						</a>
+						<div class="extras">
+							<div class="extras-inner">
+								<a href="{image.file_path}" class='colorbox-image' rel="group-1"><i class="icon-search"></i></a>
+								<a href="#pic-{image.id}" class="edit-gallery-pic" rel="{editLink}"><i class="icon-pencil"></i></a>
+								<a href="javascript:" class='del-gallery-pic' rel="{deleteLink}"><i class="icon-trash"></i></a>
+							</div>
+						</div>
+					</li>
+					<!-- END: image -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="{appPath}/Application/Modules/GalleryCP/js/gallery.cp.js"></script>
+<link rel="stylesheet" href="{appPath}/Templates/flatadmin/css/plugins/colorbox/colorbox.css">
+<script type="text/javascript" src="{appPath}/Templates/flatadmin/js/plugins/colorbox/jquery.colorbox-min.js"></script>
+<!--- form upload image -->
+<div id="formUploadImage" class="box box-bordered modal" style="display: none; width: 600px">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Upload ảnh</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form id="uploadImageForm" action="{formUpload}" method="POST" class="form-horizontal form-bordered">
+			<div class="control-group">
+				<label for="textfield" class="control-label">Tên ảnh</label>
+				<div class="controls">
+					<div class="input-append input-prepend">
+						<input type="text" placeholder="" class="input-xlarge required" name="name">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="textfield" class="control-label">Thứ tự hiển thị</label>
+				<div class="controls">
+					<div class="input-append input-prepend">
+						<input type="text" placeholder="" class="input-xlarge required" name="orderno">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="textfield" class="control-label">Album</label>
+				<div class="controls">
+					<div class="input-append input-prepend">
+						{cmbUploadAlbum}
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="textfield" class="control-label">Mô tả</label>
+				<div class="controls">
+					<div class="input-append input-prepend">
+						<textarea rows="5" cols="50" name="desc"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="textfield" class="control-label">Đường dẫn</label>
+				<div class="controls">
+					<div class="input-append input-prepend">
+						<input type="text" placeholder="" class="input-xlarge" name="file_path" id="file_path">
+						<input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('file_path')" value="Quản lý file"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-actions">
+				<input id="btnSubmitForm" type="submit" class="btn btn-primary" value="Upload">
+				<button aria-hidden="true" data-dismiss="modal" class="btn" type="button">Bỏ qua</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- END: main -->

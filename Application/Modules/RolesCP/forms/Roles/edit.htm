@@ -1,0 +1,131 @@
+<!-- BEGIN: main -->
+<h3>Quản lý hệ thống</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listRole}">Quyền hạn</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>{title}</a>
+    </li>
+</ul>
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Quản lý quyền</div>
+	</div>
+	<div class="portlet-body">
+		{BEFORE_FORM}
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên quyền</label>
+			<div class="controls">
+				<input class="field required" type="text" name="name" id="name" size=40 value="{model.name}">&nbsp;<span style="color:red; margin-left: 10px;">(*)</span>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="description" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea name="description" id="description" rows=5 cols=40>{model.description}</textarea>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="status" class="control-label">Trạng thái</label>
+			<div class="controls">
+				<input type="hidden" name="status" value="0">
+				{status}
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="newsRole" class="control-label">Cho phép hiển thị bài viết</label>
+			<div class="controls">
+				<input type="hidden" name="newsRole" value="0">
+				{newsRole}
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="span5">
+				<fieldset>
+	                <legend>Chức năng</legend>
+	                <div class="treeOver" style="height: 400px; overflow-y: scroll;">
+	            	{actions}
+	                </div>
+	            </fieldset>
+	         </div>
+	         <div class="span5">
+	            <fieldset>
+	                <legend>Menu</legend>
+	                <div class="treeOver" style="height: 400px; overflow-y: scroll;">
+	            	{sysmenu}
+	                </div>
+	            </fieldset>
+	         </div>
+		</div>
+		
+		<div class="form-actions">
+			<input type="hidden" name="id" id="__pkey" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>		
+		</form>
+		{AFTER_FORM}
+	</div>
+</div>
+<script type="text/javascript">
+// - make primary key readonly on edit
+pkeyname = document.getElementById("__pkey").value;
+pkeyobj = document.getElementById(pkeyname);
+if (pkeyobj){
+	if (document.getElementById("key").value!="") pkeyobj.readOnly = true;
+}
+// - set focus
+objArr = document.getElementsByTagName("input");
+if (objArr) {
+	firstObj = objArr[0];
+	if (!firstObj.readOnly) {
+		firstObj.focus();
+	} 
+}
+$(document).ready(function(){
+	$("#menuTreeview").treeview();
+});
+jQuery(".chksysmenu").live('change',function(){
+	var value = jQuery(this).attr("checked");
+    if(value == "checked")
+    {
+        jQuery(this).next("ul").children().children().each(function(){
+            jQuery(this).attr("checked", value);
+        });
+    }
+    else
+    {
+        jQuery(this).next("ul").children().children().each(function(){
+            jQuery(this).removeAttr('checked');
+        });
+    }
+});
+jQuery(".chksysactions").live('change',function(){
+    var value = jQuery(this).attr("checked");
+    if(value == "checked")
+    {
+        jQuery(this).next("ul").children().children().children().each(function(){
+            jQuery(this).attr("checked", value);
+        });
+    }
+    else
+    {
+        jQuery(this).next("ul").children().children().children().each(function(){
+            jQuery(this).removeAttr("checked");
+        });
+    }
+});
+</script>
+{AFTER_FORM}
+<!-- END: main -->

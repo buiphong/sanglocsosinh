@@ -1,0 +1,36 @@
+<!-- BEGIN:main -->
+<div class="title icon-1">FAQs</div>
+<ul id="faqs">
+	<!-- BEGIN: faq -->
+	<li class="normal">
+		<a class="faq_Q">{faq.question}</a>
+		<div class="faq_A">
+		<!-- BEGIN: infoFaq -->
+			<p class="infoFaq">Người hỏi: {infoFaq.fullname} -- {infoFaq.created_time}</p>
+		<!-- END: infoFaq -->
+			<p>{faq.answer}</p>
+		</div>
+	</li>
+	<!-- END: faq -->
+</ul>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.faq_Q').click(function(){	
+			if($(this).parents().children('.faq_A').css('display') == 'block')
+			{
+				$(this).removeClass('active');
+				$(this).parents().children('.faq_A').hide();
+			}
+			else
+			{
+				$('.faq_Q').removeClass('active');
+				$(this).addClass('active');
+				$('#faqs li').addClass('normal');
+				$(this).parents().removeClass('normal');
+				$(this).parents().children('.faq_A').show();
+			}
+		  	$('#faqs .normal .faq_A').hide();
+		});
+	});
+</script>
+<!-- END: main -->

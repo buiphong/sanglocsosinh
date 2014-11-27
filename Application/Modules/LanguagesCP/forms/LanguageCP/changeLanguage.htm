@@ -1,0 +1,22 @@
+<!-- BEGIN: main -->
+	<!-- BEGIN: language -->
+	<li><a class="changeLangLink {class}" accesskey="{language.lang_code}"><i class="icon-lang flag-{language.lang_code}"></i></a></li>
+	<!-- END: language -->
+<script type="text/javascript">
+	$(".changeLangLink").click(function(){
+		$.ajax({
+			url: "{changeLangLink}",
+			dataType: "json",
+			type: "POST",
+			data: {langcode: $(this).attr('accessKey')},
+			success: function(res)
+			{
+				if(res.success)
+				{
+					window.location.reload();
+				}
+			}
+		});
+	});
+</script>
+<!-- END: main -->

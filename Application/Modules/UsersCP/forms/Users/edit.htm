@@ -1,0 +1,220 @@
+<!-- BEGIN: main -->
+<h3>Quản lý người dùng</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Người dùng hệ thống</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>{title}</a>
+    </li>
+</ul>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="portlet box green">
+			<div class="portlet-title">
+				<div class="caption">Cập nhật thông tin người dùng</div>
+			</div>
+			<div class="portlet-body">
+                <div class="tabbable portlet-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tabs-line" data-toggle="tab">Thông tin tài khoản</a></li>
+                        <li><a href="#tabs-bar" data-toggle="tab">Quyền hạn</a></li>
+                        <li><a href="#tabs-menu" data-toggle="tab">Menu</a></li>
+                    </ul>
+                    <form class="form-horizontal form-bordered" method="post" enctype="multipart/form-data" action="{form_action}" name="frmusers" id="frmedit">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-line">
+                                <div class="control-group">
+                                    <label for="username" class="control-label">Tên dùng</label>
+                                    <div class="controls">
+                                        <input class="field required" type="text" name="username" id="username" size=40 value="{model.username}" {readonly}><span style="color:red; margin-left: 10px;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="new_password" class="control-label">Mật khẩu</label>
+                                    <div class="controls">
+                                        <input class="field" type="password" name="new_password" id="new_password" size=40> <span style="color:red; margin-left: 5px;">(*)</span>
+                                        <input type="hidden" name="password" value="{model.password}"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="fullname" class="control-label">Họ tên</label>
+                                    <div class="controls">
+                                        <input class="field required" type="text" name="fullname" id="fullname" size=40 value="{model.fullname}"><span style="color:red; margin-left: 7px;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="email" class="control-label">Địa chỉ email</label>
+                                    <div class="controls">
+                                        <input class="field required email" type="text" name="email" id="email" size=40 value="{model.email}"> <span style="color:red; margin-left: 4px;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="status" class="control-label">Kích hoạt tài khoản</label>
+                                    <div class="controls">
+                                        <input type="hidden" name="status" value="0">
+                                        {status}
+                                    </div>
+                                </div>
+                                <!--<div class="control-group">
+                                    <label for="textfield" class="control-label">Cho phép hiển thị bài viết</label>
+                                    <div class="controls">
+                                        <input type="hidden" name="newsRole" value="0">
+                                        {newsRole}
+                                    </div>
+                                </div>-->
+                                <div class="control-group">
+                                    <label for="description" class="control-label">Mô tả</label>
+                                    <div class="controls">
+                                        <textarea name="description" id="description" rows=5 cols=40>{model.description}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="roles" class="control-label">Quyền hạn</label>
+                                    <div class="controls">
+                                        {roles}
+                                    </div>
+                                </div>
+                                <!--<div class="control-group" id="user_type">
+                                    <label for="newstype" class="control-label">Loại người dùng</label>
+                                    <div class="controls">
+                                        {user_type}
+                                    </div>
+                                </div>-->
+                                <div class="control-group" id="emptype_ids">
+                                    <label for="newstype" class="control-label">Phân loại người dùng</label>
+                                    <div class="controls">
+                                        {emptype_id}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-bar">
+                                        <table width="100%"  border="0" cellspacing="1" cellpadding="3">
+                                          <tr>
+                                            <td width="15%" valign="top" nowrap><h3><strong>{labels.moreactions}</strong></h3></td>
+                                            <td width="85%"> <div  class="departmentsWhite">
+                                                    <fieldset >
+                                                        <legend>Danh mục</legend>
+                                                        <div class="treeOver moreac">
+                                                                {moreactions}
+                                                        </div>
+                                                    </fieldset>
+                                                </div></td>
+                                          </tr>
+                                        </table>
+                            </div>
+                            <div class="tab-pane" id="tabs-menu">
+                                <fieldset >
+                                    <legend>Thêm menu</legend>
+                                    <div class="treeOver">
+                                        {menuid}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="$('#frmedit').submit();" class="btn btn-primary">Ghi lại</button>
+                            <button type="button" class="btn" onclick="window.location.href='{listLink}';">Bỏ qua</button>
+                        </div>
+                        <input type="hidden" name="id" id="__pkey" value="{model.id}">
+                    </form>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#frmedit").validate({
+            errorElement: 'p'
+        });
+    });
+    jQuery(".chksysmenu").live('change',function(){
+        var value = jQuery(this).attr("checked");
+        jQuery(this).next('ul').children().children().each(function(){
+            jQuery(this).attr("checked", value);
+        })
+    });
+    jQuery(".chksysactions").live('change', function(){
+        var value = jQuery(this).attr("checked");
+        jQuery(this).next('ul').children().children().children().each(function(){
+            jQuery(this).attr("checked", value);
+        })
+    })
+    // - request dữ liệu lên sever
+    function createAction()
+    {
+        var roleID= "";
+        $('input[name="roles[]"]:checked').each(function(){
+                roleID = $(this).val();
+        });
+
+        var checkID = "";
+        $('input[name="moreactions[]"]:checked').each(function(){
+            if(checkID == "")
+            {
+                checkID = $(this).val();
+            }
+            else
+            {
+                checkID += ',' + $(this).val();
+            }
+        })
+
+        if(roleID != "")
+        {
+            $.ajax(
+                    {
+                        url: "{createLink}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {roleid: roleID, checkid: checkID},
+                        success:function(res)
+                        {
+                            jQuery(".moreac").html(res.msg);
+                            //alert (res.msg);
+                        }
+                    }
+            )
+        }
+    }
+    jQuery('input[name="roles[]"]').live('change', function(){
+        createAction();
+    })
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#user_type input").change(function () {
+		show();
+	});
+	show();
+	//$("#menuTreeview").treeview();
+});
+
+function show(){
+	if($('#user_type input[@name="user_type"]:checked').val() == "frontend")
+		$("#emptype_ids").show(300);
+	else
+		$("#emptype_ids").hide(300);
+}
+// - make primary key readonly on edit
+pkeyname = document.getElementById("__pkey").value;
+pkeyobj = document.getElementById(pkeyname);
+if (pkeyobj){
+	if (document.getElementById("key").value!="") pkeyobj.readOnly = true;
+}
+// - set focus
+objArr = document.getElementsByTagName("input");
+if (objArr) {
+	firstObj = objArr[0];
+	if (!firstObj.readOnly) {
+		firstObj.focus();
+	}
+}</script>
+<!-- END: main -->

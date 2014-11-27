@@ -1,0 +1,58 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">{boxTitle}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <!-- BEGIN: top -->
+        <div class="list-news ofh bdbd pb10 mb10">
+            <div class="img-news fl tc image_border wp91 h84 ml5">
+                <div class="img_news_border_5"><a class="a_img" href="{item.href}" title="{item.title}"><img class="img_91_84 img_shadow" src="{item.image_path#thumb:91,84,1}" alt="{item.title}"/></a>
+                </div>
+            </div>
+            <div class="ofh fl wp181 ml20">
+                <div>
+                    <a href="{item.href}" class="fs12 fwb cl0072BB tdn" title="{item.title}">{item.title}</a>
+                </div>
+                <div class="mt5">
+                    <div class="cbl fs12">{item.brief#CutString:150}</div>
+                </div>
+                <div class="">
+                    <div class="fl cl0072BB fs9 fsi">{item.date}</div>
+                    <div class="fr"><a href="{item.href}" title="{news.title}" class="tdn cl0072BB fs9 fsi">Xem tiếp >></a></div>
+                    <div class="cl"></div>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <div class="cl"></div>
+        </div>
+        <!-- END: top -->
+        <!-- BEGIN: news -->
+        <div class="list-news ofh bdbd pb10 mb10 {news.boxClass}">
+            <div class="img-news fl tc image_border wp91 h84 ml5">
+                <div class="img_news_border_5"><a class="a_img" href="{news.href}" title="{news.title}"><img class="img_91_84 img_shadow" src="{news.image_path#thumb:91,84,1}" alt="{news.title}"/></a>
+                </div>
+            </div>
+            <div class="ofh fl wp181 ml20">
+                <div>
+                    <a href="{news.href}" class="fs12 fwb cl0072BB tdn" title="{news.title}">{news.title}</a>
+                </div>
+                <div class="mt5">
+                    <div class="cbl fs12">{news.brief#CutString:150}</div>
+                </div>
+                <div class="">
+                    <div class="fl cl0072BB fs9 fsi">{news.date}</div>
+                    <div class="fr"><a href="{news.href}" title="{news.title}" class="tdn cl0072BB fs9 fsi">Xem tiếp >></a></div>
+                    <div class="cl"></div>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <div class="cl"></div>
+        </div>
+        <!-- END: news -->
+    </div>
+</div>
+<!-- END: main -->

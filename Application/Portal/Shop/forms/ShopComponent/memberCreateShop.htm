@@ -1,0 +1,103 @@
+<!-- BEGIN: main -->
+<div id="div_create_shop">
+    <h1 class="title_product">Mở gian hàng</h1>
+    <form id="frmCreateShop" action="{frmAction}" method="POST" enctype="multipart/form-data">
+        <div class="controls-group">
+            <label class="fl wp130 lh22 fwb">Danh mục chính<font class="clred">*</font></label>
+            <div class="fl">
+                <select name="type_id" class="wp200">
+                    <!-- BEGIN: type -->
+                    <option value="{type.id}" {type.selected}>{type.name}</option>
+                    <!-- END: type -->
+                </select>
+            </div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Tỉnh thành <font class="clred">*</font></label>
+            <div class="fl">
+                <select name="content_attr[province]" class="wp200">
+                    <!-- BEGIN: province -->
+                    <option value="{province.id}" {province.selected}>{province.title}</option>
+                    <!-- END: province -->
+                </select>
+            </div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Tên gian hàng <font class="clred">*</font></label>
+            <div><input type="text" name="name" value="{shop.name}" class="required wp340"/></div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Thời gian mở:</label>
+            <div class="fl">
+                Từ ngày <input type="text" name="content_attr[start_time]" value="{shop.content_attr.start_time}" class="date-picker wp140"/>
+                trong <select name="content_attr[month_num]" class="wp102">
+                <!-- BEGIN: month -->
+                    <option value="{item.id}" {item.selected}>{item.title}</option>
+                <!-- END: month -->
+                </select>
+            </div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Ảnh đại diện<font class="clred">*</font></label>
+            <div class="fl">
+                <input type="file" name="image_path_upload" value="" class=""/>
+                <!-- BEGIN: avatar -->
+                <br>
+                <img src="{avatar#thumb:100}"/>
+                <input type="hidden" name="image_path" value="{avatar}"/>
+                <!-- END: avatar -->
+            </div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Mô tả</label>
+            <div class="fl"><textarea name="description" rows="8" cols="40">{shop.description}</textarea></div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Họ tên <font class="clred">*</font></label>
+            <div><input type="text" name="content_attr[contact_name]" value="{shop.content_attr.contact_name}" class="required wp340"/></div>
+            <div class="cl"></div>
+        </div>
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Địa chỉ <font class="clred">*</font></label>
+            <div><input type="text" name="content_attr[contact_address]" value="{shop.content_attr.contact_address}" class="wp340"/></div>
+            <div class="cl"></div>
+        </div>
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Điện thoại <font class="clred">*</font></label>
+            <div><input type="text" name="content_attr[contact_phone]" value="{shop.content_attr.contact_phone}" class="required wp340"/></div>
+            <div class="cl"></div>
+        </div>
+        <div class="controls-group mt10">
+            <label class="fl wp130 lh22 fwb">Email <font class="clred">*</font></label>
+            <div><input type="text" name="content_attr[contact_email]" value="{shop.content_attr.contact_email}" class="required wp340"/></div>
+            <div class="cl"></div>
+        </div>
+
+        <div class="controls-group mt10">
+            <label class="fl"></label>
+            <div class="ft_notify fl">
+
+            </div>
+        </div>
+
+        <div class="ct-button tac">
+            <input type="submit" value="{submitText}" class="clwhite bn" id="bt_create_shop"/>
+            <img class="loading dn" src="/Templates/VuonCayCanh/images/loading.gif" />
+            <input type="hidden" value="{shop.id}" name="id"/>
+            <input type="reset" value="Nhập lại" class="clwhite ml5 bn" />
+        </div>
+    </form>
+</div>
+<!-- END: main -->

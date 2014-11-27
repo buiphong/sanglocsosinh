@@ -1,0 +1,60 @@
+<!-- BEGIN: main -->
+<h3>Quản lý tài liệu</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Danh mục tài liệu</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    {breadCrumb}
+    <li>
+        <a>{parentName}</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh mục tài liệu</div>
+		<div class="tools">
+			<a href='javascript:' id="add-document-cat" class="icon-plus btn-info" title="Thêm danh mục">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<table class="table table-nomargin" id="tableDocumentCat">
+            <thead>
+                <tr>
+                    <th width="2%">::</th>
+                    <th width="30%">Tên danh mục</th>
+                    <th width="15%">Thứ tự</th>
+                    <th width="15%">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+		</table>
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-info" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>				
+		<!-- END: button -->
+        <input type="hidden" id="parentId" value="{parentId}"/>
+		</div>
+	</div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/DocumentsCP/js/document_cat.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

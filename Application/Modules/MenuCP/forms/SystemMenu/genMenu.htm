@@ -1,0 +1,34 @@
+<!-- BEGIN: main -->
+<ul class="page-sidebar-menu">
+    <li>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler hidden-phone"></div>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    </li>
+    <li class="start active">
+        <a href="/cp">
+            <i class="icon-home"></i>
+            <span class="title">Home</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <!-- BEGIN: item -->
+    <li >
+        <a href="{item.link}">
+            <i class="{item.icon_class}"></i>
+            <span class="title">{item.title}</span>
+            <span class="arrow "></span>
+        </a>
+        <!-- BEGIN: sub -->
+        <ul class="sub-menu">
+            <!-- BEGIN: subitem -->
+            <li >
+                <a href="{subitem.link}">{subitem.title}</a>
+            </li>
+            <!-- END: subitem -->
+        </ul>
+        <!-- END: sub -->
+    </li>
+    <!-- END: item -->
+</ul>
+<!-- END: main -->

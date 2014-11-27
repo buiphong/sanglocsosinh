@@ -1,0 +1,81 @@
+<!-- BEGIN: main -->
+<html>
+<head>
+</head>
+<body>
+<div id="back-controlPanel">
+    <a class="cp-label" href="{appPath}/cp">ADMIN</a>
+    <a id="btn-hideFlash" class="cp-label" href="javascript:ToggleFlash()">Flash</a>
+    <form id="CP-frmUpdateLayout" action="{frmUpdateLayout}" method="POST">
+        <!-- BEGIN: updateLayout -->
+        <div class="cp-label"><strong>Cập nhật layout:</strong></div>
+        <div class="cp-label"><strong><i>{object}</i></strong></div>
+        <!-- BEGIN: currParams -->
+        <div class="cp-label">
+            <strong>Lọc theo:</strong>
+            <!-- BEGIN: param -->
+            <input class="router-param-input" data-num="{param.num}" type="checkbox" {param.checked} name="params[{param.key}]" value="{param.value}"/> {param.key}
+            <!-- END: param -->
+        </div>
+        <!-- END: currParams -->
+        <div>
+            <div class="cp-label">&nbsp;Template:</div><div>{cmbTemplate}</div>
+        </div>
+        <div>
+            <div class="cp-label">&nbsp;Layout:</div><div>{cmbLayout}</div>
+        </div>
+        <!-- BEGIN: boxSkin -->
+        <div>
+            <div class="cp-label">&nbsp;Skin:</div><div>{cmbSkin}</div>
+        </div>
+        <!-- END: boxSkin -->
+        <button id="CP-btnChangeLayout">Cập nhật</button>
+        <input type="hidden" id="currRouterValue" name="currRouter" value="{currRouter}"/>
+        <!-- END: updateLayout -->
+        <input type="hidden" name="currUri" value="{currentUri}"/>
+        <input type="checkbox" name="editLayout" value="1" {ELChecked}> Sắp xếp bố cục
+    </form>
+</div>
+<div style="clear:both"></div>
+<div style="margin-top: 30px;">
+{content}
+</div>
+<div id="layout-render-loading"><img src="{appPath}/Templates/Metronic/img/loading.gif"/></div>
+<!-- BEGIN: loadCss -->
+Application/Modules/LayoutCP/css/layout.css,
+Packages/editor/codemirror-3.15/lib/codemirror.css,
+Packages/editor/codemirror-3.15/addon/hint/show-hint.css,
+Templates/Metronic/plugins/bootstrap-modal/css/bootstrap-modal.css,
+<!-- END: loadCss -->
+<script type="text/javascript">
+    var baseUrl='{appPath}';
+    (function(){
+        if (typeof jQuery == 'undefined') {
+            var script = document.createElement('script');
+            script.type = "text/javascript";
+            script.src = "http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js";
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+    })();
+</script>
+<!-- BEGIN: loadScript -->
+Packages/editor/codemirror-3.15/lib/codemirror.js,
+Packages/editor/codemirror-3.15/addon/hint/show-hint.js,
+Packages/editor/codemirror-3.15/addon/hint/xml-hint.js,
+Packages/editor/codemirror-3.15/addon/hint/html-hint.js,
+Packages/editor/codemirror-3.15/mode/xml/xml.js,
+Packages/editor/codemirror-3.15/mode/javascript/javascript.js,
+Packages/editor/codemirror-3.15/mode/css/css.js,
+Packages/editor/codemirror-3.15/mode/htmlmixed/htmlmixed.js,
+Templates/Metronic/plugins/jquery-validation/dist/jquery.validate.min.js,
+Templates/Metronic/plugins/bootstrap/js/bootstrap.min.js,
+Templates/Metronic/plugins/bootstrap-modal/js/bootstrap-modal.js,
+Templates/Metronic/plugins/bootstrap-modal/js/bootstrap-modalmanager.js,
+Templates/Metronic/scripts/jquery-migrate-1.0.0.js,
+Templates/Metronic/scripts/common.js,
+Packages/jquery/js/jquery.treeview.js,
+Application/Modules/LayoutCP/js/layout.js
+<!-- END: loadScript -->
+</body>
+</html>
+<!-- END: main -->

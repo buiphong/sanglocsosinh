@@ -1,0 +1,153 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Đặt lịch tư vấn di truyền</h1>
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{listLink}">Quản lý đặt lịch tư vấn</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Danh sách đặt lịch tư vấn di truyền</h3>
+	</div>
+	<div class="box-content nopadding dataTables_wrapper">		
+		<form method="get" action="{listLink}" name="frmList" id="frmList">
+		<div style="overflow:hidden;">
+			<div class="dataTables_length">
+				<input type="text" aria-controls="DataTables_Table_0" placeholder="Tìm kiếm..." value="{keySearch}" name="keySearch" />
+				<input type="hidden" name="page" id="page"/>
+				<button type="submit" class="btn btn-primary">Tìm kiếm</button>	
+			</div>
+			<div class="dataTables_length">
+				<!-- BEGIN: status -->
+					<label class="radio inline-block"><input type="radio" {status.checked} name="status" class="{status.class}" value="{status.key}"/> {status.title}</label>
+				<!-- END: status -->
+			</div>
+		</div>
+		<table class="table table-nomargin">
+		  <tr>
+			<th width="2%">::</th>
+			<th width="15%">Họ tên</th>
+			<th width="15%">Email</th>
+			<th width="15%">Điện thoại</th>
+			<th width="15%">Thời gian đặt lịch</th>
+			<th width="15%">&nbsp;</th>
+			<th width="15%">&nbsp;</th>
+		  </tr>
+		<!-- BEGIN: support -->
+		  <tr>
+			<td align="center" valign="top">
+			  <input type='checkbox' name='key[]' value='{support.id}'>{disabled}</td>
+		    <td valign="top">{support.fullname}</td>
+		    <td valign="top">{support.email}</td>	
+		    <td valign="top">{support.phones}</td>		
+		    <td valign="top">{support.time}</td>		
+			<td valign="top"><a data-id="{support.id}" title="Click để thay đổi trạng thái" onclick="changeStatus(this)" accesskey="{support.status}">{support.statusName}</a></td>
+		    <td valign="top"><a accesskey="{support.id}" title="Xem chi tiết" onclick="viewDetail(this)" class="table-btn btn-publish">&nbsp;</a></td>		
+		  </tr>
+		<!-- END: support -->
+		</table>
+		<input type="hidden" name="page" id="page"/>
+		</form>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-info" onClick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>				
+		<!-- END: button -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$("input[name='status']").change(function(){
+	document.frmList.submit();
+});
+function viewDetail(obj)
+{
+	$.ajax({
+		url: "{urlViewDetailAjax}",
+		dataType: "json",
+		data: {id: $(obj).attr("accessKey")},
+		type: "POST",
+		success: function(res)
+		{
+			showDialog(res.html, 'Chi tiết đặt lịch tư vấn di truyền', 800);
+		}
+	});
+}
+
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmportlet.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+function changeStatus(obj)
+{
+	if(confirm("Bạn muốn thay đổi trạng thái của thông tin này?"))
+	{
+		$.ajax({
+			url: "{changeStatus}",
+			dataType: "json",
+			data: {id: $(obj).attr('data-id'), oldStatus: $(obj).attr("accessKey")},
+			type: "POST",
+			success: function(res)
+			{
+				if(res.success)
+				{
+					//Change value, text object.
+					$(obj).attr('accessKey', res.status);
+					$(obj).html(res.statusName);
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

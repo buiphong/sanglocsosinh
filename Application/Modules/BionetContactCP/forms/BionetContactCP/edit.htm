@@ -1,0 +1,64 @@
+<!-- BEGIN: main -->
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate ajax-form">
+		<div class="control-group">		  
+			<label for="title" class="control-label">Tiêu đề điểm thu mẫu</label>
+			<div class="controls">
+				<input class="field required" type="text" name="title" id="title" size=40 value="{model.title}" />
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên điểm thu mẫu</label>
+			<div class="controls">
+				<input class="field required" type="text" name="name" id="name" size=40 value="{model.name}" />
+			</div>
+		</div>
+
+        <div class="control-group">
+            <label for="address" class="control-label">Địa chỉ</label>
+            <div class="controls">
+                <input class="field" type="text" name="address" id="address" size=40 value="{model.address}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="phone" class="control-label">Điện thoại</label>
+            <div class="controls">
+                <input class="field" type="text" name="phone" id="phone" size=40 value="{model.phone}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="hotline" class="control-label">Hotline</label>
+            <div class="controls">
+                <input class="field" type="text" name="hotline" id="hotline" size=40 value="{model.hotline}" />
+            </div>
+        </div>
+
+		<div class="control-group">		  
+			<label for="order_no" class="control-label">Thứ tự sắp xếp</label>
+			<div class="controls">
+				<input class="field" type="text" name="order_no" id="order_no" size=40 value="{model.order_no}" />
+			</div>
+		</div>	
+		
+		<!--- <div class="control-group">		  
+			<label for="textfield" class="control-label">Có RSS</label>
+			<div class="controls">
+				<input class="field" type="checkbox" name="has_rss" id="has_rss" value="1" {checked}/>
+			</div>
+		</div> -->
+		
+		<div class="control-group">		  
+			<label for="status" class="control-label">Hiển thị</label>
+			<div class="controls">
+				<input class="field" type="checkbox" name="status" id="status" value="1" {checked}/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>	
+</form>
+<!-- END: main -->

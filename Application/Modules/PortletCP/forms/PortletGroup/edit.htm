@@ -1,0 +1,50 @@
+<!-- BEGIN: main -->
+<h3>Quản lý nhóm portlet</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{portletGroupLink}">Quản lý portlet</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{portletGroupLink}">Nhóm portlet</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Nhóm portlet</div>
+	</div>
+	<div class="portlet-body">
+		{BEFORE_FORM}
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmportletgroup" class="form-horizontal form-bordered">
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Tên nhóm</label>
+			<div class="controls">
+				<input class="field" type="text" name="name" id="name" size=40 value="{model.name}">&nbsp;{labels.after_name}
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="textfield" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field" name="description" id="description" rows=5 cols=40>{model.description}</textarea>
+			</div>
+		</div>	
+		
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>	
+		
+		</form>
+		{AFTER_FORM}	
+		
+	</div>
+</div>
+<!-- END: main -->

@@ -1,0 +1,16 @@
+<!-- BEGIN: main -->
+<ol class="dd-list">
+    <!-- BEGIN: menu -->
+    <li class="dd-item dd3-item" data-id="{menu.id}" data-orderno="{menu.orderno}" data-parent="{menu.parentid}">
+        <div class="dd-handle dd3-handle"></div>
+        <div class="dd3-content">
+            <span class="dd-content-title">{menu.title}</span>
+            <a href="javascript:" class="purple frm-edit-btn-ajax icon-edit" style="float:right;" data-editUrl="/MenuCP/Menu/edit?id={menu.id}" title="Sửa menu"></a>
+            <a href="javascript:" class="black frm-delete-btn icon-trash" style="float:right;" data-id="{menu.id}" data-delUrl="/MenuCP/Menu/delete" title="Xóa"></a>
+            <a href="/MenuCP/MenuPortlet/list?menuid={menu.id}" style="float:right;" target="_blank" class="black icon-dashboard" title="Portlet menu"></a>
+        </div>
+        {child}
+    </li>
+    <!-- END: menu -->
+</ol>
+<!-- END: main -->

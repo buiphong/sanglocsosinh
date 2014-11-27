@@ -1,0 +1,41 @@
+<!-- BEGIN: main -->
+<div class="box_center_content">
+    <h1 class="title_product">{product.title}</h1>
+    <div class="info_product">
+        <div class="h375 tac">
+            <a href="{product.image_path#thumb:1000,1000}" data-lightbox="{product.title}"><img src="{product.image_path#thumb:501,375}" alt="{product.title}" class="img_501_375"/></a>
+        </div>
+        <p class="pt15 pb1" style="margin-top: 5px;">(Lượt xem: <span class="clOrange">{product.view}</span>, Phản hồi: <span class="clOrange">0</span>)</p>
+        <div class="info_d_product">
+            <p class="db ttl_d_product fwb clback">Thông tin chung</p>
+            <p class="info"><label>Danh mục chính</label>:<span>{product.category}</span></p>
+            <p class="info"><label>Tỉnh thành</label>:<span>{product.origin}</span></p>
+            <p class="info"><label>Nhóm</label>:<span>{product.attr_groups}</span></p>
+            <p class="info"><label>Gian hàng</label>:<span>{product.shop_name}</span></p>
+        </div>
+
+        <div class="info_d_product">
+            <p class="db ttl_d_product fwb clback">Thông tin chi tiết</p>
+            <p class="info"><label>Mã</label>:<span>{product.attr.code}</span></p>
+            <p class="info"><label>Giá</label>:<span>{product.price_str}</span></p>
+            <p class="info"><label>Chủng loại</label>:<span>Thông - Tùng</span></p>
+            <p class="info"><label>Dáng thế</label>:<span>{product.attr.dang_the}</span></p>
+            <p class="info"><label>Xuất xứ</label>:<span>{product.attr.origin}</span></p>
+            <p class="info"><label>Mức độ hoàn thiện</label>:<span>{product.attr.degree_perfection}</span></p>
+            <p class="info"><label>Tuổi</label>:<span>{product.attr.age} năm</span></p>
+            <p class="info"><label>Kích thước cây</label>:<span><span class="clback">Cao</span> {product.attr.tree_size_height}cm <span class="clback">Hoành</span> {product.attr.tree_size_hoanh}cm</span></p>
+            <p class="info"><label>Kích thước chậu</label>:<span><span class="clback">Cao</span> {product.attr.pots_size_height}cm <span class="clback">Dài</span> {product.attr.pots_size_long}cm <span class="clback">Rộng</span> {product.attr.pots_size_width}cm</span></p>
+            <p class="info">{product.content}</p>
+        </div>
+
+        <div class="info_d_product">
+            <p class="db ttl_d_product fwb clback">Thông tin liên hệ</p>
+            <p class="info"><label>Họ tên</label>:<span>{product.attr.contact_name}</span></p>
+            <p class="info"><label>Địa chỉ</label>:<span>{product.attr.contact_address}</span></p>
+            <p class="info"><label>Điện thoại</label>:<span>{product.attr.contact_phone}</span></p>
+            <p class="info"><label>Email</label>:<span>{product.attr.contact_email}</span></p>
+            <p class="info"><label>YM!</label>:<span>{product.attr.contact_yahoo}</span></p>
+        </div>
+    </div>
+</div>
+<!-- END: main -->

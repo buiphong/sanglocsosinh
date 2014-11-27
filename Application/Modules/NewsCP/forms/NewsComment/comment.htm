@@ -1,0 +1,69 @@
+<!-- BEGIN: main -->
+<div id="comment" >
+	<h3>Bình luận về bài viết !</h3>
+	<form action="{actionLink}" method="Post" name="frmComment" id="frmComment">
+		<input type="text" placeholder="Họ tên (*)" name="fullname" class="required textBox"/>
+		<input type="text" placeholder="Email (*)" name="email" class="required email textBox"/>
+		<textarea rows="12" cols="45" placeholder="Nội dung bình luần (*)" name="content" class="required"></textarea>
+		<label>Mã xác nhận</label>
+		<div id="captcha-border">{captcha}</div>
+		<div class="error"></div>
+		<input type="hidden" value="{newsId}" name="newsId"/>
+		<input type="button" class="btnLoad" />
+		<input type="submit" class="btnSub" value="Gửi"/>
+	</form>
+	<div class="cb"></div>
+	<h3>Ý kiến bạn đọc !</h3>
+	<hr/>
+	<!-- BEGIN: comments -->
+		<div id="commentList">
+		<!-- BEGIN: comment -->
+			<div class="commentPost">
+				<p class="commentTitle">{comment.fullname} - {comment.created_date}</p>
+				<p>{comment.content}</p>
+			</div>
+		<!-- END: comment -->
+		</div>
+	<!-- END: comments -->
+	{page}
+</div>
+<script src="http://hrcv2.local/templates/hrc/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+jQuery.extend(jQuery.validator.messages, {
+	 required: "Không được bỏ trống !",
+	 email: "Email không đúng định dạng !",
+	 minlength: "Mật khẩu phải >= 6 kí tự !",
+	 equalTo: "Mật khẩu không trùng khớp !"
+	});
+	
+$("#frmComment").validate({
+	submitHandler: function(form) {
+		$('.btnSub').hide();
+		$('.btnLoad').show();
+		$.ajax({
+			url: '{urlComment}',
+			dataType: "json",
+			type: "post",
+			data: $("#frmComment").serialize(),
+			success: function(res)
+			{				
+				$('.btnLoad').hide();
+				$('.btnSub').show();
+				if(res.success)
+				{	
+					$('#frmComment')[0].reset();
+					showNotification('Thông báo từ HRC','Bình luận đã được gửi đi.Cần phải chờ duyệt!');
+				}
+				else
+				{
+					showNotification('Thông báo từ HRC','Mã an toàn chưa đúng!');
+					$("#captcha-border").html(res.newCaptcha);
+				}
+			}
+		});
+		return false;
+	}
+});
+
+</script>
+<!-- END: main -->

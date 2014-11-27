@@ -1,0 +1,105 @@
+<!-- BEGIN: main -->
+<div id="allComment">
+<form name="frmComment" action="" id="frmComment" method="post">
+<div class="pad10">
+    <span class="fLeft">Ý kiến bạn đọc (<strong id="viewComment">{totalComment}</strong>)</span>    
+    <div class="line clearfix"></div>
+</div>
+<div class="boxComment" >
+	<div id="listComment">
+	    <ul id="CommentContainer" class="listItemGrNewsBox">	    
+	    <!-- BEGIN: comment -->
+           <li style="display: list-item; opacity: 1;">
+               <div class="padB10">
+                   <p class="clorBlue">{comment.fullname} - <span class="clor9">{comment.created_date}</span></p></div>
+               <div><p>{comment.content}</p></div>
+           </li>
+	    <!-- END: comment -->
+	    </ul>
+		<div class="boxPage">
+			{page}
+		</div>
+	</div>	
+	<div id="formComment">
+     	<p id="notice"></p>
+     	<input type="hidden" name="albumId" value="{albumId}" id="albumId"/>     	
+		<input name="fullname" type="text" id="txtName" placeholder="Họ và tên" class="required"/>
+		<br/>  
+		<textarea name="content" id="txtCommentContent" title="Nội dung" class="required texare1 replynoidung" placeholder="Nội dung" ></textarea> 
+		<div id="captcha-border">
+		      {captcha}
+		  </div>  
+		<div class="bt">
+		    <input type="reset" value="Nhập lại" class="inputResetBox"/>
+		    <input type="submit" name="btnSubmit" value="Gửi đi" id="btnSubmit" class="inputResetBox"/>                            
+		</div>
+		<div class="clearfix"></div> 
+	</div>
+</div>
+</form>
+</div>
+<script src="{appPath}/templates/vietanh/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($('#viewComment').html() == '0')
+	{
+		$('#idComment').hide();
+	}
+});
+jQuery.extend(jQuery.validator.messages, {
+	 required: "Không được bỏ trống !"
+	});
+	
+$("#frmComment").validate({
+	errorElement:'p',
+	submitHandler: function(form) {
+		$('.btnSub').hide();
+		$('.btnLoad').show();
+		$.ajax({
+			url: baseUrl+'/gallerycp/GalleryComponent/comment',
+			dataType: "json",
+			type: "post",
+			data: $("#frmComment").serialize(),
+			success: function(res)
+			{				
+				$('.btnLoad').hide();
+				$('.btnSub').show();
+				if(res.success)
+				{	
+					$('#frmComment')[0].reset();
+					$('#notice').html(res.notice);
+				}
+				else
+				{
+					showNotification('Thông báo từ HRC','Mã an toàn chưa đúng!');
+					$("#captcha-border").html(res.newCaptcha);
+				}
+			}
+		});
+		return false;
+	}
+});
+function loadPage(obj)
+{
+	$(obj).removeAttr('href');
+	albumId = $('#albumId').val();
+	page = $(obj).attr('accesskey');
+	if(page != '')
+	{
+		$.ajax({
+			url:baseUrl+'/gallerycp/GalleryComponent/pagging',
+			dataType:'json',
+			type:'post',
+			data:"page="+page+"&albumId="+albumId,
+			success: function(res)
+			{
+				if(res.success)
+				{
+					$('#allComment').html(res.html);
+				}
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

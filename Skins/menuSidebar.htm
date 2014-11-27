@@ -1,0 +1,26 @@
+<!-- BEGIN: main -->
+<div class="box-blue small">
+    <div class="box-title">
+        <div class="caption">{menuType}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <ul class="sidebar-menu">
+            <!-- BEGIN: menu -->
+            <li>
+                <a href="{menu.href}" title="{menu.title}">{menu.title}</a>
+                <!-- BEGIN: child -->
+                <ul>
+                    <!-- BEGIN: menu_child -->
+                    <li><a href="{menu_child.href}" title="{menu_child.title}">{menu_child.title}</a></li>
+                    <!-- END: menu_child -->
+                </ul>
+                <!-- END: child -->
+            </li>
+            <!-- END: menu -->
+        </ul>
+    </div>
+</div>
+<!-- END: main -->

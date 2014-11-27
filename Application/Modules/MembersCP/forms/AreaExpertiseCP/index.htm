@@ -1,0 +1,118 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý lĩnh vực chuyên môm</h1>
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{memberLink}">Quản lý lĩnh vực chuyên môm</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>{type}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+<div class="box box-color box-bordered dataTables_wrapper">
+	<div class="box-title">
+		<h3>Quản lý lĩnh vực chuyên môm</h3>
+		<div class="actions">
+			<a href="{createLink}" class="btn icon-plus btn-info" title="Thêm lĩnh vực">&nbsp;</a>
+		</div>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" action="{listLink}" name="frmList" id="frmList" style="padding: 0px; margin: 0px;">
+            <input type="hidden" name="page" id="page"/>
+            <div class="cb"></div>
+        </form>
+        <table class="table table-nomargin">
+          <tr>
+            <th width="2%">::</th>
+            <th width="20%">Lĩnh vực</th>
+            <th width="35%">Mô tả</th>
+            <th width="15%">&nbsp;</th>
+          </tr>
+        <!-- BEGIN: data -->
+          <tr>
+            <td align="center" valign="top">
+              <input type='checkbox' name='key[]' value='{data.id}'>{disabled}</td>
+            <td valign="top">{data.name}&nbsp;</td>
+            <td valign="top">{data.desc}&nbsp;</td>
+            <td valign="top">
+                <a href='{editLink}'>Sửa</a>
+            </td>
+          </tr>
+        <!-- END: data -->
+        </table>
+		{PAGE}
+		<div style="clear:both;"></div>
+		<div class="dataTables_info">			
+			<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>				
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    function loadPage(obj)
+    {
+        $("#page").val($(obj).attr("accessKey"));
+        document.frmList.submit();
+    }
+    function deleteAction()
+    {
+        var listId = "";
+        $('input[name="key[]"]:checked').each(function(){
+            if(listId == "")
+                listId = $(this).val();
+            else
+                listId += "," + $(this).val();
+            count =+ 1;
+        });
+        if (listId != '')
+        {
+            $.ajax({
+                url: "{deleteLink}",
+                type: "POST",
+                dataType: "json",
+                data: {listid: listId},
+                success: function(res){
+                    if(res.success)
+                    {
+                        $('input[name="key[]"]:checked').each(function(){
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    else
+                        alert(res.msg);
+                }
+            });
+        }
+    }
+</script>
+<!-- END: main -->
+
+
+
+
+
+
+
+
+
+
+

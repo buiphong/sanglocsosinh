@@ -1,0 +1,42 @@
+<!-- BEGIN: main -->
+<div id="div_create_product" class="pr5">
+    <h1 class="title_product">Danh sách cây đã đăng</h1>
+    <div class="product_member_post">
+        <table id="tableListPM">
+            <thead>
+                <tr>
+                    <th style="width: 3%;">::</th>
+                    <th style="width: 15%;">Ảnh đại diện</th>
+                    <th style="width: 25%;">Tên cây</th>
+                    <th style="width: 15%;">Giá bán</th>
+                    <th style="width: 30%;">Họ, tên người liên hệ</th>
+                    <th style="width: 12%;">::</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- BEGIN: listProduct -->
+                <tr>
+                    <td class="tac">{listProduct.stt}</td>
+                    <td class="tac"><a href="{listProduct.hrefdetail}"><img src="{listProduct.image_path#thumb:100,100}"/></a></td>
+                    <td>{listProduct.title}</td>
+                    <td>{listProduct.attr.price}</td>
+                    <td>{listProduct.attr.contact_name}</td>
+                    <td class="tac">
+                        <a href="{listProduct.hrefdetail}"><img src="/Templates/VuonCayCanh/img/icon-detail-pt.png" ></a>
+                        <a href="{listProduct.hrefedit}"><img src="/Templates/VuonCayCanh/img/icon-edit-pt.png"></a>
+                        <a onclick="deleteProduct('{listProduct.id}', '{listProduct.linkdel}');" href="javascript:"><img src="/Templates/VuonCayCanh/img/icon-delet-post.png" ></a>
+                    </td>
+                </tr>
+                <!-- END: listProduct -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<style type="text/css">
+    table#tableListPM {border: 1px solid #c9c9c9; border-collapse: collapse;}
+    table#tableListPM td, table#tableListPM th {border: 1px solid #c9c9c9;}
+    table#tableListPM th {padding: 10px 0;}
+    table#tableListPM td {padding: 5px 0;}
+</style>
+<!-- END: main -->

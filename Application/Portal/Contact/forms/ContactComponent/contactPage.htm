@@ -1,0 +1,86 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">Liên hệ</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <div id="div_contacts" class="ml30">
+            <!--<div class="info_contact">
+                <p class="m0 mt10"><span class="fwb fs17">Trung tâm sàng lọc sơ sinh</span></p>
+                <p class="mt10"><label class="wp100">Địa chỉ:</label><span class="fwb">{address}</span></p>
+                <p class="mt10"><label class="wp100">Điện thoại:</label><span class="fwb">{phone}</span></p>
+                <p class="mt10"><label class="wp100">Hotline:</label><span class="fwb">{hotline}</span></p>
+            </div>-->
+            <!-- BEGIN: listContact -->
+            <div class="wp340 mb10">
+                <p class="fs17 mb5">{item.title}</p>
+                <p>{item.name}</p>
+                <p>Địa chỉ: {item.address}</p>
+                <p>Hotline: {item.hotline}</p>
+            </div>
+            <!-- BEGIN: clear -->
+            <div class="cl"></div>
+            <!-- END: clear -->
+            <!-- END: listContact -->
+            <div class="info_contact mt20">
+                <h3 class="m0">Liên hệ với chúng tôi</h3>
+                <form id="frmContacts" class="frmCm wp440 pt5" action="{form_action}" method="POST">
+                    <div class="controls-group">
+                        <label>Họ và tên</label>
+                        <div class="fl"><input type="text" name="fullname" value="" /></div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label>Email <font class="clred">*</font></label>
+                        <div class="fl"><input type="text" name="email" value="" class="required email"/></div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label>Địa chỉ</label>
+                        <div class="fl"><input type="text" name="address" value="" class=""/></div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label>Điện thoại</label>
+                        <div class="fl"><input type="text" name="phone" value="" class=""/></div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label class="wp175">Tiêu đề<font class="clred">*</font></label>
+                        <div class="fl"><input type="text" name="title" value="" class="required"/></div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label>Nội dung<font class="clred">*</font></label>
+                        <div class="fl">
+                            <textarea name="content" cols="50" rows="10"></textarea>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+
+                    <div class="controls-group">
+                        <label class="fl"></label>
+                        <div class="ft_notify fl">
+
+                        </div>
+                    </div>
+
+                    <div class="ct-button tac ml10">
+                        <input type="submit" value="Gửi" class="clwhite btn blue bg_gradient p5x0 wp75" id="bt_SendContact"/>
+                        <img class="loading dpn" src="/Templates/SLSS/img/loading.gif" />
+                        <input type="reset" value="Nhập lại" class="clwhite btn blue bg_gradient p5x0 wp75 ml20" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: main -->

@@ -1,0 +1,86 @@
+<!-- BEGIN: main -->
+<h3>Quản lý menu</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{sysMenuLink}">Menu hệ thống</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">{title}</div>
+		<div class="tools">
+            <a href='{addLink}' class="icon-plus btn-info" title="Thêm menu">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmsystemmenu" id="frmsystemmenu">
+			<table class="table">
+					  <tr>
+						<th width="2%">::</th>
+						<th>Tên menu</th>
+					    <th>Chức năng</th>
+					    <th>Sắp xếp</th>
+						<th width="5%">&nbsp;</th>
+					  </tr>
+					<!-- BEGIN: systemmenu -->
+					  <tr>
+						<td align="center" valign="top">
+						  <input type='checkbox' name='key[]' value='{systemmenu.id}'>{disabled}</td>
+					    <td valign="top">{systemmenu.title}</td>
+
+					    <td valign="top">{systemmenu.actionid}&nbsp;</td>
+
+					    <td valign="top">{systemmenu.orderno}&nbsp;</td>
+						<td width="5%" valign="top"><a href='{editLink}'>{common.edit} Sửa</a></td>
+
+					  </tr>
+					<!-- END: systemmenu -->
+			</table>
+		</form>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

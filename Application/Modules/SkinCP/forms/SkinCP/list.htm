@@ -1,0 +1,91 @@
+<!-- BEGIN: main -->
+<h3>Quản lý Skin</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="more-login.html">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-basic.html">Quản lý Portlet</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-dynamic.html">{portlet}</a>
+    </li>
+</ul>
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption">Danh sách Skin</div>
+		<div class="tools">
+			<a href='{createLink}' class="add-button"><span>Thêm Skin</span></a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmportlet" id="frmportlet">
+			<table class="table">
+			  <tr>
+				<th width="2%">::</th>
+				<th width="40%">Tham số</th>
+				<th width="40%">Tên file</th>
+				<th width="15%"></th>
+			  </tr>
+			<!-- BEGIN: skin -->
+			<tr>
+				<td align="center" valign="top">
+					<input type='checkbox' name='key[]' value='{skin.name}'>
+				</td>
+				<td valign="top">{skin.name}</td>
+				<td valign="top">{skin.file}</td>
+				<td valign="top">
+					<a href='{editLink}'>Sửa</a>
+				</td>
+			</tr>
+			<!-- END: skin -->
+			</table>
+		</form>
+		<input type="hidden" name="page" id="page"/>
+		{PAGE}
+		<div class="cb"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+				<button class="btn btn-primary" onClick="deleteAction()">Xóa mục đã chọn</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj){
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmportlet.submit();
+}
+function deleteAction(){
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != ''){
+		if(confirm("Bạn thực sự muốn xóa?")){
+			$.ajax({
+				url: "{deleteLink}",
+				type: "POST",
+				dataType: "json",
+				data: {listid: listId},
+				success: function(res){
+					if(res.success){
+						window.location.reload();
+					}
+					else
+						alert(res.msg);
+				}
+			});
+		}
+	}
+}
+</script>
+<!-- END: main -->

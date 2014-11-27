@@ -1,0 +1,100 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+    <div class="pull-left">
+        <h1>Quản lý nhóm thành viên</h1>
+    </div>
+</div>
+
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a href="{homeCPLink}">Home</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="{memberLink}">Quản lý thành viên</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="{memTypeLink}">Nhóm thành viên</a>
+        </li>
+    </ul>
+    <div class="close-bread">
+        <a href="#">
+            <i class="icon-remove"></i>
+        </a>
+    </div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Loại menu</h3>
+		<div class="actions">
+			<a class="add-button" href='{addLink}' class="regular"><span>Thêm nhóm</span></a>
+		</div>
+	</div>
+	<div class="box-content nopadding dataTables_wrapper">
+		<form method="post" action="{listLink}" name="frmsystemmenu" id="frmsystemmenu">
+			<table class="table">
+					  <tr>
+						<th width="2%">::</th>
+						<th>Tên nhóm</th>
+					    <th>Mô tả</th>
+						<th width="5%">&nbsp;</th>
+					  </tr>
+					<!-- BEGIN: type -->
+					  <tr>
+						<td align="center" valign="top">
+						  <input type='checkbox' name='key[]' value='{type.id}'>{disabled}</td>
+					    <td valign="top"><a href="{listMember}">{type.name}</a></td>
+					  
+					    <td valign="top">{type.desc}&nbsp;</td>
+						<td width="5%" valign="top"><a href='{editLink}?key={type.id}'>Sửa</a></td>
+					
+					  </tr>
+					<!-- END: type -->
+			</table>
+		</form>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+			<button class="btn btn-primary" onclick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" data-toggle="modal" role="button" href="#modal-3">Xóa mục đã chọn</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+		count =+ 1;
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

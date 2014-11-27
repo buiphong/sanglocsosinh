@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layoutParam>
+	<navigation>
+		<module>MenuCP</module>
+		<controller>SystemMenu</controller>
+		<action>genMenu</action>
+		<params></params>
+	</navigation>
+	<userinfo>
+		<module>UsersCP</module>
+		<controller>Users</controller>
+		<action>showUserInfo</action>
+		<params></params>
+	</userinfo>
+	<rightmenu>
+		<module>MenuCP</module>
+		<controller>SystemMenu</controller>
+		<action>rightMenu</action>
+	</rightmenu>
+	<languageChange>
+		<module>LanguagesCP</module>
+		<controller>LanguageCP</controller>
+		<action>changeLanguage</action>
+	</languageChange>
+</layoutParam>
