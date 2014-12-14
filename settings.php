@@ -59,7 +59,7 @@ $dbConfig = array(
 			'username' => 'root',
 			'port' => '3306',
 			'password' => '',
-			'dbname' => 'bionet_website',
+			'dbname' => 'bionet_slss',
 	)
 	/*'mongodb' => array(
 			'server' => '172.16.2.99',

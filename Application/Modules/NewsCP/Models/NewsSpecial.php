@@ -23,17 +23,30 @@ class Models_NewsSpecial extends PTModel
     /**
      * Get list special news
      */
-    public static function getListNews($typeId, $limit = 0)
+    public static function getListNews($typeId=0, $limit = 0, $offset = 0)
     {
         $modelNewsS = self::getInstance();
         if(empty($limit))
             $limit = 7;
         if(MULTI_LANGUAGE && $_SESSION['langcode'])
             $modelNewsS->db->where('news_special.lang_code', $_SESSION['langcode']);
-
+        if(is_numeric($typeId) && $typeId > 0)
+            $modelNewsS->db->where('special_type', $typeId);
         $newsS = $modelNewsS->db->select('news.*')->join('news',"news.id = news_special.news_id")->
-            where('special_type',$typeId)->where('news.status', 1)->orderby('orderno','asc')->limit($limit)->getcFieldsArray();
+            where('news.status', 1)->orderby('orderno','asc')->limit($limit, $offset)->getcFieldsArray();
         return $newsS;
+    }
+
+    /**
+     * Count special news by type
+     */
+    public static function countByType($typeId)
+    {
+        if(!is_numeric($typeId) || $typeId == 0)
+            return false;
+        $model = self::getInstance();
+        return $model->db->join('news',"news.id = news_special.news_id")->
+        where('news.status', 1)->where('news_special.special_type', $typeId)->count(true);
     }
 
     /**

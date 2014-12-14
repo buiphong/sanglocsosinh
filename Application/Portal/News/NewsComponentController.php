@@ -146,6 +146,10 @@ class NewsComponentController extends Presentation
                 $start = $start + $v;
             }
         }
+        //Set skin
+        if(isset($this->params['skin']) && !empty($this->params['skin']))
+            $this->setView($this->params['skin'], true);
+
         $offset = ($page - 1) * $display;
 		$catId = @$this->params['catId'];
         $cat = $modelCat->db->select('id,url_title,title,description')->where('id',$catId)->getcFields();
@@ -205,6 +209,17 @@ class NewsComponentController extends Presentation
                 $html = $this->paggingNews($params);
                 if(!empty($html))
                     $this->tpl->assign("pagging", $html);
+
+                if($totalRow / $display > 1)
+                {
+                    $paging = Helper::getPaging($totalRow, $display, $page, 3);
+                    for($i = $paging['start']; $i <= $paging['end']; $i++) {
+                        $this->tpl->assign('class', '');
+                        if($i == $page)
+                            $this->tpl->assign('class', 'sp_current');
+                        $this->tpl->insert_loop('main.ajaxPaging', 'page', $i);
+                    }
+                }
             }
             else
             {
@@ -222,9 +237,23 @@ class NewsComponentController extends Presentation
             $cat['title'] .= ' - ' . $date . '/' . $month . '/' . $year;
         $this->tpl->assign('date', date('d/m/Y', time()));
         $this->tpl->assign('baseUrl', $this->url->action('listNewsCat', array('catId' => $cat['id'], 'catname' => $cat['url_title'])));
+
+        $this->tpl->assign('ajaxUrl', $this->url->action('listNewsCat'));
+        $this->tpl->assign('ajaxParams', base64_encode(serialize(
+            array('catId' => $catId, 'display' => $display,
+                'page' => $page, 'skin' => $this->tpl->skin))));
+
         $this->viewParam->title = $cat['title'];
 		return $this->view();
 	}
+
+    public function listNewsCatAjax()
+    {
+        $params = unserialize(base64_decode($this->params['data']));
+        $data = array('catId' => $params['catId'], 'page' => $params['page'] + 1, 'display' => $params['display'],
+            'skin' => $params['skin']);
+        return json_encode(array('success' => true, 'html' => $this->html->renderAction('listNewsCat', $data)));
+    }
 
     public function listNewsCatAjaxAction()
     {

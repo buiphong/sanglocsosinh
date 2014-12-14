@@ -191,6 +191,25 @@ $(document).ready(function(){
             $("#online-total").html(res.online.total);
         }
     });
+
+    if($(".ajax-snews").length > 0){
+        $('body').on('click', '.ajax-snews', function(){
+            var obj = $(this);
+            var parent = $(this).parent();
+            $.ajax({
+                url: parent.children('input[name=ajaxUrl]').val(),
+                dataType: "json",
+                type: "POST",
+                data: {data: parent.children('input[name=ajaxParams]').val()},
+                success: function(res)
+                {
+                    if(res.success){
+                        obj.closest('.ajax-border').replaceWith(res.html);
+                    }
+                }
+            });
+        });
+    }
 });
 
 $('body').on('submit', '.ajax-form', function(){
