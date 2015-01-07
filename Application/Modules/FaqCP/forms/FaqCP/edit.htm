@@ -1,0 +1,78 @@
+<!-- BEGIN: main -->
+<h3>Quản lý FAQ</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a>Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>FAQ</a>
+    </li>
+</ul>
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered">
+	<div class="portlet box grey">
+		<div class="portlet-title">
+			<div class="caption">Cập nhật FAQ</div>
+		</div>
+		<div class="portlet-body">
+            <div class="control-group">
+                <label for="textfield" class="control-label">Danh mục</label>
+                <div class="controls">
+                    {category}
+                </div>
+            </div>
+
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Câu hỏi</label>
+				<div class="controls">
+				<textarea class="span6 m-wrap areaBasic required" type="text" name="question" id="question" rows="4" cols="150">{model.question}</textarea>
+				</div>
+			</div>
+			
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Trả lời</label>
+				<div class="controls">
+				<textarea class="field required" type="text" name="answer" id="detail_content" rows="10" cols="87">{model.answer}</textarea>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label for="textfield" class="control-label">Thứ tự</label>
+				<div class="controls">
+					<input class="field" type="text" name="orderno" id="orderno" size=35 value="{model.orderno}">				
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label for="textfield" class="control-label">Trạng thái</label>
+				<div class="controls">
+					{rdStatus}
+				</div>
+			</div>							
+		</div>
+	</div>		
+	<div class="form-actions">
+		<input name="id" type="hidden" id="key" value="{model.id}">
+		<button type="submit" class="btn btn-primary">Ghi lại</button>
+		<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+	</div>	
+</form>
+{AFTER_FORM}
+<script src="{appPath}/Packages/editor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{appPath}/Application/Modules/FaqCP/js/faqs.js"></script>
+<!-- END: main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

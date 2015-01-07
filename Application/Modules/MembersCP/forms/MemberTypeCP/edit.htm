@@ -1,0 +1,76 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý nhóm thành viên</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{memberLink}">Quản lý thành viên</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{memTypeLink}">Nhóm thành viên</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>Nhóm thành viên</h3>
+			</div>
+			<div class="box-content nopadding">
+				<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmSystemMenuType" class="form-horizontal form-bordered frmValidate">
+					<div class="control-group">
+						<label for="name" class="control-label">Tên nhóm</label>
+						<div class="controls">
+							<input class="field required" type="text" name="name" id="name" size=40 value="{model.name}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="desc" class="control-label">Mô tả</label>
+						<div class="controls">
+							<textarea class="field" name="desc" id="desc" rows=5 cols=50>{model.desc}</textarea>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Ghi lại</button>
+                        <!--onclick="document.frmSystemMenuType.submit()"-->
+						<button type="button" class="btn" onclick="location.href='{listLink}'">Bỏ qua</button>
+					</div>
+					<input type="hidden" name="id" id="__pkey" value="{model.id}">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+// - make primary key readonly on edit
+pkeyname = document.getElementById("__pkey").value;
+pkeyobj = document.getElementById(pkeyname);
+if (pkeyobj){
+	if (document.getElementById("key").value!="") pkeyobj.readOnly = true;
+}
+// - set focus
+objArr = document.getElementsByTagName("input");
+if (objArr) {
+	firstObj = objArr[0];
+	if (!firstObj.readOnly) {
+		firstObj.focus();
+	} 
+}
+</script>
+<!-- END: main -->

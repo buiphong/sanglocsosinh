@@ -1,0 +1,43 @@
+<!-- BEGIN: main -->
+<div class="box_center_content">
+    <h1 class="title_product">{shop.name}</h1>
+    <div class="info_product">
+        <img src="{shop.image_path#thumb:501,375}" alt="{shop.name}"/>
+        <p class="pt15 pb15">(Lượt xem: <span class="clOrange">{shop.view}</span>)</p>
+        <div class="info_d_product">
+            <p class="db ttl_d_product fwb clback">Thông tin chi tiết</p>
+            <p><label>Loại gian hàng</label>:<span>{shop.type}</span></p>
+            <p><label>Mã gian hàng</label>:<span>{shop.attr.code}</span></p>
+            <p><label>Số sản phẩm</label>:<span>{shop.totalProduct}</span></p>
+            <p><label>Tỉnh/TP</label>:<span>{shop.attr.province}</span></p>
+            <p><label>Ngày mở</label>:<span>{shop.attr.start_time}</span></p>
+            <p><label>Đăng bởi</label>:<span>{shop.fullname}</span></p>
+        </div>
+
+        <div class="info_d_product">
+            <p class="db ttl_d_product fwb clback">Thông tin chi tiết</p>
+            <p>{shop.description}</p>
+        </div>
+    </div>
+</div>
+
+<div class="box_tree_same">
+    <h2 class="fwb ttu tl_tree_cm">
+        <span>Sản phẩm có trong gian hàng</span>
+    </h2>
+
+    <ul class="ul_box_tree_same oh m0 p0 lsn">
+        <!-- BEGIN: product -->
+        <li class="li_box_tree_same {product.class}">
+            <a href="javascript:"><img src="{product.image_path#thumb:155,115}"  alt="{product.title}"/></a>
+            <a href="javascript:" class="fwb mt10 pb5 mb10">{product.title}</a>
+            <p><label class="mr5">Giá:</label><span>{product.price_str}</span></p>
+            <p><label class="mr5">Tỉnh/TP:</label><span>{product.attr.origin}</span></p>
+        </li>
+        <!-- END: product -->
+        <!-- BEGIN: clearDiv -->
+        <div class="cl"></div>
+        <!-- END: clearDiv -->
+    </ul>
+</div>
+<!-- END: main -->

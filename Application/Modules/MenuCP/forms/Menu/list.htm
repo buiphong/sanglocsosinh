@@ -1,0 +1,58 @@
+<!-- BEGIN: main -->
+<h3 class="page-title">
+    Quản lý Menu
+</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{menuLink}">Quản lý menu</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Danh sách menu</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">Loại Menu</div>
+                <div class="actions">
+                    <a href="#add" class="btn btn-mini content-refresh" id="btn-addMenuType"><i class="icon-plus"></i></a>
+                </div>
+            </div>
+            <div class="portlet-body fuelux" id="sidebarMenuType-content">
+                {menuType}
+            </div>
+        </div>
+    </div>
+    <div class="span9">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    {title}
+                </div>
+                <div class="actions">
+                    <a href="#add" class="btn btn-mini" id="add-menu-btn"><i class="icon-plus"></i></a>
+                </div>
+            </div>
+            <div class="portlet-body fuelux">
+                {listMenu}
+                <input type="hidden" id="type_id" value="{type}"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/jquery-nestable/jquery.nestable.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/jquery-nestable/jquery.nestable.js,
+Application/Modules/MenuCP/js/menu-cp.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

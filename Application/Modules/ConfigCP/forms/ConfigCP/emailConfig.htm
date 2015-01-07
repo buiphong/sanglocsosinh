@@ -1,0 +1,85 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Cấu hình website</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{groupLink}">Cấu hình website</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>Cấu hình email</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box">
+	<div class="box-title">
+		<h3>Cấu hình email</h3>
+	</div>
+	<div class="box-content">
+		<table id="user" class="table table-bordered table-striped table-force-topborder" style="clear: both">
+			<tbody> 
+				<tr>         
+					<td width="15%">From email</td>
+					<td width="50%"><a href="#" id="from_email" data-original-title="From email" class="editable editable-click">{conf.from_email}</a></td>
+					<td width="35%" class="hidden-480"><span class="muted">Địa chỉ email gửi</span></td>
+				</tr>
+				<tr>         
+					<td>From name</td>
+					<td><a href="#" id="from_name" data-type="text" data-placement="right" data-placeholder="Required" data-original-title="From name" class="editable editable-click editable-empty">{conf.from_name}</a></td>
+					<td class="hidden-480"><span class="muted">Tên người gửi</span></td>
+				</tr>  
+				<tr>         
+					<td>Send type</td>
+					<td><a href="#" id="send_type" data-original-title="Send type (SMTP|PHP mail)" class="editable editable-click" style="color: gray;">{conf.send_type}</a></td>
+					<td class="hidden-480"><span class="muted">Dạng gửi mail (SMTP hoặc PHP mail())</span></td>
+				</tr>
+				<tr>         
+					<td>Host</td>
+					<td><a href="#" id="email_host" data-original-title="Config email host" class="editable editable-click">{conf.email_host}</a></td>
+					<td class="hidden-480"><span class="muted">Địa chỉ host dùng để gửi mail</span></td>
+				</tr> 
+				<tr>         
+					<td>Port</td>
+					<td><a href="#" id="email_port" data-original-title="Config email port" class="editable editable-click">{conf.email_port}</a></td>
+					<td class="hidden-480"><span class="muted">Port</span></td>
+				</tr>       
+				<!--<tr>         
+					<td>Authentication?</td>
+					<td><a href="#" id="email_auth" data-type="date" data-viewformat="dd.mm.yyyy" data-pk="1" data-placement="right" data-original-title="When you want vacation to start?" class="editable editable-click">{conf.from_name}</a></td>
+					<td class="hidden-480"><span class="muted">Yêu cầu đăng nhập?</span></td>
+				</tr> -->
+				<tr>         
+					<td>Username</td>
+					<td><a href="#" id="username" data-value="" data-original-title="Change username" class="editable editable-click">{conf.username}</a></td>
+					<td class="hidden-480"><span class="muted"></span></td>
+				</tr> 
+				<tr>         
+					<td>Password</td>
+					<td><a href="#" id="password" data-pk="1" data-original-title="Setup event date and time" class="editable editable-click"></a></td>
+					<td class="hidden-480"><span class="muted"></span></td>
+				</tr>
+				<input type="hidden" id="pKey" value="{conf.id}"/>                     
+			</tbody>
+		</table>
+        <div>
+            Test SendMail:<input type="text" name="email_test" id="email_test"/><button onclick="sendMailTest()">Send</button>
+        </div>
+	</div>
+</div>
+<script type="text/javascript" src="{appPath}/Application/Modules/ConfigCP/js/emailconf.js"></script>
+<!-- END: main -->

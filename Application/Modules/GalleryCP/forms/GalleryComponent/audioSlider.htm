@@ -1,0 +1,70 @@
+<!-- BEGIN: main -->
+<div class="body_resize">
+	<div class="mt10 mb10 clear_fix">			
+		<link rel="stylesheet" href="{appPath}/templates/bvdktn/css/galleria.classic.css" type="text/css">
+		<link rel="stylesheet" href="{appPath}/templates/bvdktn/css/style_gallery.css" type="text/css">
+		<div class="clear_fix main_content has_seperator x656 home_layout">
+			<div class="fl clear_fix pb5 w100">
+				<div class="detail1 fl mt10" style="background:#333">
+					<div id="galleria" style="position:relative;">
+						<div id="title"></div>
+					</div>
+				</div>
+			</div> 
+		</div>
+		<div class="clear_fix"></div>
+		<div class="clear_fix" id="listAudioAlbum">
+		</div>
+		<!--END: RIGHT COL-->
+	</div>
+	<!--END: MAIN CONTENT-->
+</div>
+<link rel="stylesheet" type="text/css" href="{appPath}/Application/Modules/gallerycp/plugin/css/style.css">
+<!--link rel="stylesheet" type="text/css" href="{appPath}/Application/Modules/gallerycp/css/demo.css"-->
+<script type="text/javascript" src="{appPath}/Application/Modules/gallerycp/plugin/jquery-jplayer/jquery.jplayer.js"></script>
+<script type="text/javascript" src="{appPath}/Application/Modules/gallerycp/plugin/ttw-music-player-min.js"></script>
+<script type="text/javascript">
+	var myPlaylist = [
+		<!-- BEGIN: audios -->
+		{
+			mp3:'{appPath}{audios.audio_path}',
+			title:'{audios.title}',
+			artist:'{audios.name}',
+			rating:5,
+			duration:'{audios.playtime_string}',
+			buy:'?audioID={audios.id}',
+			cover:'{appPath}{audios.img_path}'
+		}{audios.comma}
+		<!-- END: audios -->
+	];
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		loadListGalleryAlbum(1);
+		$('#title').ttwMusicPlayer(myPlaylist, {
+			autoPlay:true, 
+			jPlayer:{
+				swfPath:'{appPath}/Application/Modules/gallerycp/plugin/jquery-jplayer'
+			}
+		});
+	});
+	function loadListGalleryAlbum(page){
+		$.ajax({
+			url: "{listAudioAlbum}",
+			type: "POST",
+			dataType: "json",
+			data: {page: page},
+			success: function(res){
+				if(res.success)
+				{
+					$('#listAudioAlbum').html(res.html);
+				}
+				else
+					alert(res.msg);
+			}
+		});
+		return false;
+	}
+</script>
+<!-- END: main -->

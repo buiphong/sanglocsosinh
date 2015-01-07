@@ -1,0 +1,92 @@
+<!-- BEGIN: main -->
+<h3>Quản lý đối tác</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Danh sách đối tác</a>
+    </li>
+</ul>
+<div class="portlet box grey">
+    <div class="portlet-title">
+        <div class="caption">Danh sách đối tác</div>
+        <div class="tools">
+            <a href='{createLink}' class="icon-plus btn-info" title="Thêm đối tác">&nbsp;</a>
+        </div>
+    </div>
+    <div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmList" id="frmList">
+			<table class="table table-nomargin">
+				<tr>
+					<th width="2%">::</th>
+					<th width="15%">Tên đối tác</th>
+					<th width="20%">Hình ảnh</th>
+					<th width="15%">Thứ tự</th>
+					<th width="15%">&nbsp;</th>
+				</tr>
+				<!-- BEGIN: partner -->
+				<tr>
+					<td align="center" valign="top">
+						<input type='checkbox' name='key[]' value='{partner.id}'>{disabled}</td>
+					<td valign="top">{partner.name}&nbsp;</td>
+					<td valign="top"><img src="{partner.image#thumb:0,70}"/></td>
+					<td valign="top">{partner.orderno}&nbsp;</td>
+					<td valign="top">
+						<a href='{editLink}'> Sửa</a>
+					</td>
+				</tr>
+				<!-- END: partner -->
+			</table>
+			<input type="hidden" name="page" id="page"/>
+		</form>
+		{PAGE}
+		<div style="clear: both"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmList.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+					$('input[name="key[]"]:checked').each(function(){
+						$(this).parent().parent().remove();
+					});
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

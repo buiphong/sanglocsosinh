@@ -1,0 +1,35 @@
+
+<!-- BEGIN: main -->
+{BEFORE_TITLE}
+<p class="amtitle">{labels.roles}</p>
+&nbsp;<br>
+{BEFORE_FORM}
+<form method="post" action="" name="frmroles">
+<table width="100%"  border="0" cellspacing="1" cellpadding="3">
+<tr>
+    <td width="25%" class="tdlabel" valign="top" nowrap>{labels.name}</td>
+    <td width="75%" class="tdview">{roles.name}&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td width="25%" class="tdlabel" valign="top" nowrap>{labels.description}</td>
+    <td width="75%" class="tdview">{roles.description}&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td width="25%" class="tdlabel" valign="top" nowrap>{labels.status}</td>
+    <td width="75%" class="tdview">{roles.status}&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td width="25%" class="tdlabel" valign="top" nowrap>{labels.actions}</td>
+    <td width="75%" class="tdview">{roles.actions}&nbsp;</td>
+  </tr>  
+  <tr>
+    <td class="tdlabel">&nbsp;</td>
+    <td class="tdlist"><input type='button' class='btn' value='{common.goback}' onClick="history.go( -1);"></td>
+  </tr>
+</table>
+</form>
+{AFTER_FORM}
+<!-- END: main -->

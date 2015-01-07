@@ -1,0 +1,58 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+	<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Album cha</label>
+			<div class="controls">
+				{parent_id}
+			</div>
+		</div>
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Tên album</label>
+			<div class="controls">
+				<input class="field required" type="text" name="name" id="name" size=40 value="{model.name}" />
+			</div>
+		</div>
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field jhtmlarea" name="desc" id="description" rows=5 cols=60>{model.desc}</textarea>
+			</div>
+		</div>	
+        <div class="control-group">
+            <label for="textfield" class="control-label">Avatar</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    <input type="text" placeholder="" class="input-xlarge" name="avatar" id="avatar_edit" value="{model.avatar}">
+                    <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('avatar_edit')" value="Quản lý file"/>
+                </div>
+            </div>
+        </div>
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Thứ tự</label>
+			<div class="controls">
+				<input type="text" class="field" name="orderno" id="orderno" value="{model.orderno}"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="status" class="control-label">Trạng thái</label>
+			<div class="controls">
+				<input type="hidden" name="status" value="0">
+				<input class="field" type="checkbox" name="status" id="status" value="1" {checked}/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="javascript:" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<script>
+    function openFileBrowser(id)
+    {
+        fileBrowserlink = baseUrl + "/Packages/pdw_file_browser/index.php?editor=standalone&returnID=" + id;
+        window.open(fileBrowserlink,'pdwfilebrowser', 'width=900,height=650,scrollbars=no,toolbar=no,location=no');
+    }
+</script>
+<!-- END: main -->

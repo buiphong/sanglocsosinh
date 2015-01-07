@@ -1,0 +1,138 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý profile nhóm thành viên</h1>
+	</div>
+</div>
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a>Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>Quản lý thành viên</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>Quản lý profile nhóm thành viên</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+</div>
+</div>
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+<div class="row-fluid">
+<!--Thông tin công ty-->
+	<div class="span3">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>Nhóm thành viên</h3>
+			</div>
+			<div class="box-content">
+				{sidebarType}
+			</div>
+		</div>
+	</div>
+<!--Thông tin liên hệ-->	
+	<div class="span9">
+	<div class="box box-color box-bordered">
+		<div class="box-title">
+			<h3>Cập nhật thông tin trường</h3>
+		</div>
+		<div class="box-content nopadding">
+            <div class="control-group">
+                <label for="memtype_id" class="control-label">Nhóm thành viên</label>
+                <div class="controls">
+                    <div class="input-large">
+                        {cmbMemType}
+                    </div>
+                </div>
+            </div>
+			<div class="control-group">		  
+				<label for="field_code" class="control-label">Mã trường</label>
+				<div class="controls">
+                    <input class="field required" type="text" name="field_code" id="field_code" size=40 value="{model.field_code}">
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="field_name" class="control-label">Tên trường</label>
+				<div class="controls">
+					<input class="field required" type="text" name="field_name" id="field_name" size=40 value="{model.field_name}">
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="field_type" class="control-label">Kiểu giá trị</label>
+				<div class="controls">
+                    <div class="input-large">
+					{cmbFieldType}
+                    </div>
+				</div>
+			</div>
+            <div class="control-group" id="fieldVal" data-view="{view}">
+                <label for="field_type" class="control-label">Giá trị</label>
+                <div class="controls">
+                    <div class="input-large">
+                        <textarea  name="field_type_value" placeholder="{valDefault}" data-type="{model.field_type}" id="field_type_value" style="width:400px;height:120px;">{model.field_type_value}</textarea>
+                    </div>
+                </div>
+            </div>
+			<div class="control-group">		  
+				<label for="input_type" class="control-label">Kiểu nhập</label>
+				<div class="controls">
+                    <div class="input-large">
+					{cmbInputType}
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">		  
+				<label for="orderno" class="control-label">Thứ tự</label>
+				<div class="controls">
+					<input type="text" name="orderno" id="orderno" value="{model.orderno}"/>
+				</div>
+			</div>
+		</div>
+	</div>	
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+            <!-- BEGIN: saveAdd -->
+            <button type="submit" class="btn btn-primary" name="save_add">Thêm tiếp</button>
+            <!-- END: saveAdd -->
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>
+	</div>	
+</div>			
+</form>
+<script>
+    $(document).ready(function(){
+        if($('#fieldVal').attr('data-view') != '1')
+            $('#fieldVal').hide();
+        fieldVal = $('#field_type_value').val();
+        $('#field_type').live('change',function(){
+           if($(this).val() == 'table')
+           {
+               $('#field_type_value').attr('placeholder','Nhập vào đoạn text có dạng: table : table_name | value_field : name_field | display_field : name_field');
+               if($('#field_type_value').attr('data-type') == "table")
+                    $('#field_type_value').val(fieldVal);
+               else
+                   $('#field_type_value').val('');
+               $('#fieldVal').show();
+           }
+           else if($(this).val() == 'array')
+           {
+               $('#field_type_value').attr('placeholder','Nhập vào đoạn text có dạng: key1 : value1 | key2 : value2 | ...');
+               if($('#field_type_value').attr('data-type') == "array")
+                   $('#field_type_value').val(fieldVal);
+               else
+                   $('#field_type_value').val('');
+               $('#fieldVal').show();
+           }
+           else
+               $('#fieldVal').hide();
+        });
+    });
+</script>
+<!-- END: main -->

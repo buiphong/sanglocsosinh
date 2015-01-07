@@ -1,0 +1,138 @@
+<!-- BEGIN: main -->
+<h3>Quản lý danh mục FAQ</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{cphomeLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{employerLink}">FAQ</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listEmployerLink}">Danh sách</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">Danh sách FAQ {catName}</div>
+            <div class="tools">
+                <a href='{createLink}' class="add-button"><span>Thêm mới</span></a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            {mastertable}
+            <form method="post" action="{listLink}" name="frmList" id="frmList">
+            <table class="table table-nomargin">
+              <tr>
+                <th width="2%">::</th>
+                <th width="40%">Danh mục</th>
+                <th width="20%">Thứ tự</th>
+                <th width="8%">&nbsp;</th>
+              </tr>
+            <!-- BEGIN: faq -->
+              <tr>
+                <td align="center" valign="top">
+                  <input type='checkbox' name='key[]' value='{faq.id}'>{disabled}</td>
+                <td valign="top">{faq.name}&nbsp;</td>
+                <td valign="top">
+                    <span class="orderno" data-id="{faq.id}" data-order ="{faq.orderno}">{faq.orderno}</span>
+                    <!-- BEGIN: push -->
+                    <span class="table-btn icon-circle-arrow-up" onclick="pushUpCat(this)"></span>
+                    <!-- END: push -->
+                    <!-- BEGIN: down -->
+                    <span class="table-btn icon-circle-arrow-down" data-active="down" onclick="pushUpCat(this)"></span>
+                    <!-- END: down -->
+                </td>
+                <td valign="top">
+                    <a href='{faq.editLink}'> Sửa</a>
+                </td>
+              </tr>
+            <!-- END: faq -->
+            </table>
+            <div class="pagging" id="pagging-task">
+                {PAGE}
+            </div>
+            <input type="hidden" name="page" id="page"/>
+            </form>
+            {AFTER_FORM}
+            <!-- BEGIN: button -->
+                <button class="btn btn-info" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteCatAction);" >
+                    <i class="icon-trash"> Xóa mục đã chọn</i>
+                </button>
+            <!-- END: button -->
+        </div>
+    </div>
+</div>
+<script src="{appPath}/Application/Modules/FaqCP/js/faqs.js" ></script>
+<script>
+    function deleteCatAction()
+    {
+        var listId = "";
+        $('input[name="key[]"]:checked').each(function(){
+            if(listId == "")
+                listId = $(this).val();
+            else
+                listId += "," + $(this).val();
+        });
+        if (listId != '')
+        {
+            $.ajax({
+                url: "{deleteLink}",
+                type: "POST",
+                dataType: "json",
+                data: {listid: listId},
+                success: function(res){
+                    if(res.success)
+                    {
+                        $('input[name="key[]"]:checked').each(function(){
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    else
+                        alert(res.msg);
+                }
+            });
+        }
+    }
+
+    function pushUpCat(obj)
+    {
+        idPrev = $(obj).parents().parents().prev().find('.orderno').attr('data-id');
+        orderPrev = $(obj).parents().parents().prev().find('.orderno').attr('data-order');
+        if($(obj).attr('data-active') == "down")
+        {
+            idPrev = $(obj).parents().parents().next().find('.orderno').attr('data-id');
+            orderPrev = $(obj).parents().parents().next().find('.orderno').attr('data-order');
+        }
+
+        orderno = $(obj).parents().children('.orderno').attr('data-order');
+        id = $(obj).parents().children('.orderno').attr('data-id');
+        if(orderno != '')
+        {
+            $.ajax({
+                url: baseUrl+"/FaqCP/FaqCategoryCP/pushUp",
+                type: 'post',
+                dataType: 'json',
+                data:"orderno="+orderno+"&id="+id+"&orderPrev="+orderPrev+"&idPrev="+idPrev,
+                success: function(res)
+                {
+                    if(res.success)
+                    {
+                        window.location.href = 	res.link;
+                    }
+                    else
+                    {
+                        alert(res.msg);
+                    }
+                }
+            });
+        }
+    }
+</script>
+<!-- END: main -->
+
+

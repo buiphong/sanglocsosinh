@@ -1,0 +1,53 @@
+<!-- BEGIN: main -->
+<div id="main" style="margin:0px !important;">
+<div class="container-fluid">
+<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered">
+<!--Thông tin công ty-->
+	<div class="span7">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>Thông tin bình luận</h3>
+			</div>		
+			<div class="box-content nopadding">		
+				<div class="control-group">		  
+					<b class="control-label">Họ tên</b>
+					<div class="controls">
+						{model.fullname}
+					</div>
+				</div>
+				
+				<div class="control-group">		  
+					<b class="control-label">Email</b>
+					<div class="controls">
+						{model.email}		
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<b class="control-label">Nội dung</b>
+					<div class="controls">
+						{model.content}	
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<b class="control-label">Ngày tạo</b>
+					<div class="controls">
+						{model.created_date}				
+					</div>
+				</div>
+				<input name="id" type="hidden" id="key" value="{model.id}"/>			
+			</div>
+			<!-- BEGIN: button -->
+			<div>	
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Duyệt tin</button>						
+				</div>
+			</div>
+			<!-- END: button -->						
+			</div>
+		</div>
+</form>
+</div><!-- end .container-fluid -->
+</div><!-- end #main -->
+<!-- END: main -->

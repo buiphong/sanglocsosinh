@@ -1,0 +1,61 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý loại người dùng</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="more-login.html">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-basic.html">Tables</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-dynamic.html">Dynamic tables</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Danh sách người dùng</h3>
+	</div>
+	<div class="box-content nopadding">
+		{BEFORE_FORM}
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered">
+        
+		<div class="control-group">		  
+			<label for="textfield" class="control-label">Tên người dùng</label>
+			<div class="controls">
+				<input class="field" type="text" name="emptype_name" id="emptype_name" size=40 value="{emptype.emptype_name}" />
+			</div>
+		</div>	
+        <div class="control-group">		  
+			<label for="textfield" class="control-label">Loại người dùng</label>
+			<div class="controls">
+				<input class="field" type="text" name="emptype_type" id="emptype_type" size=40 value="{emptype.emptype_type}" />
+			</div>
+		</div>	
+	
+		<div class="form-actions">
+			<input name="emptype_id" type="hidden" id="key" value="{model.emptype_id}"/>
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>	
+		
+		</form>
+		{AFTER_FORM}
+	</div>
+</div>
+<script type="text/javascript" src="{appPath}/modules/news/js/news_cp.js"></script>
+<!-- END: main -->

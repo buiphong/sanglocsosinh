@@ -1,0 +1,103 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">Đăng ký thành viên</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <form id="frmRegister" action="{form_action}" class="frmCm" method="POST">
+            <div class="controls-group">
+                <label>Tên tài khoản<span class="clred">*</span></label>
+                <div class="fl"><input type="text" name="username" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Mật khẩu <span class="clred">*</span></label>
+                <div class="fl"><input type="password" name="password" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Xác nhận mật khẩu <span class="clred">*</span></label>
+                <div class="fl"><input type="password" name="re-password" value="" class="required" autocomplete="off"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Họ và tên</label>
+                <div class="fl"><input type="text" name="fullname" value=""/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Ngày sinh</label>
+                <div class="fl"><input type="text" name="birth_date" value="" class="datepicker date-picker"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Tỉnh thành</label>
+                <div class="fl">
+                    <select name="province_id">
+                        <option value="0">----------</option>
+                        <!-- BEGIN: province -->
+                        <option value="{province.id}">{province.title}</option>
+                        <!-- END: province -->
+                    </select>
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Email<span class="clred">*</span></label>
+                <div class="fl"><input type="text" name="email" value="" class="required email"/></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label>Điện thoại</label>
+                <div class="fl"><input type="text" name="phone" value="" /></div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <div class="fwb fs12 mb10">Những quy định khi đăng ký thành viên trên website</div>
+                <div class="h166 wp510 ofys bd1ccc p5">
+                    <p>Để trở thành thành viên, bạn phải cam kết đồng ý với các điều khoản dưới đây. Chúng tôi có thể thay đổi lại những điều khoản này vào bất cứ lúc nào và chúng tôi sẽ cố gắng thông báo đến bạn kịp thời.</p>
+                    <p>Bạn cam kết không gửi bất cứ bài viết có nội dung lừa đảo, thô tục, thiếu văn hoá; vu khống, khiêu khích, đe doạ người khác; liên quan đến các vấn đề tình dục hay bất cứ nội dung nào vi phạm luật pháp của quốc gia mà bạn đang sống, luật pháp của quốc gia nơi đặt máy chủ của website này hay luật pháp quốc tế. Nếu vẫn cố tình vi phạm, ngay lập tức bạn sẽ bị cấm tham gia vào website. Địa chỉ IP của tất cả các bài viết đều được ghi nhận lại để bảo vệ các điều khoản cam kết này trong trường hợp bạn không tuân thủ.</p>
+                    <p>Bạn đồng ý rằng website có quyền gỡ bỏ, sửa, di chuyển hoặc khoá bất kỳ bài viết nào trong website vào bất cứ lúc nào tuỳ theo nhu cầu công việc.</p>
+                    <p>Đăng ký làm thành viên của chúng tôi, bạn cũng phải đồng ý rằng, bất kỳ thông tin cá nhân nào mà bạn cung cấp đều được lưu trữ trong cơ sở dữ liệu của hệ thống. Mặc dù những thông tin này sẽ không được cung cấp cho bất kỳ người thứ ba nào khác mà không được sự đồng ý của bạn, chúng tôi không chịu trách nhiệm về việc những thông tin cá nhân này của bạn bị lộ ra bên ngoài từ những kẻ phá hoại có ý đồ xấu tấn công vào cơ sở dữ liệu của hệ thống.</p>
+                </div>
+                <input type="checkbox" id="agree_condition" value="1" name="agree_condition"/><span>Tôi đồng ý với các điều khoản trên</span>
+                <div class="cl"></div>
+            </div>
+
+            <div class="controls-group">
+                <label class="fl">Mã an toàn</label>
+                <div class="fl" id="captcha">
+                    <img id="captcha_img" src="{captcha}" alt="CAPTCHA Image" />
+                    <input type="text" name="captcha_code" size="10" maxlength="6" class="required"/>
+                    <a href="#" onclick="reloadCaptcha('captcha_img'); return false">Mã khác</a>
+                </div>
+            </div>
+
+            <div class="controls-group">
+                <label class="fl"></label>
+                <div class="ft_notify fl">
+
+                </div>
+                <div class="cl"></div>
+            </div>
+
+            <div class="ct-button tac ml10">
+                <input type="submit" value="Đăng ký" class="clwhite btn blue bg_gradient" id="bt_register"/>
+                <img class="loading dpn" src="/Templates/SLSS/img/input-spinner.gif" />
+                <input type="reset" value="Nhập lại" class="clwhite ml5 btn blue bg_gradient" />
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END: main -->

@@ -1,0 +1,65 @@
+<!-- BEGIN: main -->
+<h3>Quản lý quảng cáo</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{advLink}">Quảng cáo</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Quản lý Zone</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>{title}</a>
+    </li>
+</ul>
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption">Cập nhật zone</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên zone</label>
+			<div class="controls">
+				<input class="input-xlarge required" type="text" name="name" id="name" size=40 value="{zone.name}">
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="textfield" class="control-label">Zone type</label>
+			<div class="controls">
+				{zone_type}
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="textfield" class="control-label">Kích thước</label>
+			<div class="controls">
+				Width: <input class="field" type="text" name="zone-width" id="zone-width" size=2 value="{zone.width}">&nbsp;px - 
+				Height: <input class="field" type="text" name="zone-height" id="zone-height" size=2 value="{zone.height}"/>&nbsp;px
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="desc" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field jhtmlarea" name="desc" id="desc" rows=5 cols=60>{zone.desc}</textarea>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<input name="key" type="hidden" id="key" value="{zone.id}"/>
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>
+		</form>
+	</div>
+</div>
+<!-- END: main -->

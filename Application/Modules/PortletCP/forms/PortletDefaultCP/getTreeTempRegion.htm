@@ -1,0 +1,27 @@
+<!-- BEGIN: main -->
+<ul id="category-treeview" class="treeview">
+	<li><a href="{listLink}">Toàn bộ</a>
+		<ul>
+		<!-- BEGIN: template -->
+		<li><a href="{template.pLink}" class="">{template.name}</a>
+			<!-- BEGIN: layout -->
+				<ul>
+				<!-- BEGIN: lElement -->
+					<li><a class="" href="{lElement.pLink}">{lElement.name}</a>
+						<!-- BEGIN: region -->
+						<ul>
+							<!-- BEGIN: rElement -->
+							<li><a href="{rElement.pLink}">{rElement.name}</a></li>
+							<!-- END: rElement -->
+						</ul>
+						<!-- END: region -->
+					</li>
+				<!-- END: lElement -->
+				</ul>
+			<!-- END: layout -->
+		</li>
+		<!-- END: template -->
+		</ul>
+	</li>
+</ul>
+<!-- END: main -->

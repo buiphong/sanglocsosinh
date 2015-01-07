@@ -1,0 +1,48 @@
+<!-- BEGIN: main -->
+<h3>Danh sách nhóm cấu hình</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{groupLink}">Cấu hình hệ thống</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>{group}</a>
+    </li>
+</ul>
+
+<!-- BEGIN: group -->
+<div class="span6">
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption">{group.name}</div>
+        </div>
+        <div class="portlet-body">
+            <table id="user" class="table table-bordered table-striped table-force-topborder" style="clear: both">
+                <tbody>
+                    <!-- BEGIN: conf -->
+                    <tr>
+                        <td width="15%">{conf.code}</td>
+                        <td width="50%"><a href="#" id="{conf.code}" data-type="textarea" data-original-title="{conf.title}" class="editable editable-click">{conf.value}</a></td>
+                        <td width="35%" class="hidden-480"><span class="muted">{conf.title}</span></td>
+                    </tr>
+                    <!-- END: conf -->
+                    <input type="hidden" id="pKey" value="{conf.id}"/>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- BEGIN: clearBoth -->
+<div class="cb"></div>
+<!-- END: clearBoth -->
+<!-- END: group -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js
+<!-- END: loadScript -->
+<script type="text/javascript" src="{appPath}/Application/Modules/ConfigCP/js/config_cp.js"></script>
+<!-- END: main -->

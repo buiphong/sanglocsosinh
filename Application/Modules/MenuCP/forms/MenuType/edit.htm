@@ -1,0 +1,31 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" enctype="multipart/form-data" action="{form_action}" name="frmSystemMenuType" class="form-horizontal form-bordered frmValidate ajax-form">
+        <div class="control-group">
+            <label for="title" class="control-label datetimepicker">Tên loại</label>
+            <div class="controls">
+                <input class="field required" type="text" name="type_name" id="type_name" size=40 value="{model.type_name}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="title" class="control-label">Đường dẫn url</label>
+            <div class="controls">
+                <input onkeyup="updateSeoUrl('#url_title', '#url_title')" class="field" type="text" name="url_title" id="url_title" size=40 value="{model.url_title}">
+                <i>Để trống nếu không cần hiển thị trên url (Nội dung không dấu và không có khoảng trắng)</i>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="actions" class="control-label">Mô tả</label>
+            <div class="controls">
+                <textarea class="field" name="type_desc" id="type_desc" rows=5 cols=50>{model.type_desc}</textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Ghi lại</button>
+            <!--onclick="document.frmSystemMenuType.submit()"-->
+            <button type="button" class="btn" onclick="location.href='{listLink}'">Bỏ qua</button>
+        </div>
+        <input type="hidden" name="id" id="__pkey" value="{model.id}">
+    </form>
+</div>
+<!-- END: main -->

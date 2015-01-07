@@ -1,0 +1,59 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-content pt0i">
+        <div class="border_content_detail">
+            <div class="d_ttl_news">
+                <h1 class="fs17 fwb p0 m0 mb5 cl0072BB">{news.title}</h1>
+                <span class="cl686868 fs9 fsi">{news.time}</span><span class="fs9 ml5 cl0072BB fsi">{news.date}</span>
+            </div>
+            <div class="border_share_social">
+                <div class="g-plusone" data-size="medium" data-width="60"></div>
+                <a href="{news.link}" class="twitter-share-button">Tweet</a>
+                <div class="fb-like" data-href="{news.link}" data-width="500" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+            </div>
+            <!-- BEGIN: relative -->
+            <div class="border-relative-news">
+                <!-- BEGIN: item -->
+                <a href="{item.link}" title="{item.title}" class="relative_news">{item.title}</a>
+                <!-- END: item -->
+            </div>
+            <!-- END: relative -->
+            <div class="content_article oh">
+                <p class="description_article fwb">
+                    {news.brief}
+                </p>
+                <div class="ct_article">
+                    {news.content}
+                </div>
+            </div>
+            <div class="border_share_social mb10">
+                <div class="g-plusone" data-size="medium" data-width="60"></div>
+                <a href="{news.link}" class="twitter-share-button">Tweet</a>
+                <div class="fb-like" data-href="{news.link}" data-width="500" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+            </div>
+            <div class="bt_feedback">
+                <div class="fb-comments" data-href="{news.link}" data-width="718" data-numposts="5" data-colorscheme="light"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN: other_news -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">Các bài đã đăng</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <ul class="ul_same_cat_article m0 p0 ml20">
+            <!-- BEGIN: item -->
+            <li class="mb10"><a href="{item.link}" title="{item.title}" class="tdn">{item.title} </a><span>({item.date})</span></li>
+            <!-- END: item -->
+        </ul>
+    </div>
+</div>
+<!-- END: other_news -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- END: main -->

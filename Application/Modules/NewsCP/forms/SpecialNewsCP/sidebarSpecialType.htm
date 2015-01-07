@@ -1,0 +1,27 @@
+<!-- BEGIN: main -->
+<ul class="tree" id="category-treeview">
+	<li>
+        <a href="{listLink}" class="tree-toggle" data-toggle="special" data-value="Bootstrap_Tree"><strong>Mục đặc biệt</strong></a>
+		<ul class="special in">
+		<!-- BEGIN: type -->
+			<li><a data-toggle="special" href="?type={type.id}" data-role="leaf">{type.title}</a></li>
+		<!-- END: type -->
+		</ul>
+	</li>
+	<li><a href="{listLink}" class="tree-toggle" data-toggle="category" data-value="Bootstrap_Tree"><strong>Danh mục tin</strong></a>
+		<ul class="category in">
+		<!-- BEGIN: cat -->
+		<li><a href="{cat.link}" data-role="leaf">{cat.title}</a>
+            <!-- BEGIN: hasSub -->
+			<ul>
+			<!-- BEGIN: sub -->
+				<li><a href="{sub.link}">{sub.title}</a></li>
+			<!-- END: sub-->
+			</ul>
+            <!-- END: hasSub -->
+		</li>
+		<!-- END: cat -->
+		</ul>
+	</li>
+</ul>
+<!-- END: main -->

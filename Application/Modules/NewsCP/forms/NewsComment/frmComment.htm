@@ -1,0 +1,155 @@
+<!-- BEGIN: main -->
+<div id="allComment">
+<form name="frmComment" action="" id="frmComment" method="post">
+<div class="pad10">
+    <span class="fLeft">Ý kiến bạn đọc (<strong id="viewComment">{totalComment}</strong>)</span>
+    <span class="fRight" id="viewFrmComment" ><a class=" clor6" >Gửi ý kiến của bạn</a></span>
+    <div class="clearfix"></div>
+</div>
+<div class="boxComment" id="idComment">
+	<div id="Comment">
+	    <div style="width: 470px; height: auto; overflow: hidden;">
+	        <div class="boxcomment" id="divSendComment">
+	            <div>
+	                <div style="width: 100%; clear: both; height:auto; margin-bottom:10px;">
+	                	<p id="notice"></p>
+	                	<input type="hidden" name="newsId" value="{newsId}" id="newsId"/>
+	                    <div>
+	                        <input name="title" type="text" id="txtTitle" style="width: 439px; padding-left: 10px;padding-top: 3px;" placeholder="Tiêu đề" class="required"/>
+	                    </div>
+	                    <div style="width: 250px; float: right; padding-top: 5px;" class="color1 fontsize11">
+	                        Đề nghị gõ tiếng Việt có dấu | <a class="clorBlue" href="javascript:" target="_blank">Hướng dẫn</a>
+	                        <span id="RequiredFieldValidator1" style="color:Red;font-size:14px;font-weight:bold;visibility:hidden;">(*)</span>
+	                    </div>
+	                    <div style="width: 97%; clear: both; margin-bottom: 8px;">
+	                        <textarea name="content" id="txtCommentContent" cols="10" rows="6" title="Nội dung" class="required" style="width: 96%; height: 60px; padding-left: 10px; padding-top: 3px;"></textarea>                        
+	                    </div>
+	                    <div style="width: 100%; clear: both; height: auto; margin-top: 0px;">
+	                        <input name="fullname" type="text" id="txtName" style="width: 210px; padding-left: 10px;padding-top: 3px" placeholder="Họ và tên" class="inputTextComment required"/>
+	                        <input name="email" type="text" id="txtEmail" style="width: 210px; padding-left: 10px;padding-top: 3px" placeholder="Email" class="inputTextComment required email"/>                        
+	                    </div>                   
+	                </div>
+	                <div style="width: 97%; clear: both; padding-top:10px;">
+	                    <div style="width: 350px; float: left;">  
+	                        <div style="float:left;">
+	                            <span id="lbl_Captcha" style="color:Black;">Mã xác nhận: </span>                            
+	                        </div> 
+	                        <div id="captcha-border" style="float:left;">
+	                            {captcha}
+	                        </div>                                             
+	                    </div>
+	                    <div style="width: 90px; float: right;">
+	                        <div style="float: right;">
+	                            <input type="reset" value="Nhập lại" class="inputResetBox" style="display: none;"/>
+	                            <input type="submit" name="btnSubmit" value="Gửi đi" id="btnSubmit" class="inputResetBox"/>                            
+	                        </div>
+	                        <div class="clearfix">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div style="width: 97%; clear: both; padding-top:10px;">                    
+	                    <span id="RequiredFieldValidator2" style="color:Red;font-size:12px;font-weight:normal;visibility:hidden;">Mã xác nhận không đúng. Vui lòng nhập lại.</span>
+	                </div>
+	                <div class="clearfix">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+
+	<div id="listComment">
+	    <ul id="CommentContainer" class="listItemGrNewsBox">
+	    <!-- BEGIN: comments -->
+           <li style="display: list-item; opacity: 1;">
+               <div class="padB10">
+                   <a href="#" class="clorBlue">{comment.title}</a></div>
+               <div class="clor9">{comment.created_date}</div>
+               <div><p>{comment.content}</p></div>
+               <div class="textRight textTrans">{comment.fullname}</div>
+           </li>
+	    <!-- END: comments -->
+	    </ul>
+		<div class="boxPage">
+			{page}
+		</div>
+	</div>	
+</div>
+</form>
+</div>
+<script src="http://hrcv2.local/templates/hrc/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($('#viewComment').html() == '0')
+	{
+		$('#idComment').hide();
+	}
+	$('#Comment').hide();
+	$('#viewFrmComment').click(function(){
+		$('#idComment').show();
+		$('#Comment').show();
+	});
+	
+});
+jQuery.extend(jQuery.validator.messages, {
+	 required: "Không được bỏ trống !",
+	 email: "Email không đúng định dạng !",
+	 minlength: "Mật khẩu phải >= 6 kí tự !",
+	 equalTo: "Mật khẩu không trùng khớp !"
+	});
+	
+$("#frmComment").validate({
+	errorElement:'p',
+	submitHandler: function(form) {
+		$('.btnSub').hide();
+		$('.btnLoad').show();
+		$.ajax({
+			url: baseUrl+'/news/NewsComment/comment',
+			dataType: "json",
+			type: "post",
+			data: $("#frmComment").serialize(),
+			success: function(res)
+			{				
+				$('.btnLoad').hide();
+				$('.btnSub').show();
+				if(res.success)
+				{	
+					$('#frmComment')[0].reset();
+					$('#notice').html(res.notice);
+				}
+				else
+				{
+					showNotification('Thông báo từ HRC','Mã an toàn chưa đúng!');
+					$("#captcha-border").html(res.newCaptcha);
+				}
+			}
+		});
+		return false;
+	}
+});
+function loadPage(obj)
+{
+	$(obj).removeAttr('href');
+	newsId = $('#newsId').val();
+	page = $(obj).attr('accesskey');
+	if(page != '')
+	{
+		$.ajax({
+			url:'{pageLink}',
+			dataType:'json',
+			type:'post',
+			data:"page="+page+"&newsId="+newsId,
+			success: function(res)
+			{
+				if(res.success)
+				{
+					$('#allComment').html(res.html);
+				}
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->
+
+
+

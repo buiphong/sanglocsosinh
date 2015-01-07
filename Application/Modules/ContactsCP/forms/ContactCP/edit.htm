@@ -1,0 +1,96 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý liên hệ</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="more-login.html">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-basic.html">Liên hệ</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="tables-dynamic.html">{type}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="box box-color box-bordered">
+			<div class="box-title">
+				<h3>Thông tin liên hệ</h3>
+			</div>
+			<div class="box-content nopadding">
+				<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmContact" class="form-horizontal form-bordered frmValidate">
+					<div class="control-group">
+						<label for="title" class="control-label">Họ tên</label>
+						<div class="controls">
+							<input class="field required" type="text" name="fullname" id="fullname" size=40 value="{model.fullname}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="actions" class="control-label">Số điện thoại</label>
+						<div class="controls">
+							<input class="field" type="text" name="phone" id="phone" size=40 value="{model.phone}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="externallink" class="control-label">Địa chỉ</label>
+						<div class="controls">
+							<input class="field" type="text" name="address" id="address" size=40 value="{model.address}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Email</label>
+						<div class="controls">
+							<input class="field email" type="text" name="email" id="email" size=40 value="{model.email}">
+						</div>
+					</div>					
+					<div class="control-group">
+						<label for="orderno" class="control-label">Tiêu đề</label>
+						<div class="controls">
+							<input class="field required" type="text" name="title" id="title" size=40 value="{model.title}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Nội dung</label>
+						<div class="controls">
+							<textarea rows="6" cols="50" name="content" id="content">{model.content}</textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Trạng thái</label>
+						<div class="controls">
+							{status}
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="orderno" class="control-label">Ngôn ngữ</label>
+						<div class="controls">
+							<input type="text" name="lang_code" id="lang_code" value="vi-VN" />
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<input type="hidden" name="id" id="id" value="{model.id}">
+						<button type="button" onclick="document.frmContact.submit()" class="btn btn-primary">Ghi lại</button>
+						<button type="button" class="btn" onclick="location.href='{listLink}'">Bỏ qua</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END: main -->

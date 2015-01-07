@@ -1,0 +1,87 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form id="editImageForm" action="{formAction}" class="form-horizontal form-bordered"  method="POST">
+        <div class="control-group">
+            <label for="textfield" class="control-label">Tên Ảnh</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    <input type="text" placeholder="" class="input-xlarge required" name="name" value="{model.name}">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Album</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    {cmbAlbum}
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Thứ tự hiển thị</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    <input type="text" placeholder="" class="input-xlarge required" name="orderno" value="{model.orderno}">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Mô tả</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    <textarea rows="5" cols="50" name="desc">{model.desc}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="textfield" class="control-label">Đường dẫn</label>
+            <div class="controls">
+                <div class="input-append input-prepend">
+                    <input type="text" placeholder="" class="input-xlarge required" name="file_path" id="file_path_edit" value="{model.file_path}">
+                    <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('file_path_edit')" value="Quản lý file"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="id" value="{model.id}"/>
+            <input id="btnSubmitEditForm" type="submit" class="btn btn-primary" value="Cập Nhật">
+				<button aria-hidden="true" data-dismiss="modal" class="btn" type="button">Bỏ qua</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#editImageForm").validate({
+            errorElement: 'span',
+            submitHandler: (function(){
+                $.ajax({
+                    url: $('#editImageForm').attr('action'),
+                    dataType: "json",
+                    type: "POST",
+                    data: $('#editImageForm').serialize(),
+                    success: function(res)
+                    {
+                        if(res.success)
+                        {
+                            showNotification('Thông báo hệ thống', 'Cập nhật thông tin thành công!');
+                            $(".close").click();
+                            //Update lại ảnh trong list
+                            liParent.replaceWith(res.html);
+                            $(".colorbox-image").colorbox({
+                                maxWidth: "90%",
+                                maxHeight: "90%",
+                                rel: $(this).attr("rel")
+                            });
+                        }
+                        else
+                        {
+                            showNotification('Thông báo hệ thống', res.msg);
+                        }
+                    }
+                });
+
+            })
+        })
+    })
+</script>
+<!-- END: main -->

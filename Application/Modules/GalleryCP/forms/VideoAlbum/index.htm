@@ -1,0 +1,63 @@
+<!-- BEGIN: main -->
+<h3>Quản lý thư viện video</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{indexLink}">Album video</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <!-- BEGIN: album -->
+    <li>
+        <a href="{albumLink}">{album.name}</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <!-- END: album -->
+    <li>
+        <a href="javascript:">{nameCurrent}</a>
+    </li>
+</ul>
+
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh sách album video</div>
+		<div class="actions">
+            <a href="javascript:" class="icon-plus btn-info" title="Thêm mới" id="add-category-btn">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body fuelux">
+        <form method="post" action="{indexLink}" name="frmList"  id='frmList'>
+            <input type="hidden" name="page" id="page"/>
+            <input type="hidden" name="parent_id" id="parent_id" value="{parent_id}"/>
+            <table class="table table-striped table-bordered table-hover dataTable" id="tableVideoAlbum" aria-describedby="sample_3_info">
+                <thead>
+                <tr role="row">
+                    <th style="width: 8px;">
+                        <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                    </th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Tên nhóm</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Thứ tự hiển thị</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Trạng thái</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Cập nhật</th>
+                    <th class="hidden-480" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Lựa chọn</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </form>
+        <div class="cl"></div>
+	</div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/GalleryCP/js/video.album.cp.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

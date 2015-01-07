@@ -1,0 +1,73 @@
+<!-- BEGIN: main -->
+<h3>Quản lý FAQ</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{cphomeLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{employerLink}">FAQ</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listEmployerLink}">Danh sách</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">Danh mục FAQ</div>
+            </div>
+            <div class="portlet-body">
+                {sidebarCategory}
+            </div>
+        </div>
+    </div>
+    <div class="span9">
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">Danh sách FAQ {catName}</div>
+                <div class="tools">
+                    <a href='{createLink}' class="icon-plus btn-info"><span>Thêm mới</span></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-nomargin" id="tableFaq">
+                    <thead>
+                        <tr>
+                            <th width="2%">::</th>
+                            <th width="15%">Câu hỏi</th>
+                            <th width="15%">Ngày tạo</th>
+                            <th width="15%">Người tạo</th>
+                            <th width="7%">Thứ tự</th>
+                            <th width="10%">Trạng thái</th>
+                            <th width="8%">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <input type="hidden" name="catid" value="{catid}"/>
+                <!-- BEGIN: button -->
+                    <button class="btn btn-info" onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);" >
+                        <i class="icon-trash"> Xóa mục đã chọn</i>
+                    </button>
+                <!-- END: button -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/FaqCP/js/faqs.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->
+
+

@@ -1,0 +1,61 @@
+<!-- BEGIN: main -->
+<h3 class="page-title">Quản lý tin bài</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="{listLink}">Danh mục tin bài</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    {breadCrumb}
+    <li>
+        <a>{parentName}</a>
+    </li>
+</ul>
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh mục tin bài</div>
+		<div class="tools">
+			<a href='javascript:' id="add-news-cat" class="icon-plus btn-info" title="Thêm danh mục">&nbsp;</a>
+		</div>
+	</div>
+	<div class="portlet-body fuelux">
+        <table class="table table-striped table-bordered table-hover dataTable" id="tableNewsCat" aria-describedby="sample_3_info">
+            <thead>
+            <tr role="row">
+                <th style="width: 8px;">
+                    <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                </th>
+                <th></th>
+                <th>Tiêu đề</th>
+                <th>Thứ tự</th>
+                <th>Lựa chọn</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+        <input type="hidden" name="parentId" id="parentId" value="{parentid}">
+		<div class="dataTables_info">
+		<!-- BEGIN: button -->
+			<button class="btn btn-primary" onClick="DeleteAll('frmListNewsCat', '{deleteLink}');" >
+				<i class="icon-trash"> Xóa mục đã chọn</i>
+			</button>				
+		<!-- END: button -->
+		</div>
+	</div>
+</div>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/NewsCP/js/category_cp.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

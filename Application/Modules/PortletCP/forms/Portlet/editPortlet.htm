@@ -1,0 +1,100 @@
+<!-- BEGIN: main -->
+<table id="table-dialog-editPortlet" class="modal-portletCP">
+	<tr>
+		<td width="50%">
+			<table style="width: 100%;">
+				<tr>
+					<td align="right" width="36%"><strong>Thứ tự sắp xếp:</strong></td>
+					<td><input disabled="disabled" type="text" name="pOrderno" id="pOrderno" value="{portlet.orderno}"/></td>
+				</tr>
+				<tr>
+					<td align="right"><strong>Container id:</strong></td>
+					<td align="left"><input type="text" name="pContainer" id="pContainer" value="{portlet.container_id}"/></td>
+				</tr>
+				<tr>
+					<td align="right"><strong>Tiêu đề:</strong></td>
+					<td><input type="text" name="portletTitle" id="portletTitle" value="{portlet.title}"/></td>
+				</tr>
+				<tr>
+					<td align="right"><strong>Tham số:</strong></td>
+					<td>
+						<input disabled="disabled" type="text" name="params" id="params" value="{portlet.params}"/>
+					</td>
+				</tr>
+                <tr>
+                    <td align="right"><strong>Cache time:</strong></td>
+                    <td>
+                        <input type="text" name="cache_time" id="cache_time" value="{portlet.cache_time}"/> giây
+                    </td>
+                </tr>
+			</table>
+		</td>
+		<td valign="top" width="50%">
+			<strong>Tham số:</strong>
+			<table id="portletParams" style="width: 100%;">
+				<!-- BEGIN: param -->
+				<tr>
+					<td width="30%"><strong>{param.title}</strong></td>
+					<td width="70%">{param.valueBox}</td>
+				</tr>
+				<!-- END: param -->
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table style="width: 100%;">
+				<tr>
+					<td width="18%" align="right"><strong>Skin:</strong></td>
+					<td>{skin}</td>
+				</tr>
+				<!--<tr>
+					<td style="vertical-align: top !important;" align="right"><strong>Dữ liệu xml/script:</strong></td>
+					<td style="vertical-align: top !important;">
+						<div class="codemirror-box" id="values-code"></div>
+						<textarea style="display: none;" id="portlet-values">{portlet.values}</textarea>
+					</td>
+				</tr>-->
+			</table>
+		</td>
+	</tr>
+</table>
+<input type="hidden" name="portletType" id="portletType" value="{type}"/>
+<input type="hidden" name="portletId" id="portletId" value="{portlet.id}"/>
+<div align="center">
+	<a class="save-button layout-cp-btn" onclick="editPortletPost()"><span>Ghi lại</span></a>
+	<a class="back-button layout-cp-btn btn close-modal"><span>Bỏ qua</span></a>
+</div>
+<link rel="stylesheet" href="{appPath}/Templates/Metronic/plugins/chosen-bootstrap/chosen/chosen.css">
+<script type="text/javascript" src="{appPath}/Application/Modules/PortletCP/js/uploadattach.js"></script>
+<script src="{appPath}/Templates/Metronic/plugins/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+/*CodeMirror.commands.autocomplete = function(cm) {
+	CodeMirror.showHint(cm, CodeMirror.hint.html);
+}*/
+$(document).ready(function(){
+	updatePortletParam();
+    /*cmEditor = CodeMirror(document.getElementById("values-code"), {
+        mode: "text/html",
+        extraKeys: {"Ctrl-Space": "autocomplete"},
+        value: $("#portlet-values").val()
+	});*/
+    if (jQuery().chosen) {
+        // Chosen (chosen)
+        if($('.chosen-select').length > 0)
+        {
+            $('.chosen-select').each(function(){
+                var el = $(this);
+                var search = (el.attr("data-nosearch") === "true") ? true : false,
+                opt = {};
+                if(search) opt.disable_search_threshold = 9999999;
+                el.chosen(opt).change(function(){
+                    el.val(($(this).val()));
+                    updatePortletParam();
+                });
+            });
+        }
+    }
+});
+</script>
+<!-- END: main -->

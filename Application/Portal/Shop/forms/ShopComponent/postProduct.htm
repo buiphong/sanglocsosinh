@@ -1,0 +1,179 @@
+<!-- BEGIN: main -->
+<div id="div_create_product" class="pr5">
+    <h1 class="title_product">Đăng cây</h1>
+    <form id="frmCreateProduct" action="{frmAction}" method="POST" enctype="multipart/form-data">
+        <div class="border-box mb10">
+            <span class="db ttu fwb tree_type ttu h30 lh30 pl10 mb5">Thông tin chung</span>
+            <div class="p5">
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t3">Danh mục chính<font class="clred">*</font></label>
+                    <div class="fl">
+                        <select name="category_id" class="bs1 bd_cl wp250 h25">
+                            <!-- BEGIN: category -->
+                            <option value="{category.id}" {category.selected}>{category.title}</option>
+                            <!-- END: category -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t3">Tỉnh thành <font class="clred">*</font></label>
+                    <div class="fl">
+                        <select name="attr[origin]" class="bs1 bd_cl wp250 h25">
+                            <!-- BEGIN: province -->
+                            <option value="{province.id}" {province.selected}>{province.title}</option>
+                            <!-- END: province -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t3">Nhóm <font class="clred">*</font></label>
+                    <div>
+                        <select name="attr_id" class="bs1 bd_cl wp250 h25">
+                            <!-- BEGIN: attrSet -->
+                            <option value="{attrSet.id}" {attrSet.selected}>{attrSet.title}</option>
+                            <!-- END: attrSet -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- BEGIN: shop -->
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Gian hàng</label>
+                    <div>
+                        <!-- BEGIN: item -->
+                        <input type="checkbox" name="shop_id[]" value="{item.id}" {item.checked}/> <label>{item.name}</label>
+                        <!-- END: item -->
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <!-- END: shop -->
+            </div>
+        </div>
+
+        <div class="border-box mb10">
+            <span class="db ttu fwb tree_type ttu h30 lh30 pl10 mb5">Chi tiết cây</span>
+            <div class="p5">
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Ảnh đại diện:</label>
+                    <div class="fl">
+                        <input type="file" name="image_path" class="{required}" />
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Tên cây<font class="clred">*</font></label>
+                    <div class="fl"><input type="text" name="title" value="{product.title}" class="required bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Giá bán</label>
+                    <div class="fl"><input type="text" name="attr[price]" value="{product.attr.price}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Dáng/thế</label>
+                    <div class="fl"><input type="text" name="attr[dang_the]" value="{product.attr.dang_the}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Tuổi</label>
+                    <div class="fl"><input type="text" name="attr[age]" value="{product.attr.age}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t5">Kích thước cây (cm)</label>
+                    <div class="fl">
+                        Cao <input type="text" class="bs1 bd_cl h25 m0 p0" name="attr[tree_size_height]" value="{product.attr.tree_size_height}"/> Hoành <input type="text" class="bs1 bd_cl h25 m0 p0" name="attr[tree_size_hoanh]" value="{product.attr.tree_size_hoanh}">
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t5">Kích thước chậu (cm)</label>
+                    <div class="fl">
+                        Cao <input class="bs1 bd_cl h25 m0 p0" type="text" name="attr[pots_size_height]" value="{product.attr.pots_size_height}"/> Dài <input type="text" name="attr[pots_size_long]" class="bs1 bd_cl h25 m0 p0" value="{product.attr.pots_size_long}">
+                        Rộng <input class="bs1 bd_cl h25 m0 p0" type="text" name="attr[pots_size_width]" value="{product.attr.pots_size_width}">
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150 pr t3">Mức độ hoàn thiện</label>
+                    <div class="fl">
+                        <select name="attr[degree_perfection]" class="required bs1 bd_cl h25 wp250 m0 p0">
+                            <option value="">-----------</option>
+                            <!-- BEGIN: degreePerfection -->
+                            <option value="{degreePerfection.id}" {degreePerfection.selected}>{degreePerfection.title}</option>
+                            <!-- END: degreePerfection -->
+                        </select>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Mô tả</label>
+                    <div class="fl"><textarea name="content" rows="8" cols="40" class="bs1 bd_cl h250 wp545 m0 p0">{product.content}</textarea></div>
+                    <div class="cl"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-box mb10">
+            <span class="db ttu fwb tree_type ttu h30 lh30 pl10 mb5">Thông tin liên hệ</span>
+            <div class="p5">
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Họ tên</label>
+                    <div><input type="text" name="attr[contact_name]" value="{product.attr.contact_name}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Địa chỉ</label>
+                    <div><input type="text" name="attr[contact_address]" value="{product.attr.contact_address}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Điện thoại</label>
+                    <div><input type="text" name="attr[contact_phone]" value="{product.attr.contact_phone}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+                <div class="controls-group mb10">
+                    <label class="fl wp150">Email</label>
+                    <div><input type="text" name="attr[contact_email]" value="{product.attr.contact_email}" class="bs1 bd_cl h25 wp250 m0 p0"/></div>
+                    <div class="cl"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-group">
+            <label class="fl"></label>
+            <div class="ft_notify fl">
+
+            </div>
+        </div>
+
+        <div class="ct-button tac">
+            <!-- BEGIN: btn_post -->
+            <input type="submit" value="Đăng" class="clwhite bn" id="bt_create_product"/>
+            <img class="loading dn" src="/Templates/VuonCayCanh/images/loading.gif" />
+            <input type="reset" value="Nhập lại" class="clwhite ml5 bn" />
+            <!-- END: btn_post -->
+
+            <!-- BEGIN: btn_edit -->
+            <input type="submit" value="Cập nhật" class="clwhite bn" id="bt_create_product"/>
+            <img class="loading dn" src="/Templates/VuonCayCanh/images/loading.gif" />
+            <input type="hidden" value="{product.id}" name="id" />
+            <input type="button" value="Bỏ qua" class="clwhite ml5 bn"/>
+            <!-- END: btn_edit -->
+        </div>
+    </form>
+</div>
+<!-- END: main -->

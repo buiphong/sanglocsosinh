@@ -1,0 +1,82 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    {BEFORE_FORM}
+    <form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate ajax-form">
+    <div class="control-group">
+        <label for="parent_id" class="control-label">Danh mục cha</label>
+        <div class="controls">
+            {parent_id}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="title" class="control-label">Tiêu đề</label>
+        <div class="controls">
+            <input onkeypress="updateSeoUrl('#title', '#url_title')" onblur="updateSeoUrl('#title', '#url_title')" class="field required" type="text" name="title" id="title" size=40 value="{model.title}" />
+            <span class="muted">Được sử dụng để làm tên hiển thị</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="url_title" class="control-label">Url tiêu đề</label>
+        <div class="controls">
+            <input class="field" type="text" name="url_title" id="url_title" size=40 value="{model.url_title}" />
+            <span class="muted">Dùng làm tên trên url</span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="keywords" class="control-label">Từ khoá</label>
+        <div class="controls">
+            <input class="field" type="text" name="keywords" id="keywords" size=40 value="{model.keywords}">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="orderno" class="control-label">Thứ tự sắp xếp</label>
+        <div class="controls">
+            <div class="input-xlarge">
+                {order_no}
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="textfield" class="control-label">Ảnh đại diện</label>
+        <div class="controls">
+            <input class="field" type="text" name="image_path" id="image_path" size=30 value="{model.image_path}">
+            <input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('image_path')" value="Quản lý file"/>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="has_rss" class="control-label">Có RSS</label>
+        <div class="controls">
+            <input class="field" type="checkbox" name="has_rss" id="has_rss" value="1" {checked}/>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="is_member" class="control-label">Dành cho thành viên</label>
+        <div class="controls">
+            <input class="field" type="checkbox" name="is_member" id="is_member" value="1" {isMember}/>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="description" class="control-label">Mô tả</label>
+        <div class="controls">
+            <textarea class="field jhtmlarea" name="description" id="description" rows=5 cols=60>{model.description}</textarea>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <input name="id" type="hidden" id="key" value="{model.id}">
+        <input name="old_orderno" type="hidden" id="old_orderno" value="{model.orderno}">
+        <button type="submit" class="btn btn-primary">Ghi lại</button>
+        <a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>
+    </div>
+
+    </form>
+</div>
+<!-- END: main -->

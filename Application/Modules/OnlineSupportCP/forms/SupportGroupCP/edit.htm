@@ -1,0 +1,58 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý hỗ trợ trực tuyến</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{categoryLink}">Nhóm hỗ trợ</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>{groupName}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Nhóm hỗ trợ trực tuyến</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Tên nhóm</label>
+				<div class="controls">
+					<input class="field required" type="text" name="group_name" id="name" size=40 value="{model.group_name}" />
+				</div>
+			</div>
+			
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Mô tả</label>
+				<div class="controls">
+					<textarea class="field jhtmlarea" name="desc" id="description" rows=5 cols=60>{model.desc}</textarea>
+				</div>
+			</div>	
+			
+			<div class="form-actions">
+				<input name="id" type="hidden" id="key" value="{model.id}">
+				<button type="submit" class="btn btn-primary">Ghi lại</button>
+				<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+			</div>	
+		
+		</form>
+	</div>
+</div>
+<!-- END: main -->

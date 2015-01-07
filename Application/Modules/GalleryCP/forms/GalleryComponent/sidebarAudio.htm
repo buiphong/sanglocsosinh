@@ -1,0 +1,39 @@
+<!-- BEGIN: main -->
+<div style="width: 100%;" class="clearfix"></div>
+<div>
+	<div class="f-14" style="padding: 10px 0;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;">
+		<a href="{appPath}/gallerycp/GalleryComponent/audioSlider/"><strong style="color:#252525;">Album nhạc</strong></a>
+	</div>
+	<div id="title"></div>
+</div>
+<div style="width: 100%;" class="clearfix"></div>
+<link rel="stylesheet" type="text/css" href="{appPath}/Application/Modules/gallerycp/plugin/css/siderbar.css">
+<script type="text/javascript" src="{appPath}/Application/Modules/gallerycp/plugin/jquery-jplayer/jquery.jplayer.js"></script>
+<script type="text/javascript" src="{appPath}/Application/Modules/gallerycp/plugin/ttw-music-player-min.js"></script>
+<script type="text/javascript">
+	var myPlaylist = [
+		<!-- BEGIN: audios -->
+		{
+			mp3:'{appPath}{audios.audio_path}',
+			title:'{audios.title}',
+			artist:'{audios.name}',
+			rating:5,
+			duration:'{audios.playtime_string}',
+			buy:'?audioID={audios.id}',
+			cover:'{appPath}{audios.img_path}'
+		}{audios.comma}
+		<!-- END: audios -->
+	];
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#title').ttwMusicPlayer(myPlaylist, {
+			autoPlay:true, 
+			jPlayer:{
+				swfPath:'{appPath}/Application/Modules/gallerycp/plugin/jquery-jplayer'
+			}
+		});
+	});
+</script>
+<!-- END: main -->

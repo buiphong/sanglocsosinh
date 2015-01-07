@@ -1,0 +1,96 @@
+<!-- BEGIN: main -->
+<h3>Quản lý Portlet</h3>
+<ul class="breadcrumb">
+    <li>
+        <a href="more-login.html">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-basic.html">Quản lý Portlet</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="tables-dynamic.html">{portlet}</a>
+    </li>
+</ul>
+<div class="portlet box grey">
+	<div class="portlet-title">
+		<div class="caption">Danh sách tham số</div>
+		<div class="tools">
+			<a href='{createLink}' class="icon-plus add-button"><span>Thêm tham số</span></a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form method="post" action="{listLink}" name="frmportlet" id="frmportlet">
+					<table class="table">
+					  <tr>
+						<th width="2%">::</th>
+						<th width="20%">Tiêu đề</th>
+						<th width="20%">Tên tham số</th>
+						<th width="20%">Kiểu giá trị</th> 
+						<th width="23%">Mô tả</th>
+						<th width="15%">&nbsp;</th>
+					  </tr>
+					<!-- BEGIN: param -->
+					  <tr>
+						<td align="center" valign="top">
+						  <input type='checkbox' name='key[]' value='{param.id}'>{disabled}</td>
+						<td valign="top">{param.title}&nbsp;</td>
+					    <td valign="top">{param.name}&nbsp;</td>
+					    <td valign="top">{param.type}&nbsp;</td> 
+					  	<td valign="top">{param.desc}&nbsp;</td>
+						<td valign="top">
+							<a href='{editLink}'>Sửa</a>
+						</td>
+					  </tr>
+					<!-- END: param -->
+					</table>
+		</form>
+		<input type="hidden" name="page" id="page"/>
+		{PAGE}
+		<div class="cb"></div>
+		<div class="dataTables_info">
+			<!-- BEGIN: button -->
+				<button class="btn btn-primary" onClick="VccConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</button>
+			<!-- END: button -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function loadPage(obj)
+{
+	$("#page").val($(obj).attr("accessKey"));
+	document.frmportlet.submit();
+}
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+		$.ajax({
+			url: "{deleteLink}",
+			type: "POST",
+			dataType: "json",
+			data: {listid: listId},
+			success: function(res){
+				if(res.success)
+				{
+                    $('input[name="key[]"]:checked').each(function(){
+                        $(this).parent().parent().remove();
+                    });
+				}
+				else
+					alert(res.msg);
+			}
+		});
+	}
+}
+</script>
+<!-- END: main -->

@@ -1,0 +1,22 @@
+<!-- BEGIN: main -->
+<div class="amtitle">{labels.actiongroups}</div>
+<br>
+{BEFORE_FORM}
+<form method="post" action="actiongroups.list.php" name="frmactiongroups" id="frmactiongroups">
+<table width="100%"  border="1" style="border-collapse:collapse; border:1px solid lightgrey" cellspacing="0" cellpadding="3">
+  <tr>
+<td class="tdgrey"><b>{labels.name}</b></td>
+  
+    <td class="tdgrey"><b>{labels.description}</b></td>  
+  </tr>
+<!-- BEGIN: actiongroups -->
+  <tr>
+<td class="tdlist" style="border-bottom:1px solid lightgrey; color:#0033CC; font-weight:bold">{actiongroups.name}&nbsp;</td>
+  
+    <td class="tdlist" style="border-bottom:1px solid lightgrey; color:#0033CC; font-weight:bold">{actiongroups.description}&nbsp;</td>  
+  </tr>
+<!-- END: actiongroups -->
+</table>
+</form>
+{AFTER_FORM}
+<!-- END: main -->

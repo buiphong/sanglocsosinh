@@ -1,0 +1,77 @@
+<!-- BEGIN: main -->
+<h3>Quản lý thư viện, tài liệu</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Quản lý tin tức</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Danh sách thư viện, tài liệu</a>
+    </li>
+</ul>
+
+<div class="row-fluid">
+	<div class="span3">
+		<div class="portlet box grey">
+			<div class="portlet-title">
+				<div class="caption">Danh mục thư viện, tài liệu</div>
+			</div>
+			<div class="portlet-body">
+				{sidebarCategory}
+			</div>
+		</div>
+	</div>
+	
+	<div class="span9">
+		<div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">Thư viện, tài liệu {catName}</div>
+                <div class="tools">
+                    <a href='javascript:' id="add-document" class="icon-plus btn-info" title="Thêm thư viện, tài liệu">&nbsp;</a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table" id="tableDocument">
+                    <thead>
+                        <tr>
+                            <th width="5%">::</th>
+                            <th width="40%">Tiêu đề</th>
+                            <th width="25%">Danh mục</th>
+                            <th width="15%">Ngày tạo</th>
+                            <th width="15%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <input type="hidden" id="document_category" value="{catid}"/>
+                <div style="clear: both;">
+                <div class="dataTables_info">
+                <!-- BEGIN: button -->
+                    <a class='btn btn-primary' onClick="CPConfirm('Bạn có chắc chắn muốn xoá không ?',deleteAction);">Xóa mục đã chọn</a>
+                    <!--<a class='btn btn-primary' onClick="selectDocuments()">Chọn</a>-->
+                <!-- END: button -->
+                </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{appPath}/Packages/editor/tinymce/tinymce.min.js"></script>
+<script src="{appPath}/Packages/editor/ckeditor/ckeditor.js"></script>
+<!-- BEGIN: loadCss-->
+Templates/Metronic/plugins/data-tables/DT_bootstrap.css
+<!-- END: loadCss -->
+<!-- BEGIN: loadScript -->
+Templates/Metronic/plugins/data-tables/jquery.dataTables.js,
+Templates/Metronic/plugins/data-tables/DT_bootstrap.js,
+Application/Modules/DocumentsCP/js/documents_cp.js,
+Application/Modules/ControlPanel/js/control_panel.js
+<!-- END: loadScript -->
+<!-- END: main -->

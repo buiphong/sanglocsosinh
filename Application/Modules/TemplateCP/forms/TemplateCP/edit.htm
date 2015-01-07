@@ -1,0 +1,76 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý Template</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{categoryLink}">Quản lý Template</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>{catName}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Quản lý Template</h3>
+	</div>
+	<div class="box-content nopadding">
+		{BEFORE_FORM}
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+		
+		<div class="control-group">		  
+			<label for="orderno" class="control-label">Tiêu đề</label>
+			<div class="controls">
+				<input class="field required" type="text" name="title" id="title" size=40 value="{model.title}" />
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="name" class="control-label">Tên</label>
+			<div class="controls">
+				{template}
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="orderno" class="control-label">Avatar</label>
+			<div class="controls">
+				<input class="field" type="text" name="avatar" id="avatar" size=30 value="{model.avatar}">
+				<input class="button" type="button" id="filePath" name="filePath" onclick="openFileBrowser('avatar')" value="Quản lý file"/>
+			</div>
+		</div>	
+		
+		<div class="control-group">		  
+			<label for="orderno" class="control-label">Đặt mặc định</label>
+			<div class="controls">
+				{isdefault}
+			</div>
+		</div>	
+		
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>	
+		
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="{appPath}/Application/Modules/WebCP/js/web_cp.js"></script>
+<!-- END: main -->

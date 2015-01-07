@@ -1,0 +1,57 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý giao diện</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{listLink}">Nhóm chức năng hệ thống</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a>{group}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Nhóm chức năng</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmactiongroups" class="form-horizontal form-bordered frmValidate">
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Tên nhóm</label>
+			    <div class="controls">
+			    	<input class="field required" type="text" name="name" id="name" size=40 value="{model.name}">
+			    </div>
+			</div>
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Mô tả</label>
+			    <div class="controls"><textarea class="field" name="description" id="description" rows=5 cols=40>{model.description}</textarea></div>
+			</div>
+			<div class="control-group">		  
+				<label for="textfield" class="control-label">Trạng thái</label>
+			    <div class="controls">{status}</div>
+			</div>
+			<input name="id" type="hidden" id="key" value="{model.id}">
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Ghi lại</button>
+				<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+			</div>
+		</form>
+	</div>
+</div>
+<!-- END: main -->

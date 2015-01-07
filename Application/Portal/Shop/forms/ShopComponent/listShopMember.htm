@@ -1,0 +1,34 @@
+<!-- BEGIN: main -->
+<div class="box_tree_same">
+    <h2 class="fwb ttu tl_tree_cm m0 p0">
+        <span>Danh sách gian hàng</span>
+    </h2>
+    <table id="list_shop_member">
+        <thead>
+            <tr>
+                <th width="60">STT</th>
+                <th width="360">Tên gian hàng</th>
+                <th width="100">Số lượng cây</th>
+                <th width="80">Ngày mở</th>
+                <th width="80">Ngày đóng</th>
+                <th width="90">Lựa chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- BEGIN: shop -->
+            <tr>
+                <td>{shop.num}</td>
+                <td>{shop.name}</td>
+                <td>{shop.totalProduct}</td>
+                <td>{shop.start_date}</td>
+                <td>{shop.end_date}</td>
+                <td>
+                    <a href="{shop.editLink}" title="Sửa" class="tdn cl8C6239">Sửa</a>
+                    <a href="javascript:deleteShop({shop.id})" title="Xóa" class="tdn cl8C6239">Xóa</a>
+                </td>
+            </tr>
+            <!-- END: shop -->
+        </tbody>
+    </table>
+</div>
+<!-- END: main -->

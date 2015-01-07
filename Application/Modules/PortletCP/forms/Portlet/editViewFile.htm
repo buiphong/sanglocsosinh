@@ -1,0 +1,24 @@
+<!-- BEGIN: main -->
+<div class="modal-portletCP">
+    <div id="content-view-code"></div>
+    <textarea id="content-view" style="display: none">{contentFile}</textarea>
+    <input type="hidden" id="viewFilePath" value="{viewFile}"/>
+    <div style="margin-top: 10px;" align="center">
+        <a class="layout-cp-btn" onclick="updateViewFile();">Cập nhật</a>
+        <a class="layout-cp-btn btn close-modal">Bỏ qua</a>
+    </div>
+</div>
+<script type="text/javascript">
+	CodeMirror.commands.autocomplete = function(cm) {
+		CodeMirror.showHint(cm, CodeMirror.hint.html);
+	}
+	var cmEditor;
+	$(document).ready(function(){
+        cmEditor = CodeMirror(document.getElementById("content-view-code"), {
+          mode: "text/html",
+          extraKeys: {"Ctrl-Space": "autocomplete"},
+          value: $("#content-view").val()
+        });
+	});
+</script>
+<!-- END: main -->

@@ -1,0 +1,65 @@
+<!-- BEGIN: main -->
+<div class="page-header">
+	<div class="pull-left">
+		<h1>Quản lý lĩnh vực chuyên môm</h1>
+	</div>
+</div>
+
+<div class="breadcrumbs">
+	<ul>
+		<li>
+			<a href="{homeCPLink}">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="{menuLink}">Quản lý lĩnh vực chuyên môm</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<a href="">{action}</a>
+		</li>
+	</ul>
+	<div class="close-bread">
+		<a href="#">
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+</div>
+
+<div class="box box-color box-bordered">
+	<div class="box-title">
+		<h3>Danh sách lĩnh vực chuyên môm</h3>
+	</div>
+	<div class="box-content nopadding">
+		<form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+        <div class="control-group">
+            <label for="fullname" class="control-label">Lĩnh vực</label>
+            <div class="controls">
+                <input class="field" type="text" name="name" id="name"  value="{model.name}" />
+            </div>
+        </div>
+
+		<div class="control-group">		  
+			<label for="fullname" class="control-label">Mô tả</label>
+			<div class="controls">
+				<textarea class="field jhtmlarea required" name="desc" id="desc" rows="4" cols="87">{model.desc}</textarea>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<input name="id" type="hidden" id="id" value="{model.id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="{listLink}"><button type="button" class="btn">Bỏ qua</button></a>			
+		</div>
+		
+		</form>
+		{AFTER_FORM}
+	</div>
+</div>
+<script>
+    $(document).ready(function(){
+        if($(".jhtmlarea").length > 0)
+            $(".jhtmlarea").htmlarea();
+    });
+</script>
+<!-- END: main -->

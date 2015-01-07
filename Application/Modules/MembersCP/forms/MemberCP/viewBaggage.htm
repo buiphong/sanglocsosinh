@@ -1,0 +1,62 @@
+<!-- BEGIN: main -->
+<div class="box box-color box-bordered dataTables_wrapper">
+    <div class="box-content nopadding dataTables_wrapper">
+        <form method="post" action="{listLink}" name="frmList"  id='frmList'>
+            <input type="hidden" name="page" id="page"/>
+            <input type="hidden" name="booking_id" id="passenger_id" value="{passenger_id}" />
+            <div class="cb"></div>
+
+            <table class="table table-striped table-bordered table-hover dataTable" id="tableBaggagePassenger" aria-describedby="sample_3_info">
+                <thead>
+                <tr role="row">
+                    <th style="width: 8px;">
+                        <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                    </th>
+                    <th class="" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Tên hành khách</th>
+                    <th class="" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Loại hành lý</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_3" rowspan="1" colspan="1">Khối lượng hành lý mang theo</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </form>
+        <div class="cl"></div>
+        <div class="dataTables_info">
+            <!-- BEGIN: button -->
+            <button class="btn btn-primary" onClick="deleteAction('{linkDel}');" >
+                <i class="icon-trash"> Xóa mục đã chọn</i>
+            </button>
+            <!-- END: button -->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var oTable = $("#tableBaggagePassenger").DataTable({
+            "bProcessing": true,
+            "bServerSide": true,
+            "bDestroy": true,
+            "sPaginationType": "bootstrap",
+            "sAjaxSource": "/BookingCP/BookingBaggageCP/dataTable",
+            "fnCreatedRow": function( nRow, aData, iDataIndex ) {
+                $(nRow).attr('id', aData['id']);
+            },
+            "fnServerParams": function ( aoData ) {
+                aoData.push( { "name": "passenger_id", "value": $("#passenger_id").val() } );
+            },
+            "aoColumns": [
+                { "bSortable": false, "sDefaultContent": "", "fnRender": function (oObj) {
+                    return  '<input type="checkbox" name="key[]" value="'+ oObj.aData['id'] +'"/>';
+                }
+                },
+                {"mData": "fullname"},
+                {"bSortable": false, "mData": "baggage_type"},
+                {"bSortable": false, "mData": "quantity_baggage"}
+            ]
+        });
+    })
+</script>
+<!-- END: main -->

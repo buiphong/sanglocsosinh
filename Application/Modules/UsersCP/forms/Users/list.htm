@@ -1,0 +1,99 @@
+<!-- BEGIN: main -->
+<h3>Quản lý người dùng</h3>
+
+<ul class="breadcrumb">
+    <li>
+        <a href="{homeCPLink}">Home</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a>Người dùng</a>
+    </li>
+</ul>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">Danh sách người dùng</div>
+				<div class="tools">
+                    <a href='{createLink}' class="icon-plus btn-info" title="Thêm người dùng">&nbsp;</a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<form method="post" action="{frmAction}" name="frmusers" id="frmusers" style="padding: 0px; margin: 0px;">
+					<div class="dataTables_length" id="DataTables_Table_0_filter">					
+						<input type="text" name="txt_search" placeholder="Tìm kiếm" class="field" value="{textSearch}"/>					
+						<button type="submit" class="btn btn-primary">Tìm kiếm</button>	
+					</div>	
+					<input type="hidden" name="page" id="page"/>
+					<div class="cb"></div>
+				</form>
+				<table class="table" style="width: 100%;" >
+					 <tr style="height: 30px;">
+						<th width="2%">::</th>
+						<th>Username</th>
+					    <th>Tên đầy đủ</th>
+					    <th>Địa chỉ email</th>  
+						<th width="5%">&nbsp;</th>
+					  </tr>
+					<!-- BEGIN: users -->
+					  <tr>
+						<td align="center" valign="top">
+						  <input type='checkbox' name='key[]' value='{users.id}'{disabled}>
+						</td>
+					    <td valign="top"><a href="{editLink}?key={users.id}"><strong>{users.username}</strong></a>&nbsp;</td>
+					    <td valign="top">{users.fullname}&nbsp;</td>
+					    <td valign="top">{users.email}&nbsp;</td>  
+						<td width="5%" valign="top"><a href='{editLink}?key={users.id}'>{common.edit} Sửa</a></td>
+					  </tr>
+					<!-- END: users -->
+				</table>
+                    {PAGE}
+					<div class="cb"></div>
+					<div class="dataTables_info">
+						<!-- BEGIN: button -->
+						<button class="btn btn-primary" onClick="deleteAction();">Xóa mục đã chọn</button>
+						<!-- END: button -->
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+function deleteAction()
+{
+	var listId = "";
+	$('input[name="key[]"]:checked').each(function(){
+		if(listId == "")
+			listId = $(this).val();
+		else
+			listId += "," + $(this).val();
+	});
+	if (listId != '')
+	{
+        VccConfirm('Bạn có chắc chắn muốn xoá không ?',doDelete, listId);
+	}
+}
+
+function doDelete(listId)
+{
+    $.ajax({
+        url: "{deleteLink}",
+        type: "POST",
+        dataType: "json",
+        data: {listid: listId},
+        success: function(res){
+            if(res.success)
+            {
+                $('input[name="key[]"]:checked').each(function(){
+                    $(this).parent().parent().remove();
+                });
+            }
+            else
+                alert(res.msg);
+        }
+    });
+}
+</script>
+<!-- END: main -->

@@ -1,0 +1,88 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="form-horizontal form-bordered frmValidate">
+        <!--<div class="control-group">
+            <label for="fullname" class="control-label">Loại thành viên</label>
+            <div class="controls">
+                {memberType}
+            </div>
+        </div>-->
+
+        <div class="control-group">
+            <label for="fullname" class="control-label">Họ tên</label>
+            <div class="controls">
+                {model.fullname}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="username" class="control-label">Tài khoản</label>
+            <div class="controls">
+                {model.username}
+            </div>
+        </div>
+
+        <!--<div class="control-group">
+            <label for="new_password" class="control-label">Mật khẩu</label>
+            <div class="controls">
+                <input class="field required" type="password" name="new_password" id="new_password" size=40 />
+                <input type="hidden" name="password" value="{model.password}"/>
+            </div>
+        </div>-->
+
+        <div class="control-group">
+            <label for="email" class="control-label">Email</label>
+            <div class="controls">
+                {model.email}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="email" class="control-label">Số điện thoại</label>
+            <div class="controls">
+                {model.phone}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="email" class="control-label">Địa chỉ</label>
+            <div class="controls">
+                {model.address}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="rdGender" class="control-label">Giới tính</label>
+            <div class="controls">
+                {model.gender}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="birth_date" class="control-label">Ngày sinh</label>
+            <div class="controls">
+                {model.birth_date}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="rdStatus" class="control-label">Trạng thái</label>
+            <div class="controls">
+                {model.status}
+            </div>
+        </div>
+
+        <!--<div class="control-group">
+            <label for="rdVip" class="control-label">Tài khoản VIP</label>
+            <div class="controls">
+                {model.is_vip}
+            </div>
+        </div>-->
+
+        <div class="form-actions">
+			<a href="javascript:;" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+        </div>
+
+    </form>
+</div>
+<!-- END: main -->

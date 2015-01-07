@@ -1,0 +1,24 @@
+<!-- BEGIN: main -->
+<div class="box-content nopadding">
+    <form method="post" enctype="multipart/form-data" action="{form_action}" name="frmedit" class="ajax-form form-horizontal form-bordered frmValidate">
+		<div class="control-group">
+			<label for="x_password1" class="control-label">Mật khẩu mới</label>
+			<div class="controls">
+				<input class="field required" type="password" name="x_password1" id="x_password1" size=40 />
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="x_password2" class="control-label">Nhập lại mật khẩu mới</label>
+			<div class="controls">
+				<input class="field required" type="password" name="x_password2" id="x_password2" size=40 />
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<input name="id" type="hidden" id="key" value="{id}">
+			<button type="submit" class="btn btn-primary">Ghi lại</button>
+			<a href="javascript:;" class="close-modal"><button type="button" class="btn">Bỏ qua</button></a>
+		</div>
+	</form>
+</div>
+<!-- END: main -->

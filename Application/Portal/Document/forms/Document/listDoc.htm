@@ -1,0 +1,36 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">{boxTitle}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <!-- BEGIN: doc -->
+        <div class="list-news ofh mt10">
+            <div class="img-news fl tc image_border wp123 h107 ml10">
+                <div class="img_news_border_5"><a class="a_img" href="{doc.href}" title="{doc.title}"><img class="img_123_107 img_shadow" src="{doc.image#thumb:123,107,1}" alt="{doc.title}"/></a>
+                </div>
+            </div>
+            <div class="ofh fl wp510 ml20">
+                <div>
+                    <a href="{doc.href}" class="fs14 fwb cl0072BB tdn" title="{doc.title}">{doc.title}</a>
+                </div>
+                <div class="mt5 {doc.file_class}">
+                    <span class="fsi">File: {doc.file_info.type} ({doc.file_info.size} Kb)</span> <a target="_blank" href="{doc.file_url}" class="ml20 tdn download_icon" title="Download tài liệu">Tải về</a>
+                </div>
+                <div class="mt5">
+                    <div class="cbl fs12">{doc.description#CutString:280}</div>
+                </div>
+            </div>
+            <div class="cl"></div>
+            <div class="h17 bg_i_line mt20 pr10">
+                <a href="{doc.href}" class="fr fsi fs11 cl0072BB mt2 tdn">Xem thêm >></a>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- END: doc -->
+    </div>
+</div>
+<!-- END: main -->

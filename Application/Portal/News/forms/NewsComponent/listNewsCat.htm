@@ -1,0 +1,45 @@
+<!-- BEGIN: main -->
+<div class="box-blue">
+    <div class="box-title">
+        <div class="caption">{boxTitle}</div>
+        <div class="title_bg_bottom"></div>
+        <div class="rec_box_title left"></div>
+        <div class="rec_box_title right"></div>
+    </div>
+    <div class="box-content">
+        <!-- BEGIN: news -->
+        <div class="list-news ofh mt10">
+            <div class="img-news fl tc image_border wp123 h107 ml10">
+                <div class="img_news_border_5"><a class="a_img" href="{news.href}" title="{news.title}"><img class="img_123_107 img_shadow" src="{news.image_path#thumb:123,107,1}" alt="{news.title}"/></a>
+                </div>
+            </div>
+            <div class="ofh fl wp261 ml20">
+                <div>
+                    <a href="{news.href}" class="fs12 fwb cl0072BB tdn lh15" title="{news.title}">{news.title}</a>
+                </div>
+                <div class="mt5">
+                    <div class="cbl fs12">{news.brief#CutString:280}</div>
+                </div>
+            </div>
+            <div class="cl"></div>
+            <div class="h17 bg_i_line mt20 pr10">
+                <a href="{news.href}" class="fr fsi fs11 cl0072BB mt2 tdn">Xem thêm >></a>
+                <div class="cl"></div>
+            </div>
+        </div>
+        <!-- END: news -->
+        <!-- BEGIN: empty -->
+            <div class="error tac fs16 mt10">Không tìm thấy dữ liệu</div>
+        <!-- END: empty -->
+        <div class="pagging tar mt10">
+            {pagging}
+        </div>
+        <div class="mt10">
+            <a class="fl btn-gray-border tdn" title="Bài ngày hôm trước" href="{urlPrevDate}">Bài ngày hôm trước</a>
+            <a data-date="{date}" href="javascript:" data-href="{baseUrl}" class="fl tdn datepicker-news btn-gray-border ml10" title="Xem bài theo ngày">Xem bài theo ngày tháng</a>
+            <a class="fl btn-gray-border ml10 tdn" title="Bài ngày hôm sau" href="{urlNextDate}">Bài ngày hôm sau</a>
+            <div class="cl"></div>
+        </div>
+    </div>
+</div>
+<!-- END: main -->

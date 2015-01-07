@@ -1,0 +1,16 @@
+<!-- BEGIN: main -->
+	<!-- BEGIN: news -->
+	<tr class="{news.selected}">
+		<td><input data-status="{news.status}" type="checkbox" name="key[]" value="{news.id}" {news.checked}/></td>
+		<td>{news.title}</td>
+		<td>{news.category}</td>
+		<td align="center">{news.created_date}</td>
+		<td>{news.created_by}</td>
+		<td>
+			<!-- BEGIN: button -->
+			<a {button.href} class="table-btn btn-{button.class}" onclick="{button.onclick}" title="{button.title}" accesskey="{button.id}">&nbsp;</a>
+			<!-- END: button -->
+		</td>
+	</tr>
+	<!-- END: news -->
+<!-- END: main -->

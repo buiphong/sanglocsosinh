@@ -1,0 +1,20 @@
+<!-- BEGIN:main -->
+<div>
+    <h2 class="fwb ttu tl_tree_cm m0 p0">
+        <span>FAQ</span>
+    </h2>
+    <ul id="faqs" class="m0 p0 lsn">
+        <!-- BEGIN: faq -->
+        <li class="normal mt20">
+            <a class="faq_Q fs15 fwb tdn">{faq.question}</a>
+            <div class="faq_A mt10">
+                <!-- BEGIN: infoFaq -->
+                <p class="infoFaq m0 p0 fs11 clgray">Người hỏi: {infoFaq.fullname} -- {infoFaq.created_time}</p>
+                <!-- END: infoFaq -->
+                <p class="fs13 mt5 mb0">{faq.answer}</p>
+            </div>
+        </li>
+        <!-- END: faq -->
+    </ul>
+</div>
+<!-- END: main -->

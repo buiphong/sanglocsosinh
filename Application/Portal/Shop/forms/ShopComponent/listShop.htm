@@ -1,0 +1,35 @@
+<!-- BEGIN: main -->
+<div class="box_tree_same">
+    <h2 class="fwb ttu tl_tree_cm m0 p0">
+        <span>Danh sách gian hàng</span>
+    </h2>
+
+    <ul class="ul_box_tree_same oh p0 m0 lsn">
+        <!-- BEGIN: shop -->
+        <li class="li_box_tree_same {shop.class} mb10">
+            <div class="image_border wp155 h115">
+                <a href="{shop.link}" title="{shop.name}">
+                    <img src="{shop.image_path#thumb:155,115}"  alt="{shop.title}" class="img_155_115"/>
+                </a>
+            </div>
+            <a href="{shop.link}" class="fwb mt10 pb5 mb10 tdn title" title="{shop.name}">{shop.name}</a>
+            <!--<p class="p0 m0"><label class="mr5">Mã:</label><span>{product.attr.code}</span></p>-->
+            <p class="p0 m0"><label class="mr5 wp85i">Số lượng cây:</label><span>{shop.totalProduct}</span></p>
+            <p class="p0 m0"><label class="mr5">Tỉnh/TP:</label><span>{shop.attr.province}</span></p>
+        </li>
+        <!-- BEGIN: clear -->
+        <div class="cl"></div>
+        <!-- END: clear -->
+        <!-- END: shop -->
+    </ul>
+    <!-- BEGIN: paging -->
+    <div class="pages fr mt15">
+        <ul class="ul_pages oh fl m0 p0 lsn">
+            <!-- BEGIN: item -->
+            <li class="{item.class}"><a href="{item.link}" class="tdn">{item.page}</a></li>
+            <!-- END: item -->
+        </ul>
+    </div>
+    <!-- END: paging -->
+</div>
+<!-- END: main -->
