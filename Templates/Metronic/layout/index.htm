@@ -1,0 +1,145 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>{title}Sàng Lọc Sơ Sinh</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/bootstrap/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/css/style-metro.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/css/style.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/css/style-responsive.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/css/themes/default.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/uniform/css/uniform.default.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/select2/select2_metro.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/bootstrap-modal/css/bootstrap-modal.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/chosen-bootstrap/chosen/chosen.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/gritter/css/jquery.gritter.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/css/pages/login.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css"/>
+    <link rel="stylesheet" href="/Templates/Metronic/plugins/bootstrap-tree/bootstrap-tree/css/bootstrap-tree.css"/>
+
+    <!-- BEGIN: loadScript -->
+    Templates/Metronic/plugins/jquery-1.10.1.min.js,
+    Templates/Metronic/plugins/jquery-migrate-1.2.1.min.js,
+    Templates/Metronic/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js,
+    Templates/Metronic/plugins/bootstrap/js/bootstrap.min.js,
+    Templates/Metronic/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js,
+    Templates/Metronic/plugins/jquery-slimscroll/jquery.slimscroll.min.js,
+    Templates/Metronic/plugins/jquery.blockui.min.js,
+    Templates/Metronic/plugins/jquery.cookie.min.js,
+    Templates/Metronic/plugins/uniform/jquery.uniform.min.js,
+    Templates/Metronic/plugins/bootstrap-tree/bootstrap-tree/js/bootstrap-tree.js,
+    Templates/Metronic/plugins/jquery-validation/dist/jquery.validate.min.js,
+    Templates/Metronic/plugins/bootstrap-modal/js/bootstrap-modal.js,
+    Templates/Metronic/plugins/bootstrap-modal/js/bootstrap-modalmanager.js,
+    Templates/Metronic/plugins/chosen-bootstrap/chosen/chosen.jquery.min.js,
+    Templates/Metronic/plugins/gritter/js/jquery.gritter.min.js,
+    Templates/Metronic/scripts/ui-tree.js,
+    Templates/Metronic/scripts/common.js,
+    Templates/Metronic/scripts/app.js
+    <!-- END: loadScript -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/excanvas.min.js"></script>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed page-sidebar-closed">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+<!-- BEGIN TOP NAVIGATION BAR -->
+<div class="navbar-inner">
+<div class="container-fluid">
+<!-- BEGIN LOGO -->
+<a class="brand" href="index.html">
+    <img src="/Templates/Metronic/img/logo.png" alt="logo" />
+</a>
+<!-- END LOGO -->
+<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+    <img src="/Templates/Metronic/img/menu-toggler.png" alt="" />
+</a>
+<!-- END RESPONSIVE MENU TOGGLER -->
+<!-- BEGIN TOP NAVIGATION MENU -->
+<ul class="nav pull-right">
+<!-- BEGIN NOTIFICATION DROPDOWN -->
+
+<!-- END TODO DROPDOWN -->
+<!-- BEGIN USER LOGIN DROPDOWN -->
+<li class="dropdown user">
+    {userinfo}
+</li>
+</ul>
+<!-- END TOP NAVIGATION MENU -->
+</div>
+</div>
+<!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar nav-collapse collapse">
+<!-- BEGIN SIDEBAR MENU -->
+{navigation}
+<!-- END SIDEBAR MENU -->
+</div>
+<!-- END SIDEBAR -->
+<!-- BEGIN PAGE -->
+<div class="page-content">
+    <div class="container-fluid">
+    {content}
+    </div>
+</div>
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="footer-inner">
+        2013 &copy; Metronic by keenthemes.
+    </div>
+    <div class="footer-tools">
+			<span class="go-top">
+			<i class="icon-angle-up"></i>
+			</span>
+    </div>
+</div>
+
+<div id="modal-confirm" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3 id="myModalLabel3">Xác nhận hệ thống</h3>
+    </div>
+    <div class="modal-body">
+        <p>Body goes here...</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Đóng</button>
+        <button data-dismiss="modal" class="btn blue" id="ok">Đồng ý</button>
+    </div>
+</div>
+<div id="mainPageLoading"><img src="/Templates/Metronic/img/loading.gif"/></div>
+<!-- END FOOTER -->
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        // initiate layout and plugins
+        App.init();
+    });
+    var baseUrl='{appPath}';
+</script>
+</body>
+<!-- END BODY -->
+</html>
+<!-- END: main -->
