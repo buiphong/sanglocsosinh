@@ -200,7 +200,7 @@ $(document).ready(function(){
                 url: parent.children('input[name=ajaxUrl]').val(),
                 dataType: "json",
                 type: "POST",
-                data: {data: parent.children('input[name=ajaxParams]').val()},
+                data: {data: parent.children('input[name=ajaxParams]').val(), page: obj.attr('accessKey')},
                 success: function(res)
                 {
                     if(res.success){

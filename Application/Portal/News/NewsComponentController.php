@@ -250,7 +250,7 @@ class NewsComponentController extends Presentation
     public function listNewsCatAjax()
     {
         $params = unserialize(base64_decode($this->params['data']));
-        $data = array('catId' => $params['catId'], 'page' => $params['page'] + 1, 'display' => $params['display'],
+        $data = array('catId' => $params['catId'], 'page' => $this->params['page'], 'display' => $params['display'],
             'skin' => $params['skin']);
         return json_encode(array('success' => true, 'html' => $this->html->renderAction('listNewsCat', $data)));
     }

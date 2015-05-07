@@ -57,21 +57,21 @@ return array(
                                 'module' => 'News',
                                 'controller' => 'NewsComponent',
                                 'action' => 'listNewsCat',
-                                'url' => '{catname1}-ncat{catId}/trang-{page}'),
+                                'url' => '{catname}-ncat{catId}/trang-{page}'),
         '([\w-_]+)-ncat(\d+)\/page-(\d+)' => array(
                                 'langcode' => 'en-US',
                                 'module' => 'News',
                                 'controller' => 'NewsComponent',
                                 'action' => 'listNewsCat',
-                                'url' => '{catname1}-ncat{catId}/page-{page}'),
+                                'url' => '{catname}-ncat{catId}/page-{page}'),
         '([\w-_]+)\/([\w-_]+)-ncat(\d+)' => array(
                                 'module' => 'News',
                                 'controller' => 'NewsComponent',
                                 'action' => 'listNewsCat',
-                                'url' => '{catname1}/{catname2}-ncat{catId}'),
+                                'url' => '{catname}/{catname2}-ncat{catId}'),
         '([\w-_]+)-ncat(\d+)' => array(
                                 'module' => 'News',
                                 'controller' => 'NewsComponent',
                                 'action' => 'listNewsCat',
-                                'url' => '{catname1}-ncat{catId}'))
+                                'url' => '{catnameo}-ncat{catId}'))
 );

@@ -129,7 +129,7 @@ class SNewsComponentController extends Presentation
     public function boxSNewsAjax()
     {
         $params = unserialize(base64_decode($this->params['data']));
-        $data = array('typeId' => $params['typeId'], 'page' => $params['page'] + 1, 'display' => $params['limit'],
+        $data = array('typeId' => $params['typeId'], 'page' => $this->params['page'], 'display' => $params['limit'],
             'skin' => $params['skin'], 'num' => $params['num']);
         return json_encode(array('success' => true, 'html' => $this->html->renderAction('boxSNews', $data)));
     }
