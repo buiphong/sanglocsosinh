@@ -63,7 +63,7 @@ class VideosController extends Controller{
 	}
 	function createPostAjax(Models_Videos $model){
         $model->create_time = date("Y-m-d H:i:s", time());
-        $model->created_uid = $_SESSION["vc_control_panel"]["system_userid"];
+        $model->created_uid = $_SESSION["pt_control_panel"]["system_userid"];
         $model->lang_code = @$_SESSION["sys_langcode"];
 		if ($model->Insert())
             return json_encode(array("success" => true, "msg" => "Thêm mới thành công","dataTable"=>"tableVideos"));

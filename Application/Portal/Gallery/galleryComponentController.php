@@ -33,4 +33,20 @@
             }
             return $this->view();
         }
+
+        public function videoPlaylistAction(){
+            $videos = Models_Videos::getVideosByAlbum('', 10);
+            if($videos){
+                header("Content-Type: application/rss+xml; charset=utf-8");
+                $html = '<rss version="2.0" xmlns:jwplayer="http://rss.jwpcdn.com/"><channel>';
+                foreach($videos as $video){
+                    $html .= '<item><title>'.$video['name'].'</title><description>'.$video['desc'].'</description>
+    <jwplayer:image>'.$video['img_path'].'</jwplayer:image><jwplayer:source file="'.$video['video_path'].'" /></item>';
+                }
+                $html .= '</channel></rss>';
+                echo $html;
+                die;
+            }
+            return false;
+        }
     }
