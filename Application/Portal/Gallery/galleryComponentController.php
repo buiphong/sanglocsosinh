@@ -26,11 +26,16 @@
 
         public function boxVideoAction()
         {
-            if(isset($this->params['videoId']))
+            /*if(isset($this->params['videoId']))
             {
                 $video = Models_Videos::getById($this->params['videoId']);
                 $this->tpl->assign('video', $video);
-            }
+            }*/
+            $videos = Models_Videos::getVideosByAlbum('', 10);
+            if($videos)
+                foreach($videos as $video){
+                    $this->tpl->insert_loop('main.video', 'video', $video);
+                }
             return $this->view();
         }
 

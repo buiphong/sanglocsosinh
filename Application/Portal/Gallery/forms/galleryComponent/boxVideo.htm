@@ -15,7 +15,15 @@
     <script type="text/javascript">jwplayer.key="vmAEdu5OJSCiJfE3aWibJZ6338lN/A7tybduu0fdEfxYgi7AkWpjckRUFeI="</script>
     <script type="text/javascript">
         jwplayer("videos").setup({
-            playlist: '/Gallery/galleryComponent/videoPlaylist',
+            playlist: [
+                <!-- BEGIN: video -->
+                {
+                image: "{video.img_path}",
+                file: "{video.video_path}",
+                title: "{video.name}"
+                },
+                <!-- END: video -->
+               ],
             width: 216,
             height:186
         });
