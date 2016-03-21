@@ -953,11 +953,11 @@ Bootstrap modal
 }
 
 .modal {
-  z-index: 10050 !important;
+  z-index: 10000 !important;
 }
 
 .modal-backdrop {
-  z-index: 10049 !important;
+  z-index: 9999 !important;
 }
 
 .modal-backdrop, 
