@@ -1,0 +1,62 @@
+#jFlowSlide{
+    background:#DBF3FD; 
+    font-family: Georgia; 
+}
+#myController { 
+    font-family: Georgia;
+    text-align: right; 
+    padding:2px 0;  
+    width:440px; 
+    background:#FFF;
+}
+#myController span.jFlowSelected {
+    background:#43A0D5;
+    margin-right:0px;
+     
+}
+
+.slide-wrapper {
+    padding: 5px;
+}
+.slide-thumbnail { 
+    width:220px; 
+    float:left;
+}
+.slide-thumbnail img {
+    max-width:220px; 
+    margin-top:4px;
+}
+.slide-details {
+    width:200px; 
+    float:left; 
+    margin-left:8px;
+}
+h2{ 
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 22px;
+    text-decoration: none; }
+h2:hover{ 
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 22px;
+    text-decoration: none; }
+.slide-details .description { margin-top:1px; text-align: justify;font-family: Times New Roman,Arial,Helvetica;}
+
+.jFlowControl, .jFlowPrev, .jFlowNext { 
+    color:#FFF; 
+    cursor:pointer; 
+    padding-left:5px; 
+    padding-right:5px; 
+    padding-top:2px; 
+    padding-bottom:2px; 
+}
+.jFlowControl:hover, .jFlowPrev:hover, .jFlowNext:hover { 
+    background: #43A0D5; 
+}
+a{
+    text-decoration: none;    
+}
+
