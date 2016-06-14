@@ -54,12 +54,12 @@ $defaultRouter = array(
 
 //Database config
 $dbConfig = array(
-	'mysql' => array(
+	'mysqli' => array(
 			'server' => 'localhost',
 			'username' => 'root',
 			'port' => '3306',
 			'password' => '',
-			'dbname' => 'bionet_slss',
+			'dbname' => 'sanglocsosinh',
 	)
 	/*'mongodb' => array(
 			'server' => '172.16.2.99',

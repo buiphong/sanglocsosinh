@@ -15,7 +15,7 @@ $(document).ready(function(){
         next: ".next-btn",
         prev: ".back-btn",
         //auto: true,
-        width: 980,
+        responsive: 'true',
         speed: 1600
     });
 
@@ -210,6 +210,11 @@ $(document).ready(function(){
             });
         });
     }
+
+    // Handle toggle menu
+    $('.toggle-menu').on('click', function(){
+        $("#main_menu ul").toggle();
+    });
 });
 
 $('body').on('submit', '.ajax-form', function(){
