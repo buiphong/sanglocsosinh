@@ -73,5 +73,5 @@ return array(
                                 'module' => 'News',
                                 'controller' => 'NewsComponent',
                                 'action' => 'listNewsCat',
-                                'url' => '{catnameo}-ncat{catId}'))
+                                'url' => '{catname}-ncat{catId}'))
 );

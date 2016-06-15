@@ -123,6 +123,7 @@ class String
         $str = strtolower(self::removeSign($str));
         $str = str_replace("&*#39;", "", $str);
         $str = str_replace(" ", "-", $str);
+		$str = str_replace("…", "", $str);
         $str = str_replace(":", "-", $str);
         $str = str_replace(".", "-", $str);
         $str = str_replace(",", "-", $str);

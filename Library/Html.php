@@ -387,19 +387,15 @@ class Html
             $html .= '<option value="">'.$defaultText.'</option>';
         if(!empty($arrOptions))
         {
-            if(strpos($value,',') !== false)
-                $value = explode(',', $value);
-            else
-                $value = array($value);
             foreach ($arrOptions as $key => $option) {
                 //Nếu không có valueID và nameID
                 if ($valueID == null || $nameID == null)
-                    if (in_array($key, $value))
+                    if ($value == $key)
                         $html .= '<option value="' . $key . '" selected="selected">' . $option . '</option>';
                     else
                         $html .= '<option value="' . $key . '">' . $option . '</option>';
                 else
-                    if (in_array($option[$valueID], $value))
+                    if ($value == $option[$valueID])
                         $html .= '<option value="' . $option[$valueID] . '" selected="selected">' . $option[$nameID] . '</option>';
                     else
                         $html .= '<option value="' . $option[$valueID] . '">' . $option[$nameID] . '</option>';
