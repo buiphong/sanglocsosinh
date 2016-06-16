@@ -1578,6 +1578,7 @@ class XTemplate {
                     break;
             }
         }
+
         return $val;
     }
 } /* end of XTemplate class. */

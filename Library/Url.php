@@ -110,6 +110,7 @@ class Url
             else
                 $thumburl = THUMBNAIL_DIR . DIRECTORY_SEPARATOR . "{$width}_{$height}";
             $photo_url = ROOT_PATH . DIRECTORY_SEPARATOR . $photo_url;
+            $photo_url = str_replace('/', DIRECTORY_SEPARATOR, $photo_url);
             if(!is_file(ROOT_PATH . DIRECTORY_SEPARATOR . "{$thumburl}/{$thumb}") && is_file($photo_url))
             {
                 if(!is_file("{$thumburl}/{$thumb}"))

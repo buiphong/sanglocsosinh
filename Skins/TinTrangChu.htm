@@ -17,7 +17,7 @@
                             <a href="{item1.href}" title="{item1.title}"><img src="{item1.image_path#thumb:243,156,1}" alt="{item1.title}" class="img_shadow img_243_156"/></a>
                         </div>
                     </div>
-                    <div class="fs12 lh18">{item1.brief}</div>
+                    <div class="fs12 lh18 news-brief">{item1.brief#CutString:350}</div>
                     <div class="cl"></div>
                 </div>
                 <!-- END: segment1 -->
@@ -26,13 +26,13 @@
                     <div class="bdbd pb10 mb10 {item2.boxClass} special_home">
                         <div class="image_border wp96 h66 fl mr10">
                             <a href="{item2.href}" title="{item2.title}">
-                                <img src="{item2.image_path#thumb:96,66}" alt="{item2.title}" class="img_shadow img_96_66"/>
+                                <img src="{item2.image_path#thumb:320,220}" alt="{item2.title}" class="img_shadow img_96_66"/>
                             </a>
                         </div>
                         <div class="fl wp175">
                             <div class="mb5"><a class="fs12 fwb cl000 tdn" href="{item2.href}" title="{item2.title}">{item2.title}</a></div>
-                            <div class="fs11 mb5">{item2.brief}</div>
-                            <div class="">
+                            <div class="fs11 mb5 news-brief">{item2.brief#CutString:350}</div>
+                            <div class="bottom-time-read-more">
                                 <div class="fl cl0072BB fs8 fsi">{item2.date}</div>
                                 <div class="fr"><a href="{item2.href}" title="{item2.title}" class="tdn cl0072BB fs8 fsi">Xem tiếp >></a></div>
                                 <div class="cl"></div>

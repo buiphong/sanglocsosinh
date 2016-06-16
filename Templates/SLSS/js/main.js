@@ -10,8 +10,19 @@ $(document).ready(function(){
             prev: '#slider-prev'
         });
     }
+
+    var $visible = 6;
+    var $width = jQuery(window).width();
+    if ($width <= 480){
+        $visible = 2;
+    } else if ($width <= 640){
+        $visible = 3;
+    } else if ($width <= 768){
+        $visible = 4;
+    }
+
     $("#gallery-home-list-partner").carouFredSel({
-        items: {visible:6},
+        items: {visible: $visible},
         next: ".next-btn",
         prev: ".back-btn",
         //auto: true,
