@@ -1,4 +1,5 @@
 .toggle-menu { display: none;}
+.show-mobile { display: none !important;}
 
 /* tablet */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation : landscape){
@@ -21,6 +22,9 @@
     img { max-width: 100%;}
     .adv_home { margin: 0;}
     #slider-border { height: auto !important;}
+    .show-mobile { display: block !important;}
+    .hide-mobile { display: none !important;}
+    .fb_iframe_widget.fb-like.show-mobile { display: inline-block !important;}
 
     #main_menu { position: relative;}
     #main_menu .h50 { height: 30px;}
@@ -40,12 +44,26 @@
     #box_member_header .h30 { height: 50px;}
 
     .wp764 { width: 65%;}
+    .wp439 { width: 100%;}
+    .wp322 { width: 100%; margin-left: 0 !important;}
     .wp251 { width: 33%;}
     .fs12 { font-size: 13px;}
+    .ofh.fl.wp181 { overflow: initial; width: 100%; margin-left: 0; float: none;}
+    .list-news.ofh.fl.h51 { width: 48%; margin-left: 1%; height: 69px;}
+    .list-news .fl.wp75 { width: 100%; overflow: initial; float: none;}
+    .list-news .fl.wp75 a {font-size: 13px;}
+    .img-news.image_border.wp56 { width: 80px; height: 57px;}
+    .img-news.image_border.wp56 .img_news_border_3 { width: 100%; height: 100%; display: block; margin: 0 auto;}
+    .img-news.image_border.wp56 a { width: 100%; height: 100%; display: block;}
+    .img-news.image_border.wp56 img { max-width: 100%; max-height: 100%; display: inline-block;}
+    .list-news.ofh.fl.h51.boxBlue { background: transparent;}
 
     .box-blue .box-title .caption { height: 34px;}
 
     .box-blue .box-title { font-size: 14px;}
+
+    .wp768 { width: 66%;}
+    .wp760 { width: 100%}
 
     .box-content * { box-sizing: border-box;}
     .box-content .wp430 { width: 100%; display: block; border-right: none; border-bottom: 1px dashed #c9c9c9; margin-bottom: 10px;}
@@ -69,6 +87,13 @@
     .bottom_border.h50 { height: auto; padding-bottom: 10px;}
 
     #gallery-home-slider { width: 100% !important;}
+    #gallery-home.partner { height: auto;}
+    .bottom-time-read-more { display: none;}
+    .border_share_social { height: 32px;}
+    .ct_article table { max-width: 100% !important; width: 100% !important;}
+    .fb_iframe_widget > span { width: 100% !important;}
+    .fb_iframe_widget iframe { width: 100% !important;}
+    .footer-info { display: block; padding: 10px 0;}
 }
 
 @media (max-width: 768px) {
@@ -77,6 +102,7 @@
 
 @media (max-width: 640px) {
     img, table, .ct_article img { max-width: 100% !important;}
+    .hide-small-mobile { display: none;}
     .search-social { float: left; width: 100%; margin-button: 5px;}
     .search-social > .cl { clear: inherit;}
     #search-border { margin-top: 0; width: 100%;}
@@ -88,7 +114,7 @@
     .wp251 { float: none; width: 100%;}
 
     .wp768 { float: none; width: 100%;}
-    .wp768:after { content: ''; display: block; clear: both;}
+    /*.wp768:after { content: ''; display: block; clear: both;}*/
     .wp439, .wp322, .wp251 { float: none; width: 100%; margin-left: 0 !important;}
     .list-news .wp261 { float: none; width: 100%; overflow: initial; margin-left: 0;}
     .list-news.ofh.fl.h51.pt5.pb5.pr4 { width: 100%; float: none; height: auto;}
@@ -110,13 +136,18 @@
     .footer-info .wp430 { width: 100%;}
 
     .wp175 .fs11.mb5 { display: block; overflow: initial; max-height: inherit;}
-    .bottom-time-read-more { display: none;}
     .image_border.wp96 { display: block; margin-bottom: 5px;}
     .news-brief { text-align: justify;}
     .box-content .wp283 { padding: 0 5px;}
-    #gallery-home.partner { height: auto;}
     #videos_wrapper, #videos { width: 98% !important; height: 340px !important;}
     #videos_wrapper embed, #videos embed { width: 100% !important; height: 100% !important;}
+    .wp181 { width: 100%;}
+    .wp181.ml20 { margin-left: 0 !important; float: none; overflow: initial;}
+    .img-news.image_border { float: left;}
+    .btn_slide.prev { top: 20px;}
+    .btn_slide.next { top: 20px;}
+
+    .online-support p { float: left; padding: 12px 0 0 10px;}
 }
 
 @media (max-width: 510px) {
@@ -130,6 +161,7 @@
 @media (max-width: 480px) {
     #logo_site { width: 30%; background-size: 100%; padding: 0; height: 78px;}
     #videos_wrapper, #videos { height: 280px !important;}
+    .header-text p { font-size: 14px;}
 }
 
 @media (max-width: 380px) {
@@ -137,6 +169,10 @@
     .header-text p.mt10 { margin-top: 5px;}
     .icons.social { margin-left: 6px !important;}
     #videos_wrapper, #videos { height: 270px !important;}
+    .header-text p { font-size: 13px;}
+}
+@media (max-width: 352px) {
+    .header-text p { font-size: 12px;}
 }
 
 @media (max-width: 320px) {

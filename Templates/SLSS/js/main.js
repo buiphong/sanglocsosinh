@@ -223,9 +223,12 @@ $(document).ready(function(){
     }
 
     // Handle toggle menu
-    $('.toggle-menu').on('click', function(){
+    $('.toggle-menu').on('click touchstart', function(){
         $("#main_menu ul").toggle();
+        return false;
     });
+
+    handleScrollRightSidebar();
 });
 
 $('body').on('submit', '.ajax-form', function(){
@@ -302,4 +305,61 @@ function reloadCaptcha(elementId)
 function showFaqForm()
 {
     $("#frmSendFaq").toggleClass('dpn');
+}
+
+function handleScrollRightSidebar()
+{
+    var windowWidth = jQuery(window).width();
+    // Scroll right nav for mobile
+    if (windowWidth <= 960 && windowWidth > 640) {
+        var container, cssMarginFix = 0, offsetTop,
+            elm = $('.fr.wp251'),
+            elmOffsetTop,
+            elmHeight,
+            windowHeight = screen.height;
+
+        var boxTop = $("#slide-menu").innerHeight();
+
+        container = elm.parent().find('.wp764');
+        if (container.length <= 0) {
+            container = elm.parent().find('.wp768');
+        }
+        elmOffsetTop = parseInt(elm.offset().top);
+        elmHeight = parseInt(elm.innerHeight());
+        console.log('elmH: ' + elmHeight);
+
+        var containerHeight = container.innerHeight();
+        var lastScrollTop = 0;
+        var maxMargin = container.innerHeight() - elmHeight - boxTop;
+
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var elmMargin = parseInt(elm.css('margin-top'));
+
+            if (scrollTop + windowHeight < (elmOffsetTop + elmHeight) && parseInt(elm.css('margin-top')) === 0) {
+                elm.css('margin-top', 0);
+            } else {
+                if ((elmOffsetTop + elmHeight + elmMargin) < (container.offset().top + containerHeight) && (elmOffsetTop + parseInt(elm.css('margin-top'))) < scrollTop) {
+                    offsetTop = scrollTop - elmOffsetTop;
+                } else {
+                    if ((elmOffsetTop + parseInt(elm.css('margin-top'))) > scrollTop && parseInt(elm.css('margin-top')) > 0) {
+                        offsetTop = scrollTop - container.offset().top;
+                    } else if (parseInt(elm.css('margin-top')) != 0) {
+                        offsetTop = containerHeight - boxTop - elmHeight;
+                    }
+                }
+                if (offsetTop < 0) {
+                    offsetTop = 0;
+                }
+
+                if (offsetTop > maxMargin) {
+                    offsetTop = maxMargin;
+                }
+
+                elm.css("margin-top", offsetTop + 'px');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    }
 }
