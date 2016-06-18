@@ -22,7 +22,7 @@ body { font-family: arial, sans-serif; font-size: 12px; margin: 0px; padding: 0p
 
 .adv_home {background: url(../img/bg_blue_box_content.png) center left repeat-y; margin-left: 7px; padding: 0px 13px;}
 
-.btn_slide { background: url("../img/icons.png") top left no-repeat; width: 40px; height: 67px; position: absolute; z-index: 99}
+.btn_slide { background: url("../img/icons.png") top left no-repeat; width: 40px; height: 67px; position: absolute; z-index: 99; font-size: 0;}
 .btn_slide.prev { background-position: -57px -1px; top: 115px; left: -8px;}
 .btn_slide.next { background-position: 0px -1px; top: 115px; right: -5px;}
 
