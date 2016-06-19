@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     if ($width <= 380){
         $menuItem = 2;
+        $visible = 2;
     } else if ($width <= 480){
         $visible = 2;
         $menuItem = 3;

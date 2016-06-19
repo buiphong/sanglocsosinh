@@ -22,7 +22,7 @@
         <link href="/Templates/SLSS/css/swiper.min.css" rel="stylesheet">
         <link href="/Templates/SLSS/css/style.css" rel="stylesheet">
         <link href="/Templates/SLSS/css/datepicker.css" rel="stylesheet">
-        <link href="/Templates/SLSS/css/responsive.css" rel="stylesheet">
+        <link href="/Templates/SLSS/css/responsive.css?v=1.0" rel="stylesheet">
         <h1 class="dpn">Trung tâm sàng lọc sơ sinh Bionet Việt Nam</h1>
         <h2 class="dpn">Sàng lọc sơ sinh là chương trình thực hiện xét nghiệm cho các bé sơ sinh nhằm phát hiện sớm các bệnh lý nội tiết và rối loạn chuyển hóa, gây ảnh hưởng đến sức khỏe, sự phát triển của trẻ.</h2>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +63,23 @@
         <div class="bottom_border tac bg14365B h50">
             <p class="m0 p0 clfff fs18 pt10 ltspc3">Trung tâm sàng lọc sơ sinh BIONET Việt Nam</p>
         </div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '1741026536134799',
+                    xfbml      : true,
+                    version    : 'v2.6'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <!-- BEGIN: loadScript -->
         Templates/SLSS/js/jquery-1.11.1.min.js,
         Templates/SLSS/js/jquery.cycle.all.js,
@@ -80,15 +97,6 @@
 
             ga('create', '{ga}', 'auto');
             ga('send', 'pageview');
-        </script>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id; js.async = true;
-            js.src = "https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
         </script>
     </body>
 </html>
