@@ -132,6 +132,7 @@
     .list-news.ofh.fl.h51.pt5.pb5.pr4 .wp75:after { clear: both; content: ''; display: block;}
     .list-news .fs9 { font-size: 13px;}
     .list-news.boxBlue { background: none;}
+    .img-news.image_border.wp56 a { height: auto;}
 
     #detail_content_border { float: none; width: 100%;}
     .fb_iframe_widget { float: left;}
@@ -158,6 +159,10 @@
 
     .online-support p { float: left; padding: 12px 0 0 10px;}
     .online-support .fs25 { font-size: 20px; margin-top: 5px;}
+    .home-news-first .image_border { width: 100%;}
+    #main_menu .h50 {height: 50px;}
+    .swiper-container { width: 100%; height: 50px;}
+    .swiper-slide { padding: 5px 10px; background: #1F497D; color: #fff; font-size: 16px; line-height: 20px; height: 30px; margin: 10px 0 0; border-radius: 5px; text-decoration: none; text-align: center; font-weight: bold;}
 }
 
 @media (max-width: 510px) {

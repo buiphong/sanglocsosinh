@@ -50,6 +50,7 @@ class MenuComponentController extends Presentation{
 			}
 	
 			$this->tpl->insert_loop('main.menu', 'menu', $item);
+			$this->tpl->insert_loop('main.menu2', 'menu', $item);
             $i++;
 		}
 		return $this->view();

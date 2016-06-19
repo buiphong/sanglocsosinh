@@ -11,14 +11,31 @@ $(document).ready(function(){
         });
     }
 
-    var $visible = 6;
+    var $visible = 6, $menuItem = 5;
     var $width = jQuery(window).width();
-    if ($width <= 480){
+
+    if ($width <= 380){
+        $menuItem = 2;
+    } else if ($width <= 480){
         $visible = 2;
+        $menuItem = 3;
     } else if ($width <= 640){
         $visible = 3;
+        $menuItem = 4;
     } else if ($width <= 768){
         $visible = 4;
+    }
+
+    if ($width < 980) {
+        var mySwiper = new Swiper ('.swiper-container', {
+            loop: true,
+            slidesPerView: $menuItem,
+            spaceBetween: 10,
+
+            // Navigation arrows
+            //nextButton: '.swiper-button-next',
+            //prevButton: '.swiper-button-prev',
+        });
     }
 
     $("#gallery-home-list-partner").carouFredSel({
