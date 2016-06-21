@@ -98,7 +98,9 @@ class Url
             $host = str_replace('www.', '', $host);
             $photo_url = str_replace($host, '', $photo_url);
             $photo_url = trim($photo_url, '/');
+			$path_parts = pathinfo($photo_url);
             $thumb = String::seo($photo_url);
+			$thumb = str_replace('-' . $path_parts['extension'], '.' . $path_parts['extension'], $thumb);
 
             //Xu ly lay file name va duong dan
             $filename = explode('/', $photo_url);

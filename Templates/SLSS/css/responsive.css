@@ -79,7 +79,7 @@
 
     .special_home .wp175 { width: 100%; float: none;}
 
-    .wp175 .fs11.mb5 { -webkit-line-clamp: 5;  line-height: 16px; max-height: 95px; font-size: 12px;}
+    .wp175 .fs11.mb5 { -webkit-line-clamp: 5;  line-height: 16px; max-height: 95px; font-size: 13px;}
     .img-news.image_border { margin: 0 5px 5px 0;}
     .img-news.image_border img { width: 100% !important;}
     .footer_border { height: auto;}

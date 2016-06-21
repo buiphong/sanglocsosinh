@@ -235,6 +235,7 @@ $(document).ready(function(){
                     if(res.success){
                         obj.closest('.ajax-border').replaceWith(res.html);
                     }
+                    $('html,body').scrollTop(0);
                 }
             });
         });
@@ -289,6 +290,7 @@ function showNews(id)
             if(res.success)
             {
                 $("#detail_content_border").html(res.html);
+                $('html,body').scrollTop(0);
                 FB.XFBML.parse();
             }
         }
