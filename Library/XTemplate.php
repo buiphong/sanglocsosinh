@@ -1431,7 +1431,7 @@ class XTemplate {
             $this->parsed_blocks['main.loadScript'] = $appendLink;
         else
             $this->parsed_blocks['main.loadScript'] = '<script type="text/javascript" src="'.Url::getApplicationUrl() . '/'.
-                str_replace(DIRECTORY_SEPARATOR, '/', COMBINE_ASSETS_DIR).'/'.$fn.'"></script>';
+                str_replace(DIRECTORY_SEPARATOR, '/', COMBINE_ASSETS_DIR).'/'.$fn.'?v=1"></script>';
     }
 
     /**
