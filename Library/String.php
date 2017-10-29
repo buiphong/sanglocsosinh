@@ -143,6 +143,7 @@ class String
         $str = str_replace("|", "", $str);
         $str = str_replace("!", "", $str);
         $str = str_replace("®", "", $str);
+        $str = str_replace("®", "", $str);
         $str = str_replace("–", "-", $str);
         $str = str_replace("---", "-", $str);
         $str = str_replace("--", "-", $str);
