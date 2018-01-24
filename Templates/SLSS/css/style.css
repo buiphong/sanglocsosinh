@@ -329,3 +329,5 @@ span.error,label.error { display: block; color: red;}
 }
 
 .wp175 .fs11.mb5 { text-overflow: ellipsis; -webkit-line-clamp: 2; line-height: 14px; max-height: 28px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical;}
+
+.wp251 #main_menu ul li a { background-color: #308000 !important;}
